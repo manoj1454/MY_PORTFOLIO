@@ -22,8 +22,8 @@
 
 @media (max-width: 900px) {
   .heroFrame {
-    height: calc(1625 * (100vw / 760));
-    min-height: 100svh;
+    height: var(--hero-dynamic-height, 1580px);
+    min-height: 1400px;
   }
 }
 

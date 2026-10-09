@@ -33,6 +33,18 @@ export default function SylvaHeroWrapper({
   srcDoc,
   style,
 }: SylvaHeroWrapperProps) {
+  const [mobileHeight, setMobileHeight] = React.useState<number | null>(null);
+
+  React.useEffect(() => {
+    const handleMessage = (e: MessageEvent) => {
+      if (e.data?.type === 'HERO_RESIZE' && typeof e.data.height === 'number' && e.data.height > 250) {
+        setMobileHeight(e.data.height);
+      }
+    };
+    window.addEventListener('message', handleMessage);
+    return () => window.removeEventListener('message', handleMessage);
+  }, []);
+
   const Component = SylvaHero as React.ComponentType<Record<string, unknown>>;
 
   return (
@@ -41,6 +53,7 @@ export default function SylvaHeroWrapper({
       style={{
         width: '100%',
         position: 'relative',
+        ...(mobileHeight ? ({ '--hero-dynamic-height': `${mobileHeight}px`, height: `${mobileHeight}px` } as React.CSSProperties) : {}),
         ...style,
       }}
     >
