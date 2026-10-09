@@ -5,52 +5,72 @@
    ========================================================================== */
 
 :root {
-  /* Default: Near-black Content Surface */
-  --bg-page: #080B10;
-  --bg-page-rgb: 8, 11, 16;
-  --surface-raised: #0E131A;
-  --surface-higher: #141B24;
-  --surface-card: #0F151E;
-  --surface-card-hover: #141B26;
-  --footer-bg: #05070A;
+  /* Olive Environment Palette (in natural continuity with Three.js Sylva Hero) */
+  --bg-page: #45483F;
+  --bg-page-rgb: 69, 72, 63;
+  --bg-environment: #45483F;
+  --surface-olive-deep: #383B32;
+  --surface-raised: #3B3F35;
+  --surface-higher: #4F5447;
+  --surface-card: #F0F0E8;        /* Warm ivory surface for optimal readability */
+  --surface-card-hover: #E7E8DE;
+  --footer-bg: #2C2F27;
 
-  /* Typography Colors */
-  --text-main: #F8FAFC;        /* Warm White for Headings */
-  --text-body: #CBD5E1;        /* Highly readable prose */
-  --text-secondary: #94A3B8;   /* Muted gray for supporting text */
-  --text-muted: #64748B;      /* Quiet metadata & timestamps */
-  --text-faint: #334155;
+  /* Typography Colors (High Contrast on Olive Background) */
+  --text-main: #F7F8F4;        /* Warm stone ivory for main headings */
+  --text-body: #D8DCD1;        /* Crisp, comfortable reading tone */
+  --text-secondary: #B8BFAe;   /* Readable secondary description */
+  --text-muted: #969E8F;       /* Subtle metadata */
+  --text-faint: #6A7163;
+
+  /* Warm Ivory Content Surfaces & Charcoal Typography */
+  --surface-ivory: #F0F0E8;
+  --text-charcoal: #23261F;       /* High-contrast charcoal headings & text on ivory */
+  --text-charcoal-body: #3E4338;  /* Crisp charcoal-olive paragraphs on ivory */
+  --text-charcoal-sub: #5E6556;   /* Secondary description on ivory */
+  --text-charcoal-muted: #7E8674; /* Subtitle & metadata on ivory */
 
   /* Borders & Dividers */
-  --border-subtle: rgba(148, 163, 184, 0.1);
-  --border-quiet: rgba(148, 163, 184, 0.18);
-  --border-prominent: rgba(148, 163, 184, 0.32);
-  --border-focus: #FF4D79;
+  --border-subtle: rgba(240, 240, 232, 0.12);
+  --border-quiet: rgba(240, 240, 232, 0.22);
+  --border-prominent: rgba(240, 240, 232, 0.38);
+  --border-focus: #A6AF99;
 
-  /* Refined Accent Palette */
-  --accent-pink: #FF4D79;          /* Restrained bright-pink for labels & selected interactions */
-  --accent-pink-hover: #FF6B90;
-  --accent-pink-dim: rgba(255, 77, 121, 0.12);
-  --accent-pink-border: rgba(255, 77, 121, 0.35);
+  /* Botanical Accents */
+  --accent-sage: #A6AF99;          /* Refined Sage Accent from specification */
+  --accent-teal: #A6AF99;          /* Sage accent for technical data */
+  --accent-teal-dim: rgba(166, 175, 153, 0.18);
+  --accent-teal-border: rgba(166, 175, 153, 0.38);
 
-  --accent-teal: #14B8A6;          /* Muted teal for technical data & code motifs */
-  --accent-teal-dim: rgba(20, 184, 166, 0.12);
-  --accent-teal-border: rgba(20, 184, 166, 0.3);
+  --accent-pink: #D4B282;          /* Restrained warm ochre highlight */
+  --accent-pink-hover: #E5C495;
+  --accent-pink-dim: rgba(212, 178, 130, 0.16);
+  --accent-pink-border: rgba(212, 178, 130, 0.38);
 
-  --accent-blue: #38BDF8;          /* Deep sky/ice-blue */
-  --accent-blue-dim: rgba(56, 189, 248, 0.1);
+  --accent-blue: #A2B2C2;          /* Muted slate blue */
+  --accent-blue-dim: rgba(162, 178, 194, 0.14);
 
-  --accent-primary: #818CF8;       /* Retained for hero compatibility */
-  --accent-secondary: #A3E635;     /* Retained for hero signal */
-  --accent-warm: #FB923C;
+  --accent-primary: #A6AF99;
+  --accent-secondary: #D4B282;
+  --accent-warm: #D4B282;
+
+  /* Tactile Warm Ivory Surfaces (Sylva Material Reference) */
+  --card-paper: #F0F0E8;
+  --card-paper-ink: #23261F;
+  --card-paper-label: #5E6556;
+  --card-paper-subtle: #E2E4DA;
+  --card-paper-shadow: 0 24px 60px -15px rgba(20, 24, 18, 0.42), 0 8px 20px -5px rgba(0, 0, 0, 0.22);
+  --knob-bg: #FFFFFF;
+  --knob-ink: #23261F;
+  --knob-shadow: 0 6px 18px rgba(18, 22, 16, 0.25);
 
   /* Shadows & Glass */
   --shadow-sm: 0 2px 6px rgba(0, 0, 0, 0.35);
   --shadow-card: 0 12px 28px -6px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.04) inset;
   --shadow-elevated: 0 20px 40px -10px rgba(0, 0, 0, 0.7);
 
-  --glass-bg: rgba(10, 14, 20, 0.82);
-  --glass-border: rgba(255, 255, 255, 0.08);
+  --glass-bg: rgba(14, 18, 24, 0.82);
+  --glass-border: rgba(255, 255, 255, 0.09);
 
   --radius-sm: 6px;
   --radius-md: 10px;
@@ -67,6 +87,8 @@
 
   --transition-fast: 150ms cubic-bezier(0.16, 1, 0.3, 1);
   --transition-normal: 240ms cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-spring: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 /* Light Theme: Balanced daylight editorial surface */
@@ -101,6 +123,15 @@
 
   --accent-blue: #0284C7;
   --accent-blue-dim: rgba(2, 132, 199, 0.1);
+
+  --card-paper: #FFFFFF;
+  --card-paper-ink: #181C15;
+  --card-paper-label: #5E645A;
+  --card-paper-subtle: #F1F4EE;
+  --card-paper-shadow: 0 20px 45px -8px rgba(0, 0, 0, 0.08);
+  --knob-bg: #F8FAFC;
+  --knob-ink: #0F172A;
+  --knob-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
 
   --shadow-sm: 0 2px 6px rgba(15, 23, 42, 0.05);
   --shadow-card: 0 12px 28px -6px rgba(15, 23, 42, 0.06), 0 0 0 1px rgba(15, 23, 42, 0.04) inset;
@@ -218,6 +249,27 @@ body::before {
   z-index: 1;
 }
 
+/* ── Hero Shader Frame Responsive Dimensions ── */
+.shader-frame {
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+@media (min-width: 901px) {
+  .shader-frame {
+    height: 100svh;
+    min-height: 880px;
+  }
+}
+
+@media (max-width: 900px) {
+  .shader-frame {
+    height: calc(1625 * (100vw / 760));
+    min-height: 100svh;
+  }
+}
+
 /* ==========================================================================
    Typography & Editorial Elements
    ========================================================================== */
@@ -326,6 +378,91 @@ code, kbd, samp, pre {
 .card-surface:hover {
   border-color: var(--border-quiet);
   background-color: var(--surface-card-hover);
+}
+
+/* ==========================================================================
+   Sylva Architectural Design Techniques: Column Guides & Specular Rim
+   ========================================================================== */
+
+/* Architectural Column Guides: delicate vertical alignment rules */
+.columnGuides {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  display: flex;
+  justify-content: space-between;
+  max-width: var(--container-max-width);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: clamp(1.25rem, 5vw, 2.5rem);
+  padding-right: clamp(1.25rem, 5vw, 2.5rem);
+}
+
+.columnGuides i {
+  position: relative;
+  display: block;
+  width: 1px;
+  height: 100%;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(148, 163, 184, 0.045) 15%, rgba(148, 163, 184, 0.045) 85%, rgba(255, 255, 255, 0) 100%);
+}
+
+[data-theme="light"] .columnGuides i {
+  background: linear-gradient(180deg, rgba(15, 23, 42, 0) 0%, rgba(15, 23, 42, 0.04) 15%, rgba(15, 23, 42, 0.04) 85%, rgba(15, 23, 42, 0) 100%);
+}
+
+/* Ghost Wordmark Backdrop Typography */
+.ghostWordmark {
+  position: absolute;
+  user-select: none;
+  pointer-events: none;
+  font-family: var(--font-mono);
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  color: rgba(255, 255, 255, 0.022);
+  line-height: 0.85;
+  white-space: nowrap;
+  z-index: 0;
+}
+
+[data-theme="light"] .ghostWordmark {
+  color: rgba(15, 23, 42, 0.02);
+}
+
+/* Specular Rim Effect (Conic rim highlight responding to pointer) */
+[data-spec] {
+  --spec-angle: 2.4rad;
+  --spec-bright: 0;
+  position: relative;
+}
+
+[data-spec]::after {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  padding: 1px;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: var(--spec-bright);
+  background: conic-gradient(
+    from var(--spec-angle) at 50% 50%,
+    rgba(255, 255, 255, 0) 0deg,
+    rgba(255, 255, 255, 0.1) 18deg,
+    rgba(255, 255, 255, 0.75) 30deg,
+    rgba(255, 255, 255, 0.15) 48deg,
+    rgba(255, 255, 255, 0) 70deg,
+    rgba(255, 255, 255, 0) 180deg,
+    rgba(255, 255, 255, 0.1) 198deg,
+    rgba(255, 255, 255, 0.75) 210deg,
+    rgba(255, 255, 255, 0.15) 228deg,
+    rgba(255, 255, 255, 0) 250deg,
+    rgba(255, 255, 255, 0) 360deg
+  );
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  transition: opacity 0.25s ease;
 }
 
 /* Reduced Motion Safety */

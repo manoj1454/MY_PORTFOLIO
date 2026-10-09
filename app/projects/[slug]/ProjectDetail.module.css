@@ -1,7 +1,8 @@
 .pageWrapper {
-  padding-top: 2rem;
+  padding-top: clamp(5.5rem, 9vw, 7rem);
   padding-bottom: 5rem;
 }
+
 
 .breadcrumbNav {
   display: flex;

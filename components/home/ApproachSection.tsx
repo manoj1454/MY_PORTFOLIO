@@ -5,8 +5,20 @@ import styles from './ApproachSection.module.css';
 
 export default function ApproachSection() {
   return (
-    <section id="principles" className="section" aria-labelledby="principles-title">
-      <div className="container">
+    <section id="principles" className="section" aria-labelledby="principles-title" style={{ position: 'relative' }}>
+      {/* Sylva Architectural Guides */}
+      <div className="columnGuides" aria-hidden="true">
+        <i />
+        <i />
+        <i />
+      </div>
+
+      {/* Ghost Backdrop Wordmark */}
+      <div className={`${styles.ghostWord} ghostWordmark`} aria-hidden="true">
+        PRINCIPLES
+      </div>
+
+      <div className="container" style={{ position: 'relative', zIndex: 1 }}>
         <SectionHeading
           eyebrow="ENGINEERING PRINCIPLES"
           title="How I Approach Engineering"

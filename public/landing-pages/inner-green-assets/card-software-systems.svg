@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 200" width="400" height="200">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1A2118"/>
+      <stop offset="100%" stop-color="#242E21"/>
+    </linearGradient>
+    <linearGradient id="sageAccent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#A6AF99" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#DCE4D0" stop-opacity="0.95"/>
+    </linearGradient>
+    <linearGradient id="cardBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#293325"/>
+      <stop offset="100%" stop-color="#1E261B"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background Canvas -->
+  <rect width="400" height="200" rx="16" fill="url(#bgGrad)"/>
+  <rect width="398" height="198" x="1" y="1" rx="15" fill="none" stroke="rgba(240,240,232,0.12)" stroke-width="1"/>
+
+  <!-- Architectural Grid Backdrop -->
+  <g stroke="rgba(255,255,255,0.04)" stroke-width="1">
+    <line x1="20" y1="50" x2="380" y2="50"/>
+    <line x1="20" y1="100" x2="380" y2="100"/>
+    <line x1="20" y1="150" x2="380" y2="150"/>
+    <line x1="100" y1="20" x2="100" y2="180"/>
+    <line x1="200" y1="20" x2="200" y2="180"/>
+    <line x1="300" y1="20" x2="300" y2="180"/>
+  </g>
+
+  <!-- Layer 1: Client & User Applications -->
+  <g transform="translate(30, 24)">
+    <rect width="340" height="34" rx="8" fill="url(#cardBg)" stroke="rgba(166,175,153,0.3)" stroke-width="1"/>
+    <circle cx="16" cy="17" r="3.5" fill="#A6AF99"/>
+    <text x="30" y="21" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600" fill="#F0F0E8" letter-spacing="0.5">CLIENT LAYER</text>
+    <text x="135" y="21" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" font-weight="400" fill="#A6AF99">Web Interface · Responsive UI · Typed State</text>
+    <rect x="300" y="9" width="30" height="16" rx="4" fill="rgba(166,175,153,0.15)"/>
+    <text x="306" y="21" font-family="monospace" font-size="9" font-weight="600" fill="#DCE4D0">HTTP</text>
+  </g>
+
+  <!-- Connector Lines 1 to 2 -->
+  <path d="M 120 58 L 120 80" stroke="#A6AF99" stroke-width="1.5" stroke-dasharray="3 3"/>
+  <path d="M 280 58 L 280 80" stroke="#A6AF99" stroke-width="1.5" stroke-dasharray="3 3"/>
+  <polygon points="120,82 117,76 123,76" fill="#A6AF99"/>
+  <polygon points="280,82 277,76 283,76" fill="#A6AF99"/>
+
+  <!-- Layer 2: API Services & Gateway -->
+  <g transform="translate(30, 83)">
+    <!-- Service A: Gateway -->
+    <g transform="translate(0, 0)">
+      <rect width="162" height="38" rx="8" fill="url(#cardBg)" stroke="rgba(166,175,153,0.4)" stroke-width="1"/>
+      <circle cx="14" cy="19" r="3.5" fill="#D4B282"/>
+      <text x="26" y="18" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" font-weight="600" fill="#F0F0E8">API Gateway</text>
+      <text x="26" y="30" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9" fill="#A6AF99">Route · Auth · Rate Limit</text>
+    </g>
+    <!-- Service B: Backend Services -->
+    <g transform="translate(178, 0)">
+      <rect width="162" height="38" rx="8" fill="url(#cardBg)" stroke="rgba(166,175,153,0.4)" stroke-width="1"/>
+      <circle cx="14" cy="19" r="3.5" fill="#A6AF99"/>
+      <text x="26" y="18" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" font-weight="600" fill="#F0F0E8">Backend Services</text>
+      <text x="26" y="30" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9" fill="#A6AF99">Business Logic · Microservices</text>
+    </g>
+  </g>
+
+  <!-- Connector Lines 2 to 3 -->
+  <path d="M 110 121 L 110 142" stroke="#A6AF99" stroke-width="1.5" stroke-dasharray="3 3"/>
+  <path d="M 290 121 L 290 142" stroke="#A6AF99" stroke-width="1.5" stroke-dasharray="3 3"/>
+  <polygon points="110,144 107,138 113,138" fill="#A6AF99"/>
+  <polygon points="290,144 287,138 293,138" fill="#A6AF99"/>
+
+  <!-- Layer 3: Persistence & Vector Indexing -->
+  <g transform="translate(30, 145)">
+    <rect width="340" height="34" rx="8" fill="url(#cardBg)" stroke="rgba(166,175,153,0.3)" stroke-width="1"/>
+    <circle cx="16" cy="17" r="3.5" fill="#A6AF99"/>
+    <text x="30" y="21" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" font-weight="600" fill="#F0F0E8" letter-spacing="0.5">PERSISTENCE</text>
+    <text x="125" y="21" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#A6AF99">PostgreSQL · ChromaDB · Redis Cache · S3</text>
+    <rect x="305" y="9" width="25" height="16" rx="4" fill="rgba(166,175,153,0.15)"/>
+    <text x="309" y="21" font-family="monospace" font-size="8.5" font-weight="600" fill="#DCE4D0">SQL</text>
+  </g>
+</svg>

@@ -2,11 +2,15 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
-import { Menu, X, ExternalLink } from 'lucide-react';
+import { Menu, X, ExternalLink, Search } from 'lucide-react';
 import { siteConfig } from '@/lib/site';
 import styles from './MobileNav.module.css';
 
-export default function MobileNav() {
+interface MobileNavProps {
+  onOpenSearch?: () => void;
+}
+
+export default function MobileNav({ onOpenSearch }: MobileNavProps) {
   const [isOpen, setIsOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
   const toggleBtnRef = useRef<HTMLButtonElement>(null);
@@ -74,6 +78,21 @@ export default function MobileNav() {
         </div>
 
         <nav className={styles.navLinks} aria-label="Mobile navigation">
+          {onOpenSearch && (
+            <button
+              type="button"
+              className={styles.mobileSearchBtn}
+              onClick={() => {
+                setIsOpen(false);
+                onOpenSearch();
+              }}
+            >
+              <Search size={16} />
+              <span>Search portfolio...</span>
+              <kbd className={styles.mobileKbd}>⌘K</kbd>
+            </button>
+          )}
+
           {siteConfig.navigation.map((item) => (
             <Link
               key={item.href}

@@ -6,7 +6,19 @@ import styles from './ToolkitSection.module.css';
 export default function ToolkitSection() {
   return (
     <section id="toolkit" className="section" aria-labelledby="toolkit-title">
-      <div className="container">
+      {/* Sylva Architectural Guides */}
+      <div className="columnGuides" aria-hidden="true">
+        <i />
+        <i />
+        <i />
+      </div>
+
+      {/* Ghost Backdrop Wordmark */}
+      <div className={`${styles.ghostWord} ghostWordmark`} aria-hidden="true">
+        SYSTEMS
+      </div>
+
+      <div className="container" style={{ position: 'relative', zIndex: 1 }}>
         <SectionHeading
           eyebrow="TECHNICAL TOOLKIT"
           title="Tools & Technologies"

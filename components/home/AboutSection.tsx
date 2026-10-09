@@ -1,44 +1,44 @@
 import React from 'react';
 import SectionHeading from '../ui/SectionHeading';
+import { siteConfig } from '@/lib/site';
 import styles from './AboutSection.module.css';
 
 export default function AboutSection() {
   return (
-    <section id="about" className="section" aria-labelledby="about-title">
-      <div className="container">
+    <section id="about" className="section" aria-labelledby="about-title" style={{ position: 'relative' }}>
+      {/* Sylva Architectural Guides */}
+      <div className="columnGuides" aria-hidden="true">
+        <i />
+        <i />
+        <i />
+      </div>
+
+      {/* Ghost Backdrop Wordmark */}
+      <div className={`${styles.ghostWord} ghostWordmark`} aria-hidden="true">
+        ABOUT
+      </div>
+
+      <div className="container" style={{ position: 'relative', zIndex: 1 }}>
         <SectionHeading
-          eyebrow="ABOUT & PHILOSOPHY"
-          title="Understanding the Whole Path"
-          description="A computer science student working between application architecture and applied machine learning."
+          eyebrow="ABOUT &amp; BACKGROUND"
+          title="Building Software End to End"
+          description="A Computer Science and Engineering student focused on building dependable software—from clear user interfaces and backend APIs to systems that connect services, data, and intelligent capabilities."
         />
 
         <div className={styles.editorialGrid}>
           {/* Main Prose Column */}
           <div className={styles.proseColumn}>
-            <p className={styles.lead}>
-              I build software with a focus on how data moves from end to end—from how raw inputs
-              or documents are parsed, how machine learning models generate proposals or embeddings,
-              to how the final user interface behaves under network latency and edge cases.
-            </p>
+            {siteConfig.aboutBio.map((paragraph, idx) => (
+              <p key={idx} className={idx === 0 ? styles.lead : styles.paragraph}>
+                {paragraph}
+              </p>
+            ))}
 
-            <p className={styles.paragraph}>
-              My coursework and independent projects have centered on computer vision (detecting structural
-              flaws in images using PyTorch), retrieval-augmented NLP (structuring dense legal documents
-              for query extraction), and full-stack web applications backed by modern document databases.
-            </p>
-
-            <p className={styles.paragraph}>
-              Rather than treating models as black-box magic or web frameworks as boilerplate templates, I
-              care about observable engineering: verifying inputs, isolating failure modes, designing clean API
-              boundaries, and making sure the resulting interface responds predictably.
-            </p>
-
-            {/* Distinct Engineering Philosophy Statement */}
-            <div className={styles.philosophyBlock}>
-              <span className={styles.philosophyLabel}>ENGINEERING PHILOSOPHY</span>
+            {/* Distinct Editorial Philosophy Statement */}
+            <div className={styles.philosophyPlate}>
+              <span className={styles.philosophyLabel}>ENGINEERING FOCUS</span>
               <blockquote className={styles.quoteText}>
-                &ldquo;Show evidence instead of making grand claims. Good engineering is observed in how an
-                application handles bad inputs, ambiguous edge cases, and unexpected failure modes.&rdquo;
+                &ldquo;I enjoy working across the stack, understanding how the pieces fit together, and solving the practical problems that make software reliable in the real world.&rdquo;
               </blockquote>
             </div>
           </div>
@@ -46,26 +46,38 @@ export default function AboutSection() {
           {/* Context & Supported Facts Column */}
           <aside className={styles.sidebarColumn}>
             <div className={styles.factItem}>
-              <span className={styles.factLabel}>Academic Context</span>
+              <span className={styles.factLabel}>Education</span>
               <p className={styles.factValue}>
-                B.Tech in Computer Science &amp; Engineering<br />
-                <span className={styles.factSub}>Expected Graduation · 2027</span>
+                {siteConfig.education.degree} in {siteConfig.education.field}<br />
+                <span className={styles.factSub}>{siteConfig.education.institution} · {siteConfig.education.dates}</span><br />
+                <span className={styles.factSub} style={{ color: 'var(--accent-teal)' }}>CGPA: {siteConfig.education.cgpa}</span>
               </p>
             </div>
 
             <div className={styles.factItem}>
-              <span className={styles.factLabel}>Technical Focus</span>
-              <p className={styles.factValue}>
-                Applied Deep Learning &amp; Computer Vision<br />
-                Document Retrieval &amp; Dense Search (RAG)<br />
-                Full-Stack Architecture &amp; REST Contracts
-              </p>
+              <span className={styles.factLabel}>Recognition</span>
+              {siteConfig.achievements.map((ach, i) => (
+                <p key={i} className={styles.factValue}>
+                  {ach.title}<br />
+                  <span className={styles.factSub}>{ach.event} · {ach.year}</span>
+                </p>
+              ))}
+            </div>
+
+            <div className={styles.factItem}>
+              <span className={styles.factLabel}>Certifications</span>
+              {siteConfig.certifications.map((cert, i) => (
+                <p key={i} className={styles.factValue} style={{ marginBottom: i < siteConfig.certifications.length - 1 ? '0.5rem' : 0 }}>
+                  {cert.name}<br />
+                  <span className={styles.factSub}>{cert.issuer} · {cert.date}</span>
+                </p>
+              ))}
             </div>
 
             <div className={styles.factItem}>
               <span className={styles.factLabel}>Continuous Practice</span>
               <p className={styles.factValue}>
-                Algorithmic problem solving, data structure optimization, and systems fundamentals on LeetCode.
+                Data structures and algorithms, object-oriented design, and problem solving practice on LeetCode.
               </p>
             </div>
           </aside>

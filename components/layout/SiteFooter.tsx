@@ -22,13 +22,14 @@ export default function SiteFooter() {
               <span className={styles.brandText}>manoj.dev</span>
             </div>
             <p className={styles.bioText}>
-              Computer Science student building full-stack software and exploring applied machine learning.
-              Dedicated to clear architectures, honest metrics, and polished implementation.
+              Computer Science and Engineering student focused on building dependable software—from backend APIs to full-stack products.
             </p>
             <div className={styles.academicMeta}>
-              <span>{siteConfig.education.degree} in {siteConfig.education.field}</span>
+              <span>{siteConfig.education.degree}</span>
               <span className={styles.metaDivider}>·</span>
-              <span>{siteConfig.education.expectedGraduation}</span>
+              <span>{siteConfig.education.dates}</span>
+              <span className={styles.metaDivider}>·</span>
+              <span>CGPA {siteConfig.education.cgpa}</span>
             </div>
           </div>
 
@@ -51,8 +52,18 @@ export default function SiteFooter() {
             <h3 className={styles.colHeading}>Selected Work</h3>
             <ul className={styles.linkList}>
               <li>
+                <Link href="/projects/verifiable-credentials" className={styles.footerLink}>
+                  Verifiable Credentials Platform
+                </Link>
+              </li>
+              <li>
+                <Link href="/projects/medical-response-verification" className={styles.footerLink}>
+                  Medical Verification Platform
+                </Link>
+              </li>
+              <li>
                 <Link href="/projects/talqs" className={styles.footerLink}>
-                  TALQS (Legal QA & Summarization)
+                  TALQS (Legal QA &amp; Summarization)
                 </Link>
               </li>
               <li>
@@ -68,28 +79,52 @@ export default function SiteFooter() {
             </ul>
           </div>
 
-          {/* Col 4: Verified Profiles & Note */}
+          {/* Col 4: Verified Profiles & Contact */}
           <div className={styles.colProfiles}>
             <h3 className={styles.colHeading}>Connect</h3>
             <ul className={styles.linkList}>
-              {siteConfig.verifiedSocials.map((social) => (
-                <li key={social.name}>
-                  <a
-                    href={social.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={styles.verifiedLink}
-                  >
-                    <span>{social.name}</span>
-                    <ExternalLink size={12} />
-                  </a>
-                </li>
-              ))}
+              <li>
+                <a
+                  href={`mailto:${siteConfig.contact.email}`}
+                  className={styles.verifiedLink}
+                >
+                  <span>Email: {siteConfig.contact.email}</span>
+                </a>
+              </li>
+              <li>
+                <a
+                  href={siteConfig.contact.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={styles.verifiedLink}
+                >
+                  <span>GitHub (@manoj1454)</span>
+                  <ExternalLink size={12} />
+                </a>
+              </li>
+              <li>
+                <a
+                  href={siteConfig.contact.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={styles.verifiedLink}
+                >
+                  <span>LinkedIn (in/manojchary)</span>
+                  <ExternalLink size={12} />
+                </a>
+              </li>
+              <li>
+                <a
+                  href={siteConfig.verifiedSocials[0]?.url || 'https://leetcode.com/u/Manoj_1454/'}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={styles.verifiedLink}
+                >
+                  <span>LeetCode (Manoj_1454)</span>
+                  <ExternalLink size={12} />
+                </a>
+              </li>
             </ul>
-            <p className={styles.verificationNote}>
-              External profiles (GitHub, LinkedIn, Email) are pending owner verification in{' '}
-              <code>lib/site.ts</code>.
-            </p>
           </div>
         </div>
 

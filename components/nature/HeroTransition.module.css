@@ -1,0 +1,48 @@
+.transitionWrap {
+  position: relative;
+  width: 100%;
+  height: clamp(110px, 14vw, 170px);
+  margin-top: -1px;
+  overflow: visible;
+  pointer-events: none;
+  z-index: 5;
+  background: linear-gradient(
+    180deg,
+    #383b34 0%,
+    #2a3027 35%,
+    #20251e 70%,
+    #191c18 100%
+  );
+}
+
+.transitionSvg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.ambientGlow {
+  position: absolute;
+  top: 0;
+  left: 20%;
+  right: 20%;
+  height: 60%;
+  background: radial-gradient(
+    ellipse at 50% 0%,
+    rgba(238, 243, 231, 0.12) 0%,
+    rgba(238, 243, 231, 0) 70%
+  );
+  pointer-events: none;
+}
+
+.perchMarker {
+  position: absolute;
+  left: clamp(80px, 12vw, 180px);
+  top: 42%;
+  width: 24px;
+  height: 24px;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}

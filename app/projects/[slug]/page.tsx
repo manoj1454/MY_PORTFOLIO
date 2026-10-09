@@ -50,7 +50,14 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
   const { prev, next } = getAdjacentProjects(slug);
 
   return (
-    <div className={styles.pageWrapper}>
+    <div className={styles.pageWrapper} style={{ position: 'relative' }}>
+      {/* Sylva Architectural Guides */}
+      <div className="columnGuides" aria-hidden="true">
+        <i />
+        <i />
+        <i />
+      </div>
+
       {/* Editorial Breadcrumbs & Back Action */}
       <nav className={`container ${styles.breadcrumbNav}`} aria-label="Breadcrumb">
         <Link href="/#work" className={styles.backLink}>

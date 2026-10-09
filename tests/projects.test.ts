@@ -8,9 +8,15 @@ import {
 } from '../lib/projects';
 
 test('Project data integrity', async (t) => {
-  await t.test('All expected projects exist and have required slugs', () => {
+  await t.test('All expected projects exist and have required slugs in order', () => {
     const slugs = getAllProjectSlugs();
-    assert.deepEqual(slugs, ['talqs', 'welding-defect-detection', 'movie-review-system']);
+    assert.deepEqual(slugs, [
+      'verifiable-credentials',
+      'medical-response-verification',
+      'talqs',
+      'welding-defect-detection',
+      'movie-review-system',
+    ]);
   });
 
   await t.test('Each project has all required technical sections populated', () => {
@@ -32,6 +38,13 @@ test('Project data integrity', async (t) => {
     }
   });
 
+  await t.test('Medical response verification project includes clinical disclaimer', () => {
+    const medical = getProjectBySlug('medical-response-verification');
+    assert.ok(medical, 'medical-response-verification project should exist');
+    assert.ok(medical.disclaimer, 'medical project must include a disclaimer');
+    assert.match(medical.disclaimer, /not certified medical advice|clinical judgment/i);
+  });
+
   await t.test('TALQS project includes mandatory legal disclaimer', () => {
     const talqs = getProjectBySlug('talqs');
     assert.ok(talqs, 'talqs project should exist');
@@ -46,14 +59,14 @@ test('Project data integrity', async (t) => {
     assert.match(welding.disclaimer, /not certified for industrial safety inspection/i);
   });
 
-  await t.test('Adjacent project resolution cycles correctly', () => {
-    const first = getAdjacentProjects('talqs');
+  await t.test('Adjacent project resolution cycles correctly across all 5 projects', () => {
+    const first = getAdjacentProjects('verifiable-credentials');
     assert.equal(first.prev?.slug, 'movie-review-system');
-    assert.equal(first.next?.slug, 'welding-defect-detection');
+    assert.equal(first.next?.slug, 'medical-response-verification');
 
     const last = getAdjacentProjects('movie-review-system');
     assert.equal(last.prev?.slug, 'welding-defect-detection');
-    assert.equal(last.next?.slug, 'talqs');
+    assert.equal(last.next?.slug, 'verifiable-credentials');
   });
 
   await t.test('Querying non-existent slug returns undefined', () => {

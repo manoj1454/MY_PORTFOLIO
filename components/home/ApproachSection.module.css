@@ -1,3 +1,10 @@
+.ghostWord {
+  top: 12%;
+  right: -5%;
+  font-size: clamp(5rem, 12vw, 11rem);
+  letter-spacing: 0.16em;
+}
+
 .principlesList {
   display: flex;
   flex-direction: column;

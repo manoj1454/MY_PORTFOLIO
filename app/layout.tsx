@@ -3,6 +3,7 @@ import './globals.css';
 import SkipLink from '@/components/layout/SkipLink';
 import SiteHeader from '@/components/layout/SiteHeader';
 import SiteFooter from '@/components/layout/SiteFooter';
+import LivingButterfly from '@/components/nature/LivingButterfly';
 import { siteConfig } from '@/lib/site';
 
 export const metadata: Metadata = {
@@ -78,6 +79,7 @@ export default function RootLayout({
           {children}
         </main>
         <SiteFooter />
+        <LivingButterfly />
       </body>
     </html>
   );

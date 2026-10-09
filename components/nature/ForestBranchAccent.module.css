@@ -1,0 +1,44 @@
+.accentWrap {
+  position: absolute;
+  pointer-events: none;
+  z-index: 2;
+  overflow: visible;
+  opacity: 0.85;
+}
+
+.variantAbout {
+  right: -20px;
+  bottom: 40px;
+  width: clamp(140px, 18vw, 220px);
+  height: clamp(100px, 14vw, 160px);
+}
+
+.variantApproach {
+  left: -24px;
+  top: 30px;
+  width: clamp(150px, 20vw, 240px);
+  height: clamp(90px, 12vw, 140px);
+}
+
+.variantContact {
+  right: -15px;
+  top: 20px;
+  width: clamp(120px, 16vw, 180px);
+  height: clamp(80px, 10vw, 120px);
+  opacity: 0.6;
+}
+
+.branchSvg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.perchSpot {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}

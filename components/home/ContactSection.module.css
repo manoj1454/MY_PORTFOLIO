@@ -1,3 +1,10 @@
+.ghostWord {
+  top: 15%;
+  right: -5%;
+  font-size: clamp(5rem, 12vw, 11rem);
+  letter-spacing: 0.16em;
+}
+
 .contactLayout {
   display: grid;
   grid-template-columns: 1fr;

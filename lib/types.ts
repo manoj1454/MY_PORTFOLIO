@@ -12,23 +12,41 @@ export interface SocialLink {
 
 export interface SiteConfig {
   name: string;
+  fullName: string;
   title: string;
   role: string;
   tagline: string;
   subheadline: string;
+  aboutBio: string[];
   status: string;
   education: {
     degree: string;
     field: string;
-    expectedGraduation: string;
+    institution: string;
+    dates: string;
+    cgpa: string;
   };
+  achievements: {
+    title: string;
+    event: string;
+    year: string;
+  }[];
+  certifications: {
+    name: string;
+    issuer: string;
+    date: string;
+  }[];
   navigation: NavItem[];
   verifiedSocials: SocialLink[];
-  pendingSocials: {
-    name: string;
-    description: string;
-  }[];
+  contact: {
+    headline: string;
+    subheadline: string;
+    email: string;
+    github: string;
+    linkedin: string;
+  };
 }
+
 
 export interface ProjectSectionContent {
   title: string;
@@ -51,14 +69,16 @@ export interface Project {
   tagline: string;
   shortDescription: string;
   overview: string;
+  category: string;
   statusBadge: string;
   featuredOrder: number;
   tags: {
     primary: string[];
     secondary?: string[];
   };
+  metrics?: { label: string; value: string; context?: string }[];
   disclaimer?: string;
-  diagramType: 'talqs' | 'welding' | 'moviereview';
+  diagramType: 'medical' | 'talqs' | 'optimus' | 'credentials' | 'welding' | 'moviereview';
   diagramCaption: string;
   links?: {
     github?: string;
@@ -74,6 +94,7 @@ export interface Project {
     lessons: ProjectSectionContent;
   };
 }
+
 
 export interface SkillCategory {
   category: string;
