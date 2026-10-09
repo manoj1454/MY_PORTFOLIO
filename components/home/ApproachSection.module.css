@@ -1,0 +1,75 @@
+.principlesGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.75rem;
+}
+
+@media (min-width: 768px) {
+  .principlesGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.principleCard {
+  padding: 1.875rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.cardHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.875rem;
+  margin-bottom: 1rem;
+}
+
+.numberBadge {
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: var(--accent-secondary);
+  background-color: var(--accent-secondary-dim);
+  padding: 0.35rem 0.6rem;
+  border-radius: var(--radius-sm);
+  letter-spacing: 0.05em;
+}
+
+.principleTitle {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--text-main);
+  letter-spacing: -0.02em;
+}
+
+.summary {
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  margin-bottom: 1.5rem;
+}
+
+.exampleBox {
+  margin-top: auto;
+  padding: 1rem;
+  background-color: var(--surface-raised);
+  border-radius: var(--radius-md);
+  border-left: 2px solid var(--accent-primary);
+}
+
+.exampleLabel {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--accent-primary);
+  margin-bottom: 0.35rem;
+}
+
+.exampleText {
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  color: var(--text-secondary);
+  margin: 0;
+}

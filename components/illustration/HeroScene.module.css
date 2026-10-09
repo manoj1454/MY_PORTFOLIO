@@ -1,0 +1,219 @@
+.sceneContainer {
+  position: relative;
+  width: 100%;
+  max-width: 540px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  user-select: none;
+}
+
+.ambientGlow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 70%;
+  height: 70%;
+  background: radial-gradient(circle, var(--accent-primary-glow) 0%, transparent 70%);
+  filter: blur(40px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.svgCanvas {
+  width: 100%;
+  height: auto;
+  display: block;
+  position: relative;
+  z-index: 1;
+  filter: drop-shadow(0 12px 24px rgba(0, 0, 0, 0.25));
+}
+
+.statusPill {
+  margin-top: 1rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 0.75rem;
+  background-color: var(--surface-raised);
+  border: 1px solid var(--border-quiet);
+  border-radius: var(--radius-full);
+  z-index: 2;
+  box-shadow: var(--shadow-sm);
+}
+
+.statusIndicator {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: var(--accent-secondary);
+  box-shadow: 0 0 8px var(--accent-secondary);
+  animation: pulseIndicator 3s ease-in-out infinite;
+}
+
+.statusText {
+  font-family: var(--font-mono);
+  font-size: 0.725rem;
+  letter-spacing: 0.05em;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+/* Animations using smooth transforms & opacity */
+.slowRotate {
+  transform-origin: 280px 240px;
+  animation: rotateClockwise 60s linear infinite;
+}
+
+.slowRotateReverse {
+  transform-origin: 280px 240px;
+  animation: rotateCounter 80s linear infinite;
+}
+
+.corePulse {
+  animation: pulseCore 3s ease-in-out infinite;
+}
+
+.expandRing {
+  transform-origin: 280px 240px;
+  animation: ringPulse 4s ease-out infinite;
+}
+
+.pulseDash {
+  stroke-dashoffset: 0;
+  animation: dashTravel 8s linear infinite;
+}
+
+.floatNode1 {
+  animation: floatSlow1 6s ease-in-out infinite;
+}
+
+.floatNode2 {
+  animation: floatSlow2 7s ease-in-out infinite;
+}
+
+.floatNode3 {
+  animation: floatSlow1 8s ease-in-out infinite alternate;
+}
+
+.pointFlash1 {
+  animation: twinkle 4s ease-in-out infinite;
+}
+
+.pointFlash2 {
+  animation: twinkle 5s ease-in-out infinite 1.5s;
+}
+
+.pointFlash3 {
+  animation: twinkle 4.5s ease-in-out infinite 0.8s;
+}
+
+@keyframes rotateClockwise {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes rotateCounter {
+  from {
+    transform: rotate(360deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes pulseCore {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.9;
+  }
+  50% {
+    transform: scale(1.25);
+    opacity: 1;
+  }
+}
+
+@keyframes ringPulse {
+  0% {
+    transform: scale(0.9);
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 0.2;
+  }
+  100% {
+    transform: scale(1.4);
+    opacity: 0;
+  }
+}
+
+@keyframes dashTravel {
+  0% {
+    stroke-dashoffset: 600;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes floatSlow1 {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+@keyframes floatSlow2 {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(4px);
+  }
+}
+
+@keyframes twinkle {
+  0%, 100% {
+    opacity: 0.3;
+    transform: scale(0.9);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
+
+@keyframes pulseIndicator {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.4;
+  }
+}
+
+/* Reduced Motion Override */
+@media (prefers-reduced-motion: reduce) {
+  .slowRotate,
+  .slowRotateReverse,
+  .corePulse,
+  .expandRing,
+  .pulseDash,
+  .floatNode1,
+  .floatNode2,
+  .floatNode3,
+  .pointFlash1,
+  .pointFlash2,
+  .pointFlash3,
+  .statusIndicator {
+    animation: none !important;
+  }
+}

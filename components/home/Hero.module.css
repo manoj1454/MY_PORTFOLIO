@@ -1,0 +1,103 @@
+.heroSection {
+  position: relative;
+  padding-top: clamp(3rem, 6vw, 5.5rem);
+  padding-bottom: clamp(3.5rem, 7vw, 6rem);
+  overflow: hidden;
+}
+
+.heroGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+@media (min-width: 960px) {
+  .heroGrid {
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 3.5rem;
+  }
+}
+
+.heroCopy {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  z-index: 2;
+}
+
+.eyebrowWrapper {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.3rem 0.65rem;
+  background-color: var(--surface-raised);
+  border: 1px solid var(--border-quiet);
+  border-radius: var(--radius-full);
+  width: fit-content;
+}
+
+.eyebrowDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--accent-secondary);
+  box-shadow: 0 0 6px var(--accent-secondary);
+}
+
+.eyebrowText {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent-primary);
+}
+
+.headline {
+  font-size: clamp(2.25rem, 5.5vw, 3.6rem);
+  font-weight: 700;
+  line-height: 1.12;
+  letter-spacing: -0.035em;
+  color: var(--text-main);
+}
+
+.subheadline {
+  font-size: clamp(1rem, 1.8vw, 1.125rem);
+  line-height: 1.65;
+  color: var(--text-secondary);
+  max-width: 58ch;
+}
+
+.academicBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+  padding: 0.35rem 0.65rem;
+  border-left: 2px solid var(--accent-primary);
+  background-color: var(--surface-raised);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  width: fit-content;
+}
+
+.academicIcon {
+  color: var(--accent-primary);
+}
+
+.ctaGroup {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 0.75rem;
+}
+
+.heroVisual {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  width: 100%;
+}

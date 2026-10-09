@@ -1,0 +1,336 @@
+/* ==========================================================================
+   Design Tokens & Global Styles for Manoj's Portfolio
+   ========================================================================== */
+
+:root {
+  /* Default: Dark Theme */
+  --bg-page: #0B1014;
+  --bg-page-rgb: 11, 16, 20;
+  --surface-raised: #111922;
+  --surface-higher: #17212B;
+  --surface-card: #131C26;
+  --surface-card-hover: #182330;
+  --footer-bg: #070B0E;
+
+  --text-main: #E8EDF2;
+  --text-secondary: #A2AFBD;
+  --text-muted: #6C7D8E;
+  --text-faint: #445464;
+
+  --border-subtle: #1C2733;
+  --border-quiet: #2A3847;
+  --border-prominent: #3B4D60;
+  --border-focus: #A7B8FF;
+
+  --accent-primary: #A7B8FF;
+  --accent-primary-hover: #C2CEFF;
+  --accent-primary-glow: rgba(167, 184, 255, 0.12);
+  --accent-primary-border: rgba(167, 184, 255, 0.28);
+
+  --accent-secondary: #D4F078;
+  --accent-secondary-dim: rgba(212, 240, 120, 0.14);
+  --accent-secondary-border: rgba(212, 240, 120, 0.32);
+
+  --accent-warm: #FFB98B;
+  --accent-warm-dim: rgba(255, 185, 139, 0.12);
+  --accent-warm-border: rgba(255, 185, 139, 0.32);
+
+  --shadow-card: 0 16px 36px -12px rgba(0, 0, 0, 0.55);
+  --shadow-elevated: 0 24px 48px -12px rgba(0, 0, 0, 0.7);
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.35);
+
+  --grid-line-color: rgba(167, 184, 255, 0.04);
+  --dot-color: rgba(167, 184, 255, 0.08);
+
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-full: 9999px;
+
+  --container-max-width: 1140px;
+  --header-height: 64px;
+
+  --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+  
+  --transition-fast: 150ms cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-normal: 240ms cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-slow: 400ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Deliberate Light Theme Tokens (Calibrated contrast, not crude inversion) */
+[data-theme="light"] {
+  --bg-page: #F6F8FB;
+  --bg-page-rgb: 246, 248, 251;
+  --surface-raised: #FFFFFF;
+  --surface-higher: #EDF2F7;
+  --surface-card: #FFFFFF;
+  --surface-card-hover: #F2F6FA;
+  --footer-bg: #EAEFF5;
+
+  --text-main: #0E1724;
+  --text-secondary: #475569;
+  --text-muted: #64748B;
+  --text-faint: #94A3B8;
+
+  --border-subtle: #E2E8F0;
+  --border-quiet: #CBD5E1;
+  --border-prominent: #94A3B8;
+  --border-focus: #3354C4;
+
+  --accent-primary: #3354C4;
+  --accent-primary-hover: #213C9E;
+  --accent-primary-glow: rgba(51, 84, 196, 0.08);
+  --accent-primary-border: rgba(51, 84, 196, 0.28);
+
+  --accent-secondary: #2C6802;
+  --accent-secondary-dim: rgba(44, 104, 2, 0.12);
+  --accent-secondary-border: rgba(44, 104, 2, 0.28);
+
+  --accent-warm: #B85012;
+  --accent-warm-dim: rgba(184, 80, 18, 0.10);
+  --accent-warm-border: rgba(184, 80, 18, 0.28);
+
+  --shadow-card: 0 16px 36px -12px rgba(15, 23, 42, 0.08);
+  --shadow-elevated: 0 24px 48px -12px rgba(15, 23, 42, 0.12);
+  --shadow-sm: 0 2px 8px rgba(15, 23, 42, 0.04);
+
+  --grid-line-color: rgba(51, 84, 196, 0.04);
+  --dot-color: rgba(51, 84, 196, 0.06);
+}
+
+/* ==========================================================================
+   Base Reset & Typography
+   ========================================================================== */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--header-height) + 1.5rem);
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background-color: var(--bg-page);
+  color: var(--text-main);
+  font-family: var(--font-sans);
+  line-height: 1.65;
+  letter-spacing: -0.01em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+  transition: background-color var(--transition-normal), color var(--transition-normal);
+}
+
+/* Global focus styles */
+:focus-visible {
+  outline: 2px solid var(--border-focus);
+  outline-offset: 3px;
+  border-radius: var(--radius-sm);
+}
+
+/* Accessible Skip Link */
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 1rem;
+  z-index: 9999;
+  background-color: var(--surface-higher);
+  color: var(--accent-primary);
+  padding: 0.75rem 1.25rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-focus);
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  text-decoration: none;
+  font-weight: 500;
+  transition: top var(--transition-fast);
+}
+
+.skip-link:focus {
+  top: 1rem;
+}
+
+/* Selection */
+::selection {
+  background-color: var(--accent-primary);
+  color: #0B1014;
+}
+
+/* ==========================================================================
+   Layout Containers & Grids
+   ========================================================================== */
+
+.container {
+  width: 100%;
+  max-width: var(--container-max-width);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: clamp(1.25rem, 5vw, 2.5rem);
+  padding-right: clamp(1.25rem, 5vw, 2.5rem);
+}
+
+.section {
+  padding-top: clamp(4rem, 8vw, 7rem);
+  padding-bottom: clamp(4rem, 8vw, 7rem);
+  position: relative;
+}
+
+.section-divider {
+  border: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border-quiet), transparent);
+  margin: 0;
+}
+
+/* ==========================================================================
+   Typography Utility Elements
+   ========================================================================== */
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--text-main);
+  font-weight: 600;
+  line-height: 1.25;
+  letter-spacing: -0.025em;
+}
+
+p {
+  color: var(--text-secondary);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+code, kbd, samp, pre {
+  font-family: var(--font-mono);
+}
+
+.font-mono {
+  font-family: var(--font-mono);
+}
+
+/* Editorial Eyebrow Tag */
+.section-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent-primary);
+  margin-bottom: 0.75rem;
+}
+
+.section-eyebrow::before {
+  content: "";
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--accent-secondary);
+}
+
+.section-title {
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  color: var(--text-main);
+  margin-bottom: 1rem;
+}
+
+.section-desc {
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  color: var(--text-secondary);
+  max-width: 65ch;
+  margin-bottom: 2.5rem;
+}
+
+/* ==========================================================================
+   Component Utilities
+   ========================================================================== */
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.25rem 0.625rem;
+  border-radius: var(--radius-full);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  border: 1px solid var(--border-quiet);
+  background-color: var(--surface-raised);
+  color: var(--text-secondary);
+}
+
+.badge-signal {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--accent-secondary);
+}
+
+.tag-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0.625rem;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 450;
+  background-color: var(--surface-higher);
+  color: var(--text-secondary);
+  border: 1px solid var(--border-subtle);
+  transition: all var(--transition-fast);
+}
+
+.tag-pill:hover {
+  border-color: var(--border-quiet);
+  color: var(--text-main);
+}
+
+.tag-pill-accent {
+  background-color: var(--accent-primary-glow);
+  color: var(--accent-primary);
+  border-color: var(--accent-primary-border);
+}
+
+/* Interactive Card Base */
+.card-surface {
+  background-color: var(--surface-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  transition: transform var(--transition-normal), border-color var(--transition-normal), background-color var(--transition-normal), box-shadow var(--transition-normal);
+}
+
+.card-surface:hover {
+  border-color: var(--border-quiet);
+  background-color: var(--surface-card-hover);
+  box-shadow: var(--shadow-elevated);
+}
+
+/* Reduced Motion Safety */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

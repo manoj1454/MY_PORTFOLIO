@@ -1,0 +1,20 @@
+.landscapeContainer {
+  width: 100%;
+  position: relative;
+  line-height: 0;
+  overflow: hidden;
+  margin-top: clamp(2rem, 5vw, 4rem);
+}
+
+.landscapeSvg {
+  display: block;
+  width: 100%;
+  height: 60px;
+  min-width: 600px;
+}
+
+@media (min-width: 768px) {
+  .landscapeSvg {
+    height: 90px;
+  }
+}
