@@ -1,7 +1,7 @@
 .sceneContainer {
   position: relative;
   width: 100%;
-  max-width: 540px;
+  max-width: 620px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
@@ -9,15 +9,27 @@
   user-select: none;
 }
 
-.ambientGlow {
+.ambientNebula {
   position: absolute;
-  top: 50%;
+  top: 45%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 70%;
-  height: 70%;
-  background: radial-gradient(circle, var(--accent-primary-glow) 0%, transparent 70%);
-  filter: blur(40px);
+  width: 85%;
+  height: 80%;
+  background: radial-gradient(circle, rgba(129, 140, 248, 0.22) 0%, rgba(99, 102, 241, 0.08) 50%, transparent 75%);
+  filter: blur(55px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.ambientBeaconGlow {
+  position: absolute;
+  top: 40%;
+  left: 52%;
+  width: 140px;
+  height: 140px;
+  background: radial-gradient(circle, rgba(163, 230, 53, 0.3) 0%, transparent 70%);
+  filter: blur(35px);
   pointer-events: none;
   z-index: 0;
 }
@@ -28,192 +40,218 @@
   display: block;
   position: relative;
   z-index: 1;
-  filter: drop-shadow(0 12px 24px rgba(0, 0, 0, 0.25));
+  filter: drop-shadow(0 20px 35px rgba(0, 0, 0, 0.45));
 }
 
-.statusPill {
-  margin-top: 1rem;
+.environmentTag {
+  margin-top: 1.25rem;
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  padding: 0.35rem 0.75rem;
-  background-color: var(--surface-raised);
+  gap: 0.625rem;
+  padding: 0.45rem 0.95rem;
+  background: var(--surface-raised);
   border: 1px solid var(--border-quiet);
   border-radius: var(--radius-full);
   z-index: 2;
-  box-shadow: var(--shadow-sm);
+  box-shadow: var(--shadow-sm), 0 0 16px -4px var(--accent-primary-glow);
+  backdrop-filter: blur(8px);
 }
 
-.statusIndicator {
-  width: 7px;
-  height: 7px;
+.beaconDot {
+  width: 8px;
+  height: 8px;
   border-radius: 50%;
   background-color: var(--accent-secondary);
-  box-shadow: 0 0 8px var(--accent-secondary);
-  animation: pulseIndicator 3s ease-in-out infinite;
+  box-shadow: 0 0 10px var(--accent-secondary);
+  animation: beaconPulse 2.5s ease-in-out infinite;
 }
 
-.statusText {
+.tagText {
   font-family: var(--font-mono);
-  font-size: 0.725rem;
-  letter-spacing: 0.05em;
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
   color: var(--text-secondary);
-  font-weight: 500;
+  font-weight: 550;
 }
 
-/* Animations using smooth transforms & opacity */
-.slowRotate {
-  transform-origin: 280px 240px;
-  animation: rotateClockwise 60s linear infinite;
+/* ==========================================================================
+   Motion System: Organic Physics, Bobbing, Waves & Drifting
+   ========================================================================== */
+
+/* Main Island Gentle Floating Bobbing */
+.floatingIslandGroup {
+  transform-origin: 320px 360px;
+  animation: floatIsland 7s ease-in-out infinite alternate;
 }
 
-.slowRotateReverse {
-  transform-origin: 280px 240px;
-  animation: rotateCounter 80s linear infinite;
+/* Satellite Islet 1: Alternate Phase */
+.miniIslet1 {
+  transform-origin: 135px 230px;
+  animation: floatIslet1 5.5s ease-in-out infinite alternate 0.8s;
 }
 
-.corePulse {
-  animation: pulseCore 3s ease-in-out infinite;
+/* Satellite Islet 2: Opposing Float */
+.miniIslet2 {
+  transform-origin: 515px 415px;
+  animation: floatIslet2 6.5s ease-in-out infinite alternate 1.4s;
 }
 
-.expandRing {
-  transform-origin: 280px 240px;
-  animation: ringPulse 4s ease-out infinite;
+/* Observatory Window Cozy Hearth Pulse */
+.windowGlow {
+  animation: warmPulse 4s ease-in-out infinite alternate;
 }
 
-.pulseDash {
-  stroke-dashoffset: 0;
-  animation: dashTravel 8s linear infinite;
+/* Beacon Signal Mast Dot */
+.beaconSignalDot {
+  animation: dotFlash 2s ease-in-out infinite;
 }
 
-.floatNode1 {
-  animation: floatSlow1 6s ease-in-out infinite;
+/* Telemetry Waves Expanding from Mast */
+.signalPulse1 {
+  transform-origin: 0px -65px;
+  animation: rippleWave 3s cubic-bezier(0.1, 0.8, 0.3, 1) infinite;
 }
 
-.floatNode2 {
-  animation: floatSlow2 7s ease-in-out infinite;
+.signalPulse2 {
+  transform-origin: 0px -65px;
+  animation: rippleWave 3s cubic-bezier(0.1, 0.8, 0.3, 1) infinite 1s;
 }
 
-.floatNode3 {
-  animation: floatSlow1 8s ease-in-out infinite alternate;
+.signalPulse3 {
+  transform-origin: 0px -65px;
+  animation: rippleWave 3s cubic-bezier(0.1, 0.8, 0.3, 1) infinite 2s;
 }
 
-.pointFlash1 {
-  animation: twinkle 4s ease-in-out infinite;
+/* Clouds Drifting Slowly */
+.cloudDriftSlow {
+  animation: cloudSway 14s ease-in-out infinite alternate;
 }
 
-.pointFlash2 {
-  animation: twinkle 5s ease-in-out infinite 1.5s;
+.cloudDriftForeground {
+  animation: cloudSway 10s ease-in-out infinite alternate 2s;
 }
 
-.pointFlash3 {
-  animation: twinkle 4.5s ease-in-out infinite 0.8s;
+/* Stars Twinkling */
+.starBlink1 {
+  animation: starTwinkle 3.2s ease-in-out infinite;
 }
 
-@keyframes rotateClockwise {
-  from {
-    transform: rotate(0deg);
+.starBlink2 {
+  animation: starTwinkle 4.5s ease-in-out infinite 1.2s;
+}
+
+.starBlink3 {
+  animation: starTwinkle 3.8s ease-in-out infinite 2.1s;
+}
+
+/* Keyframes */
+@keyframes floatIsland {
+  0% {
+    transform: translateY(0px) rotate(0deg);
   }
-  to {
-    transform: rotate(360deg);
+  100% {
+    transform: translateY(-8px) rotate(0.4deg);
   }
 }
 
-@keyframes rotateCounter {
-  from {
-    transform: rotate(360deg);
+@keyframes floatIslet1 {
+  0% {
+    transform: translateY(0px) rotate(0deg);
   }
-  to {
-    transform: rotate(0deg);
+  100% {
+    transform: translateY(-6px) rotate(-0.6deg);
   }
 }
 
-@keyframes pulseCore {
-  0%, 100% {
-    transform: scale(1);
+@keyframes floatIslet2 {
+  0% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  100% {
+    transform: translateY(7px) rotate(0.8deg);
+  }
+}
+
+@keyframes rippleWave {
+  0% {
+    r: 10px;
     opacity: 0.9;
-  }
-  50% {
-    transform: scale(1.25);
-    opacity: 1;
-  }
-}
-
-@keyframes ringPulse {
-  0% {
-    transform: scale(0.9);
-    opacity: 0.6;
-  }
-  50% {
-    opacity: 0.2;
+    stroke-width: 2px;
   }
   100% {
-    transform: scale(1.4);
+    r: 54px;
     opacity: 0;
+    stroke-width: 0.5px;
   }
 }
 
-@keyframes dashTravel {
+@keyframes warmPulse {
   0% {
-    stroke-dashoffset: 600;
+    opacity: 0.85;
   }
   100% {
-    stroke-dashoffset: 0;
+    opacity: 1;
   }
 }
 
-@keyframes floatSlow1 {
+@keyframes beaconPulse {
   0%, 100% {
-    transform: translateY(0px);
+    opacity: 1;
+    transform: scale(1);
   }
   50% {
-    transform: translateY(-4px);
+    opacity: 0.45;
+    transform: scale(0.85);
   }
 }
 
-@keyframes floatSlow2 {
+@keyframes dotFlash {
   0%, 100% {
-    transform: translateY(0px);
+    fill: #A3E635;
+    transform: scale(1);
   }
   50% {
-    transform: translateY(4px);
+    fill: #FDE047;
+    transform: scale(1.3);
   }
 }
 
-@keyframes twinkle {
+@keyframes cloudSway {
+  0% {
+    transform: translateX(-12px);
+  }
+  100% {
+    transform: translateX(12px);
+  }
+}
+
+@keyframes starTwinkle {
   0%, 100% {
-    opacity: 0.3;
-    transform: scale(0.9);
+    opacity: 0.35;
+    transform: scale(0.8);
   }
   50% {
     opacity: 1;
-    transform: scale(1.2);
-  }
-}
-
-@keyframes pulseIndicator {
-  0%, 100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.4;
+    transform: scale(1.35);
   }
 }
 
 /* Reduced Motion Override */
 @media (prefers-reduced-motion: reduce) {
-  .slowRotate,
-  .slowRotateReverse,
-  .corePulse,
-  .expandRing,
-  .pulseDash,
-  .floatNode1,
-  .floatNode2,
-  .floatNode3,
-  .pointFlash1,
-  .pointFlash2,
-  .pointFlash3,
-  .statusIndicator {
+  .floatingIslandGroup,
+  .miniIslet1,
+  .miniIslet2,
+  .signalPulse1,
+  .signalPulse2,
+  .signalPulse3,
+  .cloudDriftSlow,
+  .cloudDriftForeground,
+  .starBlink1,
+  .starBlink2,
+  .starBlink3,
+  .beaconDot,
+  .windowGlow,
+  .beaconSignalDot {
     animation: none !important;
   }
 }

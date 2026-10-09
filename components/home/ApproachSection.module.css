@@ -1,7 +1,7 @@
 .principlesGrid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 1.75rem;
+  gap: 2rem;
 }
 
 @media (min-width: 768px) {
@@ -11,65 +11,81 @@
 }
 
 .principleCard {
-  padding: 1.875rem;
+  padding: 2.25rem;
   display: flex;
   flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-xl);
+}
+
+.principleCard::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary), transparent);
+  opacity: 0.8;
 }
 
 .cardHeader {
   display: flex;
-  align-items: center;
-  gap: 0.875rem;
-  margin-bottom: 1rem;
+  align-items: baseline;
+  gap: 1rem;
+  margin-bottom: 1.15rem;
 }
 
 .numberBadge {
   font-family: var(--font-mono);
-  font-size: 0.8125rem;
-  font-weight: 700;
+  font-size: 1.5rem;
+  font-weight: 800;
   color: var(--accent-secondary);
-  background-color: var(--accent-secondary-dim);
-  padding: 0.35rem 0.6rem;
-  border-radius: var(--radius-sm);
-  letter-spacing: 0.05em;
+  letter-spacing: -0.04em;
+  line-height: 1;
 }
 
 .principleTitle {
-  font-size: 1.125rem;
-  font-weight: 600;
+  font-size: 1.25rem;
+  font-weight: 700;
   color: var(--text-main);
-  letter-spacing: -0.02em;
+  letter-spacing: -0.025em;
+  line-height: 1.3;
 }
 
 .summary {
-  font-size: 0.9375rem;
-  line-height: 1.6;
+  font-size: 1rem;
+  line-height: 1.65;
   color: var(--text-secondary);
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.75rem;
 }
 
 .exampleBox {
   margin-top: auto;
-  padding: 1rem;
+  padding: 1.15rem 1.25rem;
   background-color: var(--surface-raised);
   border-radius: var(--radius-md);
-  border-left: 2px solid var(--accent-primary);
+  border-left: 3px solid var(--accent-primary);
+  border-top: 1px solid var(--border-subtle);
+  border-right: 1px solid var(--border-subtle);
+  border-bottom: 1px solid var(--border-subtle);
 }
 
 .exampleLabel {
   display: block;
   font-family: var(--font-mono);
   font-size: 0.6875rem;
-  font-weight: 600;
+  font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.08em;
   color: var(--accent-primary);
-  margin-bottom: 0.35rem;
+  margin-bottom: 0.4rem;
 }
 
 .exampleText {
-  font-size: 0.8125rem;
-  line-height: 1.5;
+  font-size: 0.875rem;
+  line-height: 1.55;
   color: var(--text-secondary);
   margin: 0;
 }
