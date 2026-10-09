@@ -42,8 +42,8 @@
   width: 7px;
   height: 7px;
   border-radius: 50%;
-  background-color: var(--accent-secondary);
-  box-shadow: 0 0 8px var(--accent-secondary);
+  background-color: var(--accent-pink);
+  box-shadow: 0 0 8px var(--accent-pink);
 }
 
 .eyebrowText {
@@ -52,7 +52,7 @@
   font-weight: 650;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--accent-primary);
+  color: var(--accent-pink);
 }
 
 .headline {
@@ -78,7 +78,7 @@
   font-size: 0.8125rem;
   color: var(--text-muted);
   padding: 0.45rem 0.85rem;
-  border-left: 3px solid var(--accent-primary);
+  border-left: 3px solid var(--accent-teal);
   background-color: var(--surface-raised);
   border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
   width: fit-content;
@@ -88,7 +88,7 @@
 }
 
 .academicIcon {
-  color: var(--accent-primary);
+  color: var(--accent-teal);
 }
 
 .ctaGroup {

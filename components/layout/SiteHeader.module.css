@@ -39,19 +39,19 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 32px;
-  height: 32px;
+  width: 30px;
+  height: 30px;
   border-radius: var(--radius-sm);
-  background: linear-gradient(135deg, var(--surface-higher), var(--surface-raised));
+  background: var(--surface-higher);
   border: 1px solid var(--border-quiet);
-  color: var(--accent-primary);
+  color: var(--accent-pink);
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
   transition: transform var(--transition-fast), color var(--transition-fast);
 }
 
 .brand:hover .brandIcon {
-  transform: rotate(-6deg) scale(1.05);
-  color: var(--accent-secondary);
+  transform: rotate(-4deg);
+  color: var(--accent-pink-hover);
 }
 
 .brandText {
@@ -64,14 +64,14 @@
 }
 
 .brand:hover .brandText {
-  color: var(--accent-primary);
+  color: var(--accent-pink);
 }
 
 .desktopNav {
   display: none;
   align-items: center;
   gap: 0.25rem;
-  background-color: rgba(0, 0, 0, 0.15);
+  background-color: rgba(0, 0, 0, 0.2);
   padding: 0.2rem 0.4rem;
   border-radius: var(--radius-full);
   border: 1px solid rgba(255, 255, 255, 0.04);
@@ -127,12 +127,12 @@
 }
 
 .verifiedBadge:hover {
-  color: var(--accent-primary);
-  border-color: var(--accent-primary-border);
+  color: var(--accent-pink);
+  border-color: var(--accent-pink-border);
   background-color: var(--surface-higher);
   transform: translateY(-1px);
 }
 
 .badgeIcon {
-  color: var(--accent-primary);
+  color: var(--accent-pink);
 }

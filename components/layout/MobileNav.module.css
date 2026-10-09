@@ -25,14 +25,14 @@
 
 .hamburgerBtn:hover {
   background-color: var(--surface-higher);
-  color: var(--accent-primary);
-  border-color: var(--accent-primary-border);
+  color: var(--accent-pink);
+  border-color: var(--accent-pink-border);
 }
 
 .backdrop {
   position: fixed;
   inset: 0;
-  background-color: rgba(7, 11, 14, 0.7);
+  background-color: rgba(5, 7, 10, 0.75);
   backdrop-filter: blur(4px);
   z-index: 990;
   animation: fadeIn 200ms ease-out;
@@ -52,7 +52,7 @@
   padding: 1.5rem;
   transform: translateX(100%);
   transition: transform var(--transition-normal);
-  box-shadow: -10px 0 30px rgba(0, 0, 0, 0.5);
+  box-shadow: -10px 0 30px rgba(0, 0, 0, 0.6);
 }
 
 .drawerOpen {
@@ -90,7 +90,7 @@
 }
 
 .closeBtn:hover {
-  color: var(--text-main);
+  color: var(--accent-pink);
   border-color: var(--border-quiet);
 }
 
@@ -112,7 +112,7 @@
 
 .navLink:hover {
   background-color: var(--surface-higher);
-  color: var(--accent-primary);
+  color: var(--accent-pink);
   transform: translateX(4px);
 }
 
@@ -128,7 +128,7 @@
   font-size: 0.75rem;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  color: var(--text-muted);
+  color: var(--accent-pink);
   margin-bottom: 0.75rem;
 }
 
@@ -152,8 +152,8 @@
 }
 
 .socialLink:hover {
-  border-color: var(--accent-primary-border);
-  color: var(--accent-primary);
+  border-color: var(--accent-pink-border);
+  color: var(--accent-pink);
 }
 
 @keyframes fadeIn {

@@ -10,24 +10,24 @@ export default function ToolkitSection() {
         <SectionHeading
           eyebrow="TECHNICAL TOOLKIT"
           title="Tools & Technologies"
-          description="Technologies grouped by practical project usage. No arbitrary percentage bars or vanity ratings—just tools applied to build systems, train models, and query data."
+          description="Technologies grouped by practical project usage. No arbitrary percentage bars or vanity ratings—only tools applied to build systems, train models, and manage data."
         />
 
-        <div className={styles.toolkitGrid}>
-          {skillCategories.map((cat) => (
-            <div key={cat.category} className={`${styles.categoryCard} card-surface`}>
-              <div className={styles.cardHeader}>
-                <h3 className={styles.categoryTitle}>{cat.category}</h3>
-                <p className={styles.categoryDesc}>{cat.description}</p>
+        <div className={styles.toolkitLayout}>
+          {skillCategories.map((cat, idx) => (
+            <div key={cat.category} className={styles.categoryRow}>
+              <div className={styles.categoryHeader}>
+                <span className={styles.categoryIndex}>0{idx + 1}</span>
+                <div>
+                  <h3 className={styles.categoryTitle}>{cat.category}</h3>
+                  <p className={styles.categoryDesc}>{cat.description}</p>
+                </div>
               </div>
 
-              <div className={styles.itemsList}>
+              <div className={styles.itemsGrid}>
                 {cat.items.map((item) => (
                   <div key={item.name} className={styles.toolItem}>
-                    <div className={styles.toolNameRow}>
-                      <span className={styles.toolDot} />
-                      <span className={styles.toolName}>{item.name}</span>
-                    </div>
+                    <span className={styles.toolName}>{item.name}</span>
                     {item.context && <span className={styles.toolContext}>{item.context}</span>}
                   </div>
                 ))}

@@ -1,91 +1,84 @@
-.principlesGrid {
+.principlesList {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border-top: 1px solid var(--border-quiet);
+}
+
+.principleItem {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 2rem;
+  gap: 1.25rem;
+  padding: 2.75rem 0;
+  border-bottom: 1px solid var(--border-subtle);
+  align-items: start;
 }
 
 @media (min-width: 768px) {
-  .principlesGrid {
-    grid-template-columns: repeat(2, 1fr);
+  .principleItem {
+    grid-template-columns: 80px 1fr;
+    gap: 3rem;
   }
 }
 
-.principleCard {
-  padding: 2.25rem;
+.numberCol {
   display: flex;
-  flex-direction: column;
-  position: relative;
-  overflow: hidden;
-  border-radius: var(--radius-xl);
+  align-items: flex-start;
 }
 
-.principleCard::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 3px;
-  background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary), transparent);
-  opacity: 0.8;
-}
-
-.cardHeader {
-  display: flex;
-  align-items: baseline;
-  gap: 1rem;
-  margin-bottom: 1.15rem;
-}
-
-.numberBadge {
+.numberText {
   font-family: var(--font-mono);
   font-size: 1.5rem;
-  font-weight: 800;
-  color: var(--accent-secondary);
-  letter-spacing: -0.04em;
+  font-weight: 750;
+  color: var(--accent-pink);
   line-height: 1;
+  letter-spacing: -0.03em;
+}
+
+.contentCol {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
 }
 
 .principleTitle {
-  font-size: 1.25rem;
+  font-size: 1.35rem;
   font-weight: 700;
   color: var(--text-main);
   letter-spacing: -0.025em;
-  line-height: 1.3;
+  line-height: 1.25;
 }
 
-.summary {
-  font-size: 1rem;
-  line-height: 1.65;
-  color: var(--text-secondary);
-  margin-bottom: 1.75rem;
+.summaryText {
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  color: var(--text-body);
+  max-width: var(--content-prose-width);
 }
 
-.exampleBox {
-  margin-top: auto;
-  padding: 1.15rem 1.25rem;
+.practiceNote {
+  margin-top: 0.5rem;
+  padding: 1rem 1.25rem;
+  border-left: 2px solid var(--accent-teal);
   background-color: var(--surface-raised);
-  border-radius: var(--radius-md);
-  border-left: 3px solid var(--accent-primary);
-  border-top: 1px solid var(--border-subtle);
-  border-right: 1px solid var(--border-subtle);
-  border-bottom: 1px solid var(--border-subtle);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  max-width: var(--content-prose-width);
 }
 
-.exampleLabel {
+.practiceLabel {
   display: block;
   font-family: var(--font-mono);
   font-size: 0.6875rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  color: var(--accent-primary);
-  margin-bottom: 0.4rem;
+  color: var(--accent-teal);
+  margin-bottom: 0.35rem;
 }
 
-.exampleText {
+.practiceText {
   font-size: 0.875rem;
-  line-height: 1.55;
+  line-height: 1.6;
   color: var(--text-secondary);
   margin: 0;
 }

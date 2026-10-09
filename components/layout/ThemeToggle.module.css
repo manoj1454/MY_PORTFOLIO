@@ -14,8 +14,8 @@
 
 .toggleBtn:hover {
   background-color: var(--surface-higher);
-  color: var(--accent-primary);
-  border-color: var(--accent-primary-border);
+  color: var(--accent-pink);
+  border-color: var(--accent-pink-border);
 }
 
 .icon {

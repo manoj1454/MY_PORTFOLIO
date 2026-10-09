@@ -12,55 +12,55 @@ export default function FooterLandscape() {
         xmlns="http://www.w3.org/2000/svg"
       >
         <defs>
-          {/* Twilight Horizon Atmosphere */}
-          <linearGradient id="twilightSky" x1="0%" y1="0%" x2="0%" y2="100%">
-            <stop offset="0%" stopColor="#080E18" stopOpacity="0" />
-            <stop offset="50%" stopColor="#1E1B4B" stopOpacity="0.35" />
-            <stop offset="100%" stopColor="#312E81" stopOpacity="0.4" />
+          {/* Deep Blue & Muted Teal Atmosphere */}
+          <linearGradient id="deepBlueSky" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stopColor="#080B10" stopOpacity="0" />
+            <stop offset="45%" stopColor="#0C1929" stopOpacity="0.4" />
+            <stop offset="100%" stopColor="#11263C" stopOpacity="0.5" />
           </linearGradient>
 
-          {/* Distant Mountain Ridge */}
-          <linearGradient id="distantRidge" x1="0%" y1="0%" x2="0%" y2="100%">
-            <stop offset="0%" stopColor="#1E293B" stopOpacity="0.7" />
-            <stop offset="100%" stopColor="#0F172A" stopOpacity="0.9" />
+          {/* Distant Alpine Ridge in Deep Indigo-Blue */}
+          <linearGradient id="distantTealRidge" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stopColor="#132B3A" stopOpacity="0.75" />
+            <stop offset="100%" stopColor="#0B1A24" stopOpacity="0.9" />
           </linearGradient>
 
-          {/* Midground Rolling Hills */}
-          <linearGradient id="midgroundHills" x1="0%" y1="0%" x2="0%" y2="100%">
-            <stop offset="0%" stopColor="#0F172A" stopOpacity="0.9" />
-            <stop offset="100%" stopColor="#080D1A" stopOpacity="1" />
+          {/* Midground Rolling Hills in Dark Slate-Teal */}
+          <linearGradient id="midgroundTealHills" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stopColor="#0E2230" stopOpacity="0.9" />
+            <stop offset="100%" stopColor="#08141D" stopOpacity="1" />
           </linearGradient>
 
-          {/* Foreground Organic Edge */}
-          <linearGradient id="foregroundHill" x1="0%" y1="0%" x2="0%" y2="100%">
-            <stop offset="0%" stopColor="#05080E" />
-            <stop offset="100%" stopColor="#020408" />
+          {/* Foreground Bedrock Surface Blending into Near-Black Footer */}
+          <linearGradient id="foregroundBedrock" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stopColor="#060C12" />
+            <stop offset="100%" stopColor="#05070A" />
           </linearGradient>
 
-          {/* Luminous Ridge Highlight Line */}
-          <linearGradient id="ridgeGlow" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stopColor="#818CF8" stopOpacity="0.2" />
-            <stop offset="35%" stopColor="#A3E635" stopOpacity="0.45" />
-            <stop offset="70%" stopColor="#818CF8" stopOpacity="0.3" />
-            <stop offset="100%" stopColor="#F472B6" stopOpacity="0.2" />
+          {/* Subtle Muted Teal / Blue Crest Accent Line */}
+          <linearGradient id="tealCrestGlow" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stopColor="#14B8A6" stopOpacity="0.15" />
+            <stop offset="35%" stopColor="#2DD4BF" stopOpacity="0.4" />
+            <stop offset="70%" stopColor="#38BDF8" stopOpacity="0.3" />
+            <stop offset="100%" stopColor="#14B8A6" stopOpacity="0.15" />
           </linearGradient>
         </defs>
 
         {/* ============================================================
             LAYER 1: Distant Stars & Celestial Atmosphere
             ============================================================ */}
-        <rect x="0" y="0" width="1440" height="220" fill="url(#twilightSky)" />
+        <rect x="0" y="0" width="1440" height="220" fill="url(#deepBlueSky)" />
 
-        <g opacity="0.6">
-          <circle cx="210" cy="40" r="1.5" fill="#E0E7FF" />
-          <circle cx="480" cy="25" r="2" fill="#A3E635" />
-          <circle cx="780" cy="50" r="1.5" fill="#C7D2FE" />
-          <circle cx="1120" cy="30" r="2" fill="#FDE047" />
-          <circle cx="1340" cy="65" r="1.5" fill="#E0E7FF" />
+        <g opacity="0.5">
+          <circle cx="180" cy="45" r="1.5" fill="#E2E8F0" />
+          <circle cx="450" cy="25" r="2" fill="#2DD4BF" />
+          <circle cx="760" cy="55" r="1.5" fill="#38BDF8" />
+          <circle cx="1080" cy="35" r="2" fill="#E2E8F0" />
+          <circle cx="1320" cy="70" r="1.5" fill="#2DD4BF" />
         </g>
 
         {/* ============================================================
-            LAYER 2: Distant Alpine Mountain Ridge (Bézier curves)
+            LAYER 2: Distant Alpine Mountain Ridge
             ============================================================ */}
         <path
           d="M 0,130 
@@ -69,7 +69,7 @@ export default function FooterLandscape() {
              T 1080,110 
              T 1440,85 
              L 1440,220 L 0,220 Z"
-          fill="url(#distantRidge)"
+          fill="url(#distantTealRidge)"
         />
 
         {/* ============================================================
@@ -81,24 +81,20 @@ export default function FooterLandscape() {
              C 800,105 1020,140 1200,125 
              C 1340,115 1400,130 1440,140 
              L 1440,220 L 0,220 Z"
-          fill="url(#midgroundHills)"
+          fill="url(#midgroundTealHills)"
         />
 
-        {/* Cozy Observatory Beacon on the Hillcrest */}
+        {/* Observatory Beacon on the Hillcrest */}
         <g transform="translate(600, 120)">
-          {/* Beacon outpost cabin */}
-          <rect x="-8" y="-10" width="16" height="10" rx="2" fill="#1E293B" stroke="#475569" strokeWidth="0.8" />
-          {/* Warm glowing window */}
+          <rect x="-8" y="-10" width="16" height="10" rx="2" fill="#132B3A" stroke="#1E3A4B" strokeWidth="0.8" />
           <rect x="-3" y="-7" width="6" height="5" rx="1" fill="#FDE047" />
-          {/* Signal Antenna */}
-          <line x1="0" y1="-10" x2="0" y2="-24" stroke="#E2E8F0" strokeWidth="1" />
-          <circle cx="0" cy="-24" r="2.5" fill="#A3E635" className={styles.footerBeaconSpark} />
-          {/* Signal ripple */}
-          <circle cx="0" cy="-24" r="7" fill="none" stroke="#A3E635" strokeOpacity="0.4" strokeWidth="1" />
+          <line x1="0" y1="-10" x2="0" y2="-24" stroke="#CBD5E1" strokeWidth="1" />
+          <circle cx="0" cy="-24" r="2.5" fill="#14B8A6" className={styles.footerBeaconSpark} />
+          <circle cx="0" cy="-24" r="7" fill="none" stroke="#14B8A6" strokeOpacity="0.4" strokeWidth="1" />
         </g>
 
         {/* Silhouetted Evergreen Pines on Crest */}
-        <g fill="#080D1A">
+        <g fill="#060F16">
           <polygon points="280,125 285,140 275,140" />
           <polygon points="295,122 301,138 289,138" />
           <polygon points="310,126 315,140 305,140" />
@@ -109,27 +105,25 @@ export default function FooterLandscape() {
         </g>
 
         {/* ============================================================
-            LAYER 4: Foreground Rolling Contour & Highlight Edge
+            LAYER 4: Foreground Rolling Contour & Crest Accent Line
             ============================================================ */}
-        {/* Luminous Ridge Accent Line */}
         <path
           d="M 0,165 
              Q 280,130 560,150 
              T 1120,145 
              T 1440,160"
-          stroke="url(#ridgeGlow)"
-          strokeWidth="2"
+          stroke="url(#tealCrestGlow)"
+          strokeWidth="1.75"
           fill="none"
         />
 
-        {/* Deep Foreground Bedrock Base */}
         <path
           d="M 0,168 
              Q 280,133 560,153 
              T 1120,148 
              T 1440,163 
              L 1440,220 L 0,220 Z"
-          fill="url(#foregroundHill)"
+          fill="url(#foregroundBedrock)"
         />
       </svg>
     </div>

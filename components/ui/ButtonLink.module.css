@@ -3,10 +3,10 @@
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  padding: 0.65rem 1.25rem;
+  padding: 0.7rem 1.35rem;
   border-radius: var(--radius-md);
   font-size: 0.9375rem;
-  font-weight: 500;
+  font-weight: 550;
   text-decoration: none;
   cursor: pointer;
   transition: all var(--transition-fast);
@@ -20,15 +20,16 @@
 }
 
 .primary {
-  background-color: var(--accent-primary);
-  color: #0B1014;
-  border: 1px solid var(--accent-primary);
-  box-shadow: 0 4px 14px var(--accent-primary-glow);
+  background-color: var(--text-main);
+  color: #080B10;
+  border: 1px solid var(--text-main);
+  font-weight: 650;
+  box-shadow: var(--shadow-sm);
 }
 
 .primary:hover {
-  background-color: var(--accent-primary-hover);
-  border-color: var(--accent-primary-hover);
+  background-color: #E2E8F0;
+  border-color: #E2E8F0;
   transform: translateY(-1px);
 }
 
@@ -40,8 +41,8 @@
 
 .secondary:hover {
   background-color: var(--surface-higher);
-  border-color: var(--border-prominent);
-  color: var(--accent-primary);
+  border-color: var(--accent-pink-border);
+  color: var(--accent-pink);
   transform: translateY(-1px);
 }
 

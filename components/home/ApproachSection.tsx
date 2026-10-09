@@ -13,19 +13,21 @@ export default function ApproachSection() {
           description="Working guidelines cultivated from building prototypes, debugging data transformations, and evaluating models."
         />
 
-        <div className={styles.principlesGrid}>
+        <div className={styles.principlesList}>
           {engineeringPrinciples.map((principle) => (
-            <div key={principle.number} className={`${styles.principleCard} card-surface`}>
-              <div className={styles.cardHeader}>
-                <span className={styles.numberBadge}>{principle.number}</span>
-                <h3 className={styles.principleTitle}>{principle.title}</h3>
+            <div key={principle.number} className={styles.principleItem}>
+              <div className={styles.numberCol}>
+                <span className={styles.numberText}>{principle.number}</span>
               </div>
 
-              <p className={styles.summary}>{principle.summary}</p>
+              <div className={styles.contentCol}>
+                <h3 className={styles.principleTitle}>{principle.title}</h3>
+                <p className={styles.summaryText}>{principle.summary}</p>
 
-              <div className={styles.exampleBox}>
-                <span className={styles.exampleLabel}>In Practice:</span>
-                <p className={styles.exampleText}>{principle.example}</p>
+                <div className={styles.practiceNote}>
+                  <span className={styles.practiceLabel}>In Practice:</span>
+                  <p className={styles.practiceText}>{principle.example}</p>
+                </div>
               </div>
             </div>
           ))}
