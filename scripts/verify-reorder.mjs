@@ -56,13 +56,14 @@ async function main() {
 
     // Verification assertions
     console.log('\n🔍 Verifying Requirements:');
-    if (renderedProjects.length !== 5) {
-      throw new Error(`Expected exactly 5 projects, got ${renderedProjects.length}`);
+    if (renderedProjects.length !== 6) {
+      throw new Error(`Expected exactly 6 projects, got ${renderedProjects.length}`);
     }
-    console.log('  ✅ Exactly 5 projects rendered in Selected Work');
+    console.log('  ✅ Exactly 6 projects rendered in Selected Work');
 
     const expectedOrder = [
-      'verifiable-credentials',
+      'erp-creative-studios',
+      'xypher',
       'medical-response-verification',
       'talqs',
       'welding-defect-detection',
@@ -77,10 +78,10 @@ async function main() {
       console.log(`  ✅ Position ${idx + 1} matches: ${slug}`);
     });
 
-    if (!renderedProjects[4].projectHref.includes('movie-review-system')) {
+    if (!renderedProjects[5].projectHref.includes('movie-review-system')) {
       throw new Error('Movie Review System is not last!');
     }
-    console.log('  ✅ Movie Review System is confirmed last in Position 5');
+    console.log('  ✅ Movie Review System is confirmed last in Position 6');
 
     // Capture screenshots of the reordered Selected Work section
     await page.screenshot({ path: path.join(SCRATCH_DIR, 'reorder_work_section.png') });
@@ -88,21 +89,21 @@ async function main() {
 
     // Check project detail navigation cycle
     console.log('\n🧭 Verifying Project Detail Navigation Cycle...');
-    await page.goto('http://localhost:3000/projects/verifiable-credentials', { waitUntil: 'domcontentloaded' });
+    await page.goto('http://localhost:3000/projects/erp-creative-studios', { waitUntil: 'domcontentloaded' });
     await new Promise((r) => setTimeout(r, 1000));
 
-    const credNav = await page.evaluate(() => {
+    const erpNav = await page.evaluate(() => {
       const cards = Array.from(document.querySelectorAll('a[class*="adjacentCard"]'));
       return {
         prev: cards[0] ? cards[0].getAttribute('href') : null,
         next: cards[1] ? cards[1].getAttribute('href') : null,
       };
     });
-    console.log('  From Verifiable Credentials:', credNav);
-    if (!credNav.prev?.includes('movie-review-system') || !credNav.next?.includes('medical-response-verification')) {
-      throw new Error(`Unexpected adjacent links for Verifiable Credentials: ${JSON.stringify(credNav)}`);
+    console.log('  From ERP Creative Studios:', erpNav);
+    if (!erpNav.prev?.includes('movie-review-system') || !erpNav.next?.includes('xypher')) {
+      throw new Error(`Unexpected adjacent links for ERP: ${JSON.stringify(erpNav)}`);
     }
-    console.log('  ✅ Adjacent links for Position 1 (Credentials) correctly point to Movie Review (prev) and Medical (next)');
+    console.log('  ✅ Adjacent links for Position 1 (ERP) correctly point to Movie Review (prev) and XYPHER (next)');
 
     await page.goto('http://localhost:3000/projects/movie-review-system', { waitUntil: 'domcontentloaded' });
     await new Promise((r) => setTimeout(r, 1000));
@@ -115,10 +116,19 @@ async function main() {
       };
     });
     console.log('  From Movie Review System:', movieNav);
-    if (!movieNav.prev?.includes('welding-defect-detection') || !movieNav.next?.includes('verifiable-credentials')) {
+    if (!movieNav.prev?.includes('welding-defect-detection') || !movieNav.next?.includes('erp-creative-studios')) {
       throw new Error(`Unexpected adjacent links for Movie Review System: ${JSON.stringify(movieNav)}`);
     }
-    console.log('  ✅ Adjacent links for Position 5 (Movie Review) correctly point to Welding (prev) and Credentials (next)');
+    console.log('  ✅ Adjacent links for Position 6 (Movie Review) correctly point to Welding (prev) and ERP (next)');
+
+    // Backward compatibility test
+    await page.goto('http://localhost:3000/projects/verifiable-credentials', { waitUntil: 'domcontentloaded' });
+    const legacyTitle = await page.$eval('h1', (el) => el.textContent);
+    console.log('  From legacy URL /projects/verifiable-credentials title:', legacyTitle);
+    if (!legacyTitle.includes('XYPHER')) {
+      throw new Error('Legacy route did not render XYPHER!');
+    }
+    console.log('  ✅ Backward-compatible URL /projects/verifiable-credentials successfully renders XYPHER');
 
     // Verify mobile layout
     console.log('\n📱 Verifying Mobile Viewport (390x844)...');

@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './PipelineDiagram.module.css';
 
 interface PipelineDiagramProps {
-  type: 'medical' | 'talqs' | 'optimus' | 'credentials' | 'welding' | 'moviereview';
+  type: 'erp' | 'medical' | 'talqs' | 'optimus' | 'credentials' | 'welding' | 'moviereview';
   caption?: string;
 }
 
@@ -10,6 +10,69 @@ export default function PipelineDiagram({ type, caption }: PipelineDiagramProps)
   return (
     <figure className={styles.diagramWrapper}>
       <div className={styles.diagramCanvas} role="img" aria-label={`Technical Architecture Diagram for ${type}`}>
+        {type === 'erp' && (
+          <div className={styles.flowGrid}>
+            <div className={styles.flowNode}>
+              <div className={styles.nodeHeader}>
+                <span className={styles.nodeNumber}>TIER 01</span>
+                <span className={styles.nodeTag}>CLIENT &amp; UI</span>
+              </div>
+              <div className={styles.nodeBody}>
+                <strong>Next.js 14 Client &amp; Cache</strong>
+                <p>TanStack Query &amp; Zustand: Optimistic drag-and-drop Kanban updates</p>
+              </div>
+              <div className={styles.nodeDetail}>Immediate UI mutations with automated error rollback</div>
+            </div>
+
+            <div className={styles.flowArrow} aria-hidden="true">
+              <span>→</span>
+            </div>
+
+            <div className={styles.flowNode}>
+              <div className={styles.nodeHeader}>
+                <span className={styles.nodeNumber}>TIER 02</span>
+                <span className={styles.nodeTag}>EDGE SECURITY</span>
+              </div>
+              <div className={styles.nodeBody}>
+                <strong>Next.js Edge Middleware</strong>
+                <p>Zero-Trust edge RBAC enforcing role permissions before route execution</p>
+              </div>
+              <div className={styles.nodeDetail}>Protects financial ledgers before database or API invocations</div>
+            </div>
+
+            <div className={styles.flowArrow} aria-hidden="true">
+              <span>→</span>
+            </div>
+
+            <div className={styles.flowNode}>
+              <div className={styles.nodeHeader}>
+                <span className={styles.nodeNumber}>TIER 03</span>
+                <span className={styles.nodeTag}>TRANSACTIONS</span>
+              </div>
+              <div className={styles.nodeBody}>
+                <strong>Prisma Atomic Pipeline</strong>
+                <p>Interactive multi-table transactions for invoice generation &amp; billing</p>
+              </div>
+              <div className={styles.nodeDetail}>ACID rollbacks guarantee zero partial writes or double-billing</div>
+            </div>
+
+            <div className={styles.flowArrow} aria-hidden="true">
+              <span>→</span>
+            </div>
+
+            <div className={styles.flowNode}>
+              <div className={styles.nodeHeader}>
+                <span className={styles.nodeNumber}>TIER 04</span>
+                <span className={styles.nodeTag}>DATA &amp; VAULT</span>
+              </div>
+              <div className={styles.nodeBody}>
+                <strong>PostgreSQL &amp; Asset Vault</strong>
+                <p>Relational storage and non-destructive immutable versioning</p>
+              </div>
+              <div className={styles.nodeDetail}>Full audit trails for deliverables &amp; contract revisions</div>
+            </div>
+          </div>
+        )}
         {type === 'medical' && (
           <div className={styles.flowGrid}>
             <div className={styles.flowNode}>
@@ -191,13 +254,13 @@ export default function PipelineDiagram({ type, caption }: PipelineDiagramProps)
             <div className={styles.flowNode}>
               <div className={styles.nodeHeader}>
                 <span className={styles.nodeNumber}>TIER 01</span>
-                <span className={styles.nodeTag}>INTEGRITY</span>
+                <span className={styles.nodeTag}>AUTHORIZATION</span>
               </div>
               <div className={styles.nodeBody}>
-                <strong>IPFS Document Layer</strong>
-                <p>Cryptographic hash generation for student transcripts & certificates</p>
+                <strong>Dual-Approval Issuance</strong>
+                <p>Multi-role authorization workflow (Registrar + Department)</p>
               </div>
-              <div className={styles.nodeDetail}>Content-addressed decentralized transcript storage</div>
+              <div className={styles.nodeDetail}>Prevents unauthorized single-admin certificate creation</div>
             </div>
 
             <div className={styles.flowArrow} aria-hidden="true">
@@ -207,13 +270,13 @@ export default function PipelineDiagram({ type, caption }: PipelineDiagramProps)
             <div className={styles.flowNode}>
               <div className={styles.nodeHeader}>
                 <span className={styles.nodeNumber}>TIER 02</span>
-                <span className={styles.nodeTag}>AUTHORITY</span>
+                <span className={styles.nodeTag}>FINGERPRINT &amp; IPFS</span>
               </div>
               <div className={styles.nodeBody}>
-                <strong>Multi-Sig Issuer Contracts</strong>
-                <p>Solidity contracts enforcing registrar & departmental signing keys</p>
+                <strong>SHA-256 &amp; Decentralized Storage</strong>
+                <p>Local document hashing; raw transcripts pinned on IPFS via Pinata</p>
               </div>
-              <div className={styles.nodeDetail}>Validates issuer signing authority at issuance time</div>
+              <div className={styles.nodeDetail}>Preserves document privacy by storing only fingerprints on-chain</div>
             </div>
 
             <div className={styles.flowArrow} aria-hidden="true">
@@ -223,13 +286,29 @@ export default function PipelineDiagram({ type, caption }: PipelineDiagramProps)
             <div className={styles.flowNode}>
               <div className={styles.nodeHeader}>
                 <span className={styles.nodeNumber}>TIER 03</span>
-                <span className={styles.nodeTag}>ACCREDITATION</span>
+                <span className={styles.nodeTag}>SMART CONTRACTS</span>
               </div>
               <div className={styles.nodeBody}>
-                <strong>Regulatory State Registry</strong>
-                <p>Time-indexed accreditation tracking across UGC, AICTE, and State Boards</p>
+                <strong>Polygon Amoy Registry</strong>
+                <p>Solidity contracts mapping cryptographic hashes &amp; authorized issuers</p>
               </div>
-              <div className={styles.nodeDetail}>Distinguishes authentic certificates from unaccredited issuers</div>
+              <div className={styles.nodeDetail}>Gas-optimized immutable registry on Polygon Amoy testnet</div>
+            </div>
+
+            <div className={styles.flowArrow} aria-hidden="true">
+              <span>→</span>
+            </div>
+
+            <div className={styles.flowNode}>
+              <div className={styles.nodeHeader}>
+                <span className={styles.nodeNumber}>TIER 04</span>
+                <span className={styles.nodeTag}>VERIFICATION</span>
+              </div>
+              <div className={styles.nodeBody}>
+                <strong>Employer Audit &amp; Revocation</strong>
+                <p>Instant status query checking document integrity, issuer, &amp; revocation</p>
+              </div>
+              <div className={styles.nodeDetail}>Enables third-party verification and ongoing revocation checks</div>
             </div>
           </div>
         )}

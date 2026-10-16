@@ -1121,3 +1121,85 @@
   margin-left: auto;
 }
 
+/* ── ERP Instrument Viewport ─────────────────────────────────────────── */
+.erpFlowBox {
+  padding: 1.15rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  background-color: rgba(0, 0, 0, 0.25);
+}
+
+.erpKanbanRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.65rem 0.95rem;
+  background-color: rgba(255, 255, 255, 0.02);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  color: #94A3B8;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.erpKanbanFlow {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: #38BDF8;
+}
+
+.erpKanbanStatus {
+  color: #34D399;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.erpCard {
+  background-color: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-sm);
+  padding: 0.75rem 0.95rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.erpCardHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+}
+
+.erpTag {
+  color: #38BDF8;
+  font-weight: 700;
+}
+
+.erpStatus {
+  color: #34D399;
+}
+
+.erpText {
+  font-size: 0.8125rem;
+  line-height: 1.45;
+  color: #F1F5F9;
+  margin: 0;
+}
+
+.erpSub {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  color: #94A3B8;
+  padding-top: 0.25rem;
+  border-top: 1px dashed rgba(255, 255, 255, 0.06);
+  display: flex;
+  justify-content: space-between;
+}
+
+

@@ -1,6 +1,5 @@
 import puppeteer from 'puppeteer-core';
 import path from 'path';
-import fs from 'fs';
 
 const BRAVE_PATH = '/Applications/Brave Browser.app/Contents/MacOS/Brave Browser';
 const OUT_DIR = '/Users/manoj/.gemini/antigravity-ide/brain/8329b01a-c4a8-4de5-b79f-3387fe25141f/scratch';
@@ -70,7 +69,8 @@ async function run() {
     const projectOrder = await page.evaluate(() => {
       const titles = Array.from(document.querySelectorAll('h3')).map(h => h.textContent.trim());
       return titles.filter(t => 
-        t.includes('Credential') || 
+        t.includes('Enterprise Resource Planning') || 
+        t.includes('XYPHER') || 
         t.includes('Medical LLM') || 
         t.includes('TALQS') || 
         t.includes('Welding') || 

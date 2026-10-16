@@ -165,7 +165,7 @@ export default function CommandPalette({ isOpen, onClose }: CommandPaletteProps)
               <div className={styles.emptyTitle}>No matching results for &ldquo;{query}&rdquo;</div>
               <p className={styles.emptyDesc}>
                 Try searching for technologies (e.g. &ldquo;FastAPI&rdquo;, &ldquo;React&rdquo;, &ldquo;ChromaDB&rdquo;) or
-                projects (&ldquo;Credentials&rdquo;, &ldquo;Medical&rdquo;, &ldquo;TALQS&rdquo;).
+                projects (&ldquo;ERP&rdquo;, &ldquo;XYPHER&rdquo;, &ldquo;Medical&rdquo;, &ldquo;TALQS&rdquo;).
               </p>
             </div>
           ) : (

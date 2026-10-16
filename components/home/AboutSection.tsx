@@ -22,7 +22,7 @@ export default function AboutSection() {
         <SectionHeading
           eyebrow="ABOUT &amp; BACKGROUND"
           title="Building Software End to End"
-          description="A Computer Science and Engineering student focused on building dependable software—from clear user interfaces and backend APIs to systems that connect services, data, and intelligent capabilities."
+          description="Software Developer focused on full-stack development, backend engineering, system architecture, and integrating intelligent systems into practical applications."
         />
 
         <div className={styles.editorialGrid}>
@@ -38,7 +38,7 @@ export default function AboutSection() {
             <div className={styles.philosophyPlate}>
               <span className={styles.philosophyLabel}>ENGINEERING FOCUS</span>
               <blockquote className={styles.quoteText}>
-                &ldquo;I enjoy working across the stack, understanding how the pieces fit together, and solving the practical problems that make software reliable in the real world.&rdquo;
+                &ldquo;I focus on writing clean, efficient code and building robust software that delivers real-world value—from designing microservices architectures to developing responsive user interfaces.&rdquo;
               </blockquote>
             </div>
           </div>
@@ -47,11 +47,18 @@ export default function AboutSection() {
           <aside className={styles.sidebarColumn}>
             <div className={styles.factItem}>
               <span className={styles.factLabel}>Education</span>
-              <p className={styles.factValue}>
-                {siteConfig.education.degree} in {siteConfig.education.field}<br />
-                <span className={styles.factSub}>{siteConfig.education.institution} · {siteConfig.education.dates}</span><br />
-                <span className={styles.factSub} style={{ color: 'var(--accent-teal)' }}>CGPA: {siteConfig.education.cgpa}</span>
-              </p>
+              {siteConfig.educationList.map((edu, idx) => (
+                <div key={idx} style={{ marginBottom: idx < siteConfig.educationList.length - 1 ? '0.75rem' : 0 }}>
+                  <p className={styles.factValue}>
+                    {edu.degree}<br />
+                    <span className={styles.factSub}>
+                      {edu.institution} · {edu.dates}
+                      {edu.board ? ` (${edu.board})` : ''}
+                    </span><br />
+                    <span className={styles.factSub} style={{ color: 'var(--accent-teal)' }}>{edu.score}</span>
+                  </p>
+                </div>
+              ))}
             </div>
 
             <div className={styles.factItem}>
@@ -68,11 +75,36 @@ export default function AboutSection() {
               <span className={styles.factLabel}>Certifications</span>
               {siteConfig.certifications.map((cert, i) => (
                 <p key={i} className={styles.factValue} style={{ marginBottom: i < siteConfig.certifications.length - 1 ? '0.5rem' : 0 }}>
-                  {cert.name}<br />
+                  {cert.url ? (
+                    <a
+                      href={cert.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      style={{ color: 'inherit', textDecoration: 'none' }}
+                      title={`Verify ${cert.name}`}
+                    >
+                      {cert.name} ↗
+                    </a>
+                  ) : (
+                    cert.name
+                  )}
+                  <br />
                   <span className={styles.factSub}>{cert.issuer} · {cert.date}</span>
                 </p>
               ))}
             </div>
+
+            {siteConfig.positionsOfResponsibility && siteConfig.positionsOfResponsibility.length > 0 && (
+              <div className={styles.factItem}>
+                <span className={styles.factLabel}>Position of Responsibility</span>
+                {siteConfig.positionsOfResponsibility.map((pos, i) => (
+                  <p key={i} className={styles.factValue}>
+                    {pos.role}<br />
+                    <span className={styles.factSub}>{pos.institution} · {pos.year}</span>
+                  </p>
+                ))}
+              </div>
+            )}
 
             <div className={styles.factItem}>
               <span className={styles.factLabel}>Continuous Practice</span>

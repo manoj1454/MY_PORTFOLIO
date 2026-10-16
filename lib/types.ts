@@ -10,6 +10,15 @@ export interface SocialLink {
   ariaLabel: string;
 }
 
+export interface EducationItem {
+  degree: string;
+  field?: string;
+  institution: string;
+  dates: string;
+  score: string;
+  board?: string;
+}
+
 export interface SiteConfig {
   name: string;
   fullName: string;
@@ -26,6 +35,7 @@ export interface SiteConfig {
     dates: string;
     cgpa: string;
   };
+  educationList: EducationItem[];
   achievements: {
     title: string;
     event: string;
@@ -35,6 +45,12 @@ export interface SiteConfig {
     name: string;
     issuer: string;
     date: string;
+    url?: string;
+  }[];
+  positionsOfResponsibility: {
+    role: string;
+    institution: string;
+    year: string;
   }[];
   navigation: NavItem[];
   verifiedSocials: SocialLink[];
@@ -78,7 +94,7 @@ export interface Project {
   };
   metrics?: { label: string; value: string; context?: string }[];
   disclaimer?: string;
-  diagramType: 'medical' | 'talqs' | 'optimus' | 'credentials' | 'welding' | 'moviereview';
+  diagramType: 'erp' | 'medical' | 'talqs' | 'optimus' | 'credentials' | 'welding' | 'moviereview';
   diagramCaption: string;
   links?: {
     github?: string;

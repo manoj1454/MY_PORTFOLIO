@@ -2,78 +2,197 @@ import { Project } from './types';
 
 export const projects: Project[] = [
   {
-    slug: 'verifiable-credentials',
-    title: 'Verifiable Academic/Professional Credential Platform',
-    tagline: 'A decentralized credential platform verifying certificate integrity and issuer accreditation status at issuance time.',
+    slug: 'erp-creative-studios',
+    title: 'Enterprise Resource Planning (ERP) System for Creative Studios',
+    tagline: 'A full-stack SaaS platform unifying CRM, project management, and transactional financial workflows for creative studios.',
     shortDescription:
-      'Designing a blockchain-based platform to verify not just certificate integrity but issuer legitimacy — whether the issuing institution was accredited at time of issuance — addressing a gap in existing tamper-evidence-only systems.',
+      'Full-stack ERP SaaS unifying CRM, Kanban project management, and atomic financial workflows with optimistic UI updates and edge role-based authorization.',
     overview:
-      'Designing a blockchain-based platform to verify not just certificate integrity but issuer legitimacy — whether the issuing institution was accredited at time of issuance — addressing a gap in existing tamper-evidence-only systems. Architecting around live-synced accreditation status, multi-signature issuer keys, and support for India\'s multi-regulator landscape (UGC, AICTE, NCVET, state boards), building on gaps identified in the IEEE ElimuChain system.',
-    category: 'Platform design · Blockchain · In progress',
-    statusBadge: 'In Progress',
+      'An ERP platform for creative studios that brings CRM, project management and financial workflows into one application. The system combines optimistic UI updates, middleware-based role authorization, transactional invoice generation and versioned asset management.',
+    category: 'Full-stack SaaS · Systems Architecture · Enterprise Workflows',
+    statusBadge: 'Completed (2026)',
     featuredOrder: 1,
     tags: {
-      primary: ['Blockchain', 'Solidity', 'IPFS'],
-      secondary: ['Smart Contracts', 'Decentralized Storage', 'Multi-Regulator Design'],
+      primary: ['Next.js 14', 'TypeScript', 'PostgreSQL', 'Prisma', 'TanStack Query', 'Zustand'],
+      secondary: ['Zero-Trust Edge RBAC', 'Optimistic UI', 'ACID Transactions', 'Immutable Vault'],
     },
-    diagramType: 'credentials',
+    diagramType: 'erp',
     diagramCaption:
-      'Figure 1: Planned decentralized architecture linking certificate verification with institutional regulatory accreditation tracking.',
+      'Figure 1: Full-stack ERP architecture showing Next.js 14 client with optimistic TanStack Query cache, Edge Middleware RBAC, atomic Prisma transactions, and versioned asset vault.',
     sections: {
       problem: {
-        title: 'The Challenge: Beyond Document Tampering to Institutional Legitimacy',
+        title: 'The Challenge: Fragmented Operations & Financial Integrity in Creative Studios',
         content: [
-          'Existing digital verification platforms confirm whether a certificate hash matches a blockchain record, preventing post-issuance tampering.',
-          'However, fraudulent or unaccredited institutions can still issue cryptographically valid certificates. Verifying the document itself does not answer whether the issuing university was licensed or accredited at the exact time of issuance.',
-          'In India, academic and vocational accreditation spans multiple regulatory bodies—including UGC, AICTE, NCVET, and individual state boards—making centralized manual verification slow and fragmented.',
+          'Creative studios routinely struggle with fractured software stacks, juggling standalone CRM tools, disparate Kanban boards, and detached invoicing software.',
+          'This fragmentation leads to data desynchronization, double-billing, and race conditions during high-volume invoice creation, as well as unauthorized access across studio tiers when permissions are only checked after deep database queries.',
+          'The objective was to architect a unified, production-grade SaaS ERP platform that integrates CRM, project management, and billing workflows into a single system with uncompromising transactional integrity and instant user responsiveness.',
         ],
       },
       approach: {
-        title: 'Architectural Concept & Multi-Tier Verification Design',
+        title: 'System Architecture & Core Engineering Modules',
         content: [
-          'The planned design explores linking certificate hashing with institutional regulatory registry contracts to provide synchronized two-tier verification.',
+          'The application is engineered as an end-to-end full-stack SaaS platform using Next.js 14 with TypeScript, backed by PostgreSQL and Prisma ORM, utilizing client-side optimistic caching and edge security.',
         ],
         subsections: [
           {
-            subtitle: '1. Two-Tier Verification Model',
+            subtitle: '1. Full-Stack SaaS Platform (CRM, Projects & Finance)',
             points: [
-              'Tier 1 (Document Integrity): Storing cryptographic hashes of student certificates and metadata on IPFS and smart contracts.',
-              'Tier 2 (Issuer Authority): Smart contracts tracking institutional accreditation status timestamps to verify that the issuer held active regulatory standing when the credential was signed.',
+              'Developed a unified multi-tenant architecture designed to manage the full studio lifecycle from initial lead capture through project delivery and client invoicing.',
+              'Consolidated client pipelines, milestone tracking, and ledger records into a normalized relational PostgreSQL schema.',
             ],
           },
           {
-            subtitle: '2. Multi-Signature Authority Keys',
+            subtitle: '2. Optimistic UI Updates with TanStack Query',
             points: [
-              'Exploring multi-signature key architecture requiring institutional registrars and departmental signatories to sign credentials.',
-              'Designing role-based smart contracts accommodating diverse regulatory bodies across higher education and technical vocational boards.',
+              'Implemented optimistic UI updates using TanStack Query and Zustand for drag-and-drop Kanban board interactions.',
+              'The UI updates optimistically upon user action rather than waiting for the entire network round trip, with automated rollback handlers restoring previous state if server validation fails.',
+            ],
+          },
+          {
+            subtitle: '3. Zero-Trust Edge RBAC (Role-Based Access Control)',
+            points: [
+              'Architected a role-based access-control system using Next.js Middleware to enforce access restrictions at the network edge.',
+              'Evaluates session tokens and permission claims before requests reach application routes or database pools, safeguarding administrative financial ledgers and studio assets.',
+            ],
+          },
+          {
+            subtitle: '4. Transactional Financial Workflows with Prisma',
+            points: [
+              'Implemented an atomic financial pipeline using Prisma transactions to protect data integrity during invoice generation.',
+              'Enforces ACID guarantees across multi-table writes, preventing partial writes and double-billing when calculating project retainers, milestone billables, and taxes.',
+            ],
+          },
+          {
+            subtitle: '5. Non-Destructive Asset Vault & Immutable Versioning',
+            points: [
+              'Implemented a non-destructive asset vault with immutable versioning, enabling audit trails for project deliverables and contract revisions.',
+              'Allows team members to inspect historical asset iterations without destructive overwrites, maintaining clear change attribution.',
             ],
           },
         ],
       },
       architecture: {
-        title: 'Planned Architecture & Data Flow',
+        title: 'Engineering Focus: Transactional Consistency & Edge Authorization',
         content: [
-          'The proposed design utilizes Ethereum/Solidity smart contracts for registry logic, IPFS for content-addressed decentralized storage of encrypted credential transcripts, and a web verification portal allowing employers to verify certificates instantly with a single hash query.',
+          'A key architectural challenge was preventing partial financial writes during concurrent invoice generation. Studio billing requires calculating complex milestone fees, hourly rate multipliers, and tax entries across multiple relational tables simultaneously.',
+          'By leveraging Prisma interactive transactions ($transaction), all invoice line items, client balances, and payment records commit atomically or roll back completely upon error, eliminating orphan records and double-billing.',
+          'Simultaneously, executing role-based authorization at the Next.js Middleware layer enforces strict security boundaries at the edge before request execution consumes downstream server or database capacity.',
         ],
       },
       decisions: {
-        title: 'Key Design Considerations',
+        title: 'Key Engineering Decisions & Trade-Offs',
         content: [
-          'Accreditation Timestamping: Modeling accreditation as a time-indexed state so revoked accreditations do not retroactively invalidate legitimately earned prior degrees, while preventing unauthorized backdated issuance.',
-          'Decentralized IPFS Storage vs. On-Chain Blobs: Storing raw certificate PDF transcripts on IPFS keeps blockchain gas costs minimal while retaining cryptographic content-addressing guarantees.',
+          'Optimistic UI vs. Pessimistic Waiting: Chose optimistic mutations via TanStack Query to give the Kanban board instant tactile responsiveness, accepting the requirement to implement strict error rollback logic.',
+          'Prisma Interactive Transactions: Wrapped all invoice creation and billing workflows in explicit database transactions to guarantee ledger consistency over raw write speed.',
+          'Edge Middleware Security: Enforced RBAC at the edge middleware level rather than inside per-route handlers, centralizing security policy and stopping unauthorized requests before backend execution.',
         ],
       },
       limitations: {
-        title: 'Current Status & Boundary Conditions',
+        title: 'Known Constraints & Boundary Conditions',
         content: [
-          'This project is currently in the design and architecture phase. Smart contract schemas and regulatory mapping are being iteratively evaluated.',
-          'The platform is an architectural proposal; it is not yet deployed as a live government or institutional service.',
+          'Concurrent Multi-User Conflict Resolution: While optimistic UI handles single-client actions smoothly, simultaneous edits on the same task rely on server timestamp last-write-wins resolution.',
+          'Asset Versioning Storage: The immutable vault preserves complete version histories, requiring scheduled archival policies for high-resolution media deliverables.',
         ],
       },
       lessons: {
-        title: 'Architectural Insights',
+        title: 'Key Takeaways & Engineering Lessons',
         content: [
-          'Real-world verification requires modeling organizational trust networks, not just cryptography: verifying who had the legal authority to sign is as vital as verifying that the file was not altered.',
+          'Transactional boundaries are foundational: Designing financial pipelines with atomic rollbacks is critical for preventing corrupt states that no client-side validation can fix.',
+          'Perceived speed elevates user experience: Optimistic UI updates dramatically reduce cognitive friction on data-intensive dashboards by decoupling user action from network latency.',
+        ],
+      },
+    },
+  },
+  {
+    slug: 'xypher',
+    title: 'XYPHER — Blockchain-Based Credential Verification Platform',
+    tagline: 'A decentralized credential platform verifying document integrity, issuer legitimacy, and revocation status on Polygon Amoy.',
+    shortDescription:
+      'Layered verification ecosystem combining SHA-256 cryptographic hashing with Polygon Amoy smart contracts and IPFS to verify document integrity and issuer legitimacy.',
+    overview:
+      'XYPHER is a blockchain-based credential verification platform that combines cryptographic document fingerprints, decentralized storage, controlled certificate issuance and revocation tracking to help employers verify credential integrity and issuer legitimacy.',
+    category: 'Decentralized Platform · Blockchain · Cryptographic Verification',
+    statusBadge: 'Completed (2026)',
+    featuredOrder: 2,
+    tags: {
+      primary: ['React', 'Node.js', 'Solidity', 'Polygon Amoy', 'IPFS', 'Supabase'],
+      secondary: ['Smart Contracts', 'Pinata', 'SHA-256', 'Dual-Approval Issuance'],
+    },
+    diagramType: 'credentials',
+    diagramCaption:
+      'Figure 2: XYPHER architecture illustrating dual-approval credential issuance, local SHA-256 fingerprinting, IPFS storage, Polygon Amoy on-chain registry, and employer verification with revocation tracking.',
+    sections: {
+      problem: {
+        title: 'The Challenge: Credential Fraud, Document Tampering & Unverified Issuers',
+        content: [
+          'Academic and professional credential fraud undermines hiring trust and institutional integrity worldwide. Conventional PDF credentials can be forged or modified using standard digital tools.',
+          'Furthermore, naive blockchain verification systems often only test whether a document hash exists on-chain, failing to verify whether the issuing institution possessed legitimate accreditation and authority at the time of issuance.',
+          'The objective was to construct a layered verification ecosystem that independently verifies two critical factors: whether a credential document has preserved its integrity since issuance, and whether the issuing body was legitimate, while enabling ongoing revocation management.',
+        ],
+      },
+      approach: {
+        title: 'Decentralized Architecture & Layered Verification Ecosystem',
+        content: [
+          'XYPHER resolves these challenges through a hybrid architecture combining off-chain decentralized storage, on-chain smart contracts on the Polygon Amoy testnet, and a dual-approval administrative issuance workflow.',
+        ],
+        subsections: [
+          {
+            subtitle: '1. Layered Credential Verification',
+            points: [
+              'Built a layered verification ecosystem designed to combat credential fraud by combining SHA-256 cryptographic hashing with blockchain-backed records.',
+              'Addresses both core goals clearly: verifying that a credential document has remained unaltered since issuance, and verifying the regulatory legitimacy of the issuing institution.',
+            ],
+          },
+          {
+            subtitle: '2. Decentralized Document Storage (IPFS / Pinata)',
+            points: [
+              'Designed a decentralized storage strategy using IPFS and Pinata for content-addressed credential transcript storage.',
+              'Only cryptographic fingerprints and verifiable hashes are recorded on-chain to optimize gas costs on Polygon Amoy and support document privacy, ensuring sensitive transcript contents remain off public ledgers.',
+            ],
+          },
+          {
+            subtitle: '3. Multi-Role Authorization & Dual-Approval Workflow',
+            points: [
+              'Implemented a multi-role authorization workflow with a dual-approval issuance process designed to prevent unauthorized certificate creation.',
+              'Requires institutional registrar signing alongside departmental verification before a certificate hash can be committed to the blockchain registry.',
+            ],
+          },
+          {
+            subtitle: '4. Blockchain-Based Credential Revocation Registry',
+            points: [
+              'Integrated a blockchain-based revocation registry that allows institutions to cancel credentials and enables third-party employers to verify their status.',
+              'Guarantees that credential standing can be queried and audited after issuance, ensuring revoked credentials cannot be presented as valid.',
+            ],
+          },
+        ],
+      },
+      architecture: {
+        title: 'Engineering Focus: Gas Optimization & Privacy Preservation',
+        content: [
+          'Storing entire certificate documents on a public blockchain is both cost-prohibitive and violates user privacy. XYPHER strictly partitions concerns: document files are stored in decentralized content-addressed storage (IPFS via Pinata), while only a 32-byte cryptographic SHA-256 hash is committed to the Solidity contract on Polygon Amoy.',
+          'During employer verification, the candidate document is hashed in-browser using SHA-256. The hash is queried against the Polygon Amoy registry to confirm that the fingerprint matches, that the issuing wallet was an authorized institutional signer, and that the credential has not been flagged in the revocation registry.',
+        ],
+      },
+      decisions: {
+        title: 'Key Engineering Decisions & Trade-Offs',
+        content: [
+          'Cryptographic Fingerprints On-Chain vs. Document Storage: Committing only 32-byte hashes to Polygon Amoy keeps transaction costs minimal and predictable while preserving document confidentiality.',
+          'Dual-Approval Administrative Controls: Required two-tier authorized signing to prevent single-point-of-failure credential issuance.',
+          'Polygon Amoy Testnet Deployment: Selected Polygon Amoy for fast block finality, Ethereum Virtual Machine (EVM) compatibility, and low transaction overhead.',
+        ],
+      },
+      limitations: {
+        title: 'Known Constraints & Boundary Conditions',
+        content: [
+          'Network Block Finality: Write operations (credential issuance and revocation status changes) are subject to Polygon Amoy block confirmation latency.',
+          'IPFS Pinning Availability: Decentralized document retrieval relies on active IPFS pinning via Pinata; persistence requires maintained pinning infrastructure.',
+        ],
+      },
+      lessons: {
+        title: 'Key Takeaways & Engineering Lessons',
+        content: [
+          'Document integrity alone is not proof of legitimacy: Checking that a file was unaltered is meaningless if the issuer lacked legal authority to confer the credential. Validating issuer legitimacy is as vital as the cryptographic digest.',
+          'Public blockchains require privacy-first architecture: Public ledgers should record verifiable proofs and cryptographic fingerprints, never unencrypted personal records.',
         ],
       },
     },
@@ -88,7 +207,7 @@ export const projects: Project[] = [
       'Three-stage agentic AI pipeline for extracting and verifying claims from LLM responses against trusted medical sources, with claim-level danger scoring (LOW, MEDIUM, HIGH, CRITICAL) and corrective output. ChromaDB indexing 2,000+ NIH MedQuAD documents, with Tavily real-time web search as a fallback when retrieval confidence is low, citing NHS, WHO and FDA sources. Microservices architecture with React on Vercel, Spring Boot API gateway on Render, and Python/FastAPI ML service on Hugging Face Spaces. Resolution of the HTTP/2 versus HTTP/1.1 protocol mismatch between Java HttpClient and uvicorn.',
     category: 'Full-stack application · Service integration · Applied AI',
     statusBadge: 'Deployed & Live (2026)',
-    featuredOrder: 2,
+    featuredOrder: 3,
     tags: {
       primary: ['React', 'FastAPI', 'Spring Boot', 'ChromaDB', 'Groq', 'Tavily'],
       secondary: ['Java', 'Python', 'Multi-Service Integration', 'RAG'],
@@ -109,7 +228,7 @@ export const projects: Project[] = [
       'This platform is an educational software engineering project. It does not provide medical diagnoses, treatment recommendations, or clinical judgment. Risk labels are algorithmic outputs designed to assist review, not certified medical advice.',
     diagramType: 'medical',
     diagramCaption:
-      'Figure 2: Multi-service architecture showing React frontend, Spring Boot API gateway, FastAPI claim verification engine, ChromaDB vector store, and Tavily fallback search.',
+      'Figure 3: Multi-service architecture showing React frontend, Spring Boot API gateway, FastAPI claim verification engine, ChromaDB vector store, and Tavily fallback search.',
     links: {
       demo: 'https://hallucination-detector-three.vercel.app',
     },
@@ -129,19 +248,25 @@ export const projects: Project[] = [
         ],
         subsections: [
           {
-            subtitle: '1. Multi-Service Infrastructure',
+            subtitle: '1. Three-Stage Verification Pipeline & Claim Scoring',
             points: [
-              'Frontend: Built with React for responsive query submission, interactive claim risk visualization, and citation inspection.',
-              'API Gateway: Implemented in Java with Spring Boot to handle client requests, rate limiting, and route coordination.',
-              'Verification Microservice: Built with Python and FastAPI to run claim extraction, vector similarity search, and synthesis.',
+              'Built a three-stage agentic AI pipeline that extracts atomic claims from LLM responses and verifies them against trusted medical sources through RAG.',
+              'Implements a claim-level danger-scoring mechanism categorizing clinical severity into LOW, MEDIUM, HIGH, and CRITICAL risk levels with corrective feedback.',
             ],
           },
           {
-            subtitle: '2. Retrieval & Hybrid Fallback Engine',
+            subtitle: '2. Polyglot Microservices Infrastructure',
             points: [
-              'Indexed 2,000+ trusted NIH MedQuAD documents into a ChromaDB vector database using dense embeddings.',
-              'Integrated Groq-hosted language models for high-throughput claim segmentation and contradiction detection.',
-              'Configured Tavily search API as an automatic web retrieval fallback when ChromaDB similarity confidence scores drop below threshold.',
+              'React frontend hosted on Vercel for responsive claim inspection and interactive risk visualization.',
+              'Spring Boot API gateway hosted on Render managing rate limiting, request validation, and client routing.',
+              'Python/FastAPI ML service hosted on Hugging Face Spaces executing claim segmentation, vector search, and LLM inference via Groq.',
+            ],
+          },
+          {
+            subtitle: '3. Hybrid Retrieval with Real-Time Web Fallback',
+            points: [
+              'Indexed 2,000+ NIH MedQuAD documents into a ChromaDB vector store for fast, deterministic local similarity search.',
+              'Configured Tavily real-time web search as an automatic fallback when ChromaDB similarity confidence is low, citing NHS, WHO, and FDA clinical guidelines.',
             ],
           },
         ],
@@ -182,7 +307,7 @@ export const projects: Project[] = [
   },
   {
     slug: 'talqs',
-    title: 'TALQS — Transformer-based Legal QA and Summarization System',
+    title: 'TALQS — Transformer-Based Legal QA and Summarization System',
     tagline: 'Turning long judgments into searchable context, answering questions, and producing concise summaries.',
     shortDescription:
       'End-to-end RAG pipeline covering PDF extraction, cleaning, chunking, embeddings, FAISS retrieval, cross-encoder reranking and T5 multi-stage summarization.',
@@ -190,7 +315,7 @@ export const projects: Project[] = [
       'End-to-end RAG pipeline covering PDF extraction, cleaning, chunking, embeddings, FAISS retrieval, cross-encoder reranking and T5 multi-stage summarization. Evaluated on the BillSum dataset (approximately 18K samples) and SQuAD 2.0 (approximately 150K question-answer pairs), reporting 85% summarization quality (ROUGE-based) and 88% QA accuracy. Optimized chunking and FAISS indexing, with cross-encoder reranking to improve answer relevance.',
     category: 'Document processing · Search and retrieval · Backend pipeline',
     statusBadge: 'Evaluated Prototype (2025)',
-    featuredOrder: 3,
+    featuredOrder: 4,
     tags: {
       primary: ['Transformers', 'FAISS', 'MiniLM', 'T5', 'Flask'],
       secondary: ['Python', 'PyMuPDF', 'PyTorch', 'Vector Search'],
@@ -211,7 +336,7 @@ export const projects: Project[] = [
       'This project is an exploratory software study. It does not provide legal advice, statutory interpretation, or representation. It is not a substitute for consultation with a qualified legal professional.',
     diagramType: 'talqs',
     diagramCaption:
-      'Figure 3: Ingestion, dense embedding, FAISS indexing, cross-encoder reranking, and sequence-to-sequence generation pipeline.',
+      'Figure 4: Ingestion, dense embedding, FAISS indexing, cross-encoder reranking, and sequence-to-sequence generation pipeline.',
     links: {
       demo: 'https://huggingface.co/spaces/manoj1454/TALQS',
     },
@@ -245,7 +370,7 @@ export const projects: Project[] = [
             ],
           },
           {
-            subtitle: '3. Reranking & T5 Summarization',
+            subtitle: '3. Cross-Encoder Reranking & T5 Summarization',
             points: [
               'Applied a cross-encoder to rerank candidate passages, mitigating dense retrieval noise before passing context to the generator.',
               'Passed conditioned excerpts into sequence-to-sequence T5 models trained on the BillSum legal dataset (18K samples) and SQuAD 2.0 (150K pairs) for multi-stage summary synthesis.',
@@ -295,7 +420,7 @@ export const projects: Project[] = [
       'RetinaNet selected over YOLO for its focal loss mechanism to handle class imbalance, with an OpenCV preprocessing pipeline for normalization and bounding-box handling across a 2.4K-image dataset. Precision: 74.7%, Recall: 92.7%, F1-score: 82.7%, with a deliberate emphasis on high recall to minimize missed defects in safety-critical environments. Real-time Flask detection interface deployed on Hugging Face Spaces, including work to address model-size constraints for deployment.',
     category: 'Computer vision · Model deployment',
     statusBadge: 'Evaluated Model Demo (2024)',
-    featuredOrder: 4,
+    featuredOrder: 5,
     tags: {
       primary: ['RetinaNet', 'PyTorch', 'OpenCV', 'Flask', 'Hugging Face'],
       secondary: ['Object Detection', 'Computer Vision', 'Model Evaluation'],
@@ -321,7 +446,7 @@ export const projects: Project[] = [
       'This software is an experimental computer-vision prototype. It is not certified for industrial safety inspection, non-destructive testing (NDT), or regulatory compliance.',
     diagramType: 'welding',
     diagramCaption:
-      'Figure 4: Radiographic image normalization, RetinaNet focal loss bounding box proposal, and Flask inference serving.',
+      'Figure 5: Radiographic image normalization, RetinaNet focal loss bounding box proposal, and Flask inference serving.',
     links: {
       demo: 'https://huggingface.co/spaces/manoj1454/welding-defect-detection',
     },
@@ -404,14 +529,14 @@ export const projects: Project[] = [
       'The Movie Review System is a supporting full-stack web application built to practice core software development patterns: component-based user interfaces, RESTful API endpoint routing, structured JSON validation, and document database persistence using a MERN-style stack (React, Node.js/Express, MongoDB).',
     category: 'Full-stack web application · Supporting project',
     statusBadge: 'Supporting Project',
-    featuredOrder: 5,
+    featuredOrder: 6,
     tags: {
       primary: ['React', 'Node.js', 'Express', 'MongoDB'],
       secondary: ['REST APIs', 'Full-Stack Web Development'],
     },
     diagramType: 'moviereview',
     diagramCaption:
-      'Figure 5: Client component hierarchy, Express REST endpoints, and MongoDB document collection persistence.',
+      'Figure 6: Client component hierarchy, Express REST endpoints, and MongoDB document collection persistence.',
     sections: {
       problem: {
         title: 'The Objective: Clean Full-Stack CRUD & Data Flow',
@@ -479,18 +604,22 @@ export const projects: Project[] = [
 ];
 
 export function getProjectBySlug(slug: string): Project | undefined {
+  if (slug === 'verifiable-credentials') {
+    return projects.find((p) => p.slug === 'xypher');
+  }
   return projects.find((p) => p.slug === slug);
 }
 
 export function getAllProjectSlugs(): string[] {
-  return projects.map((p) => p.slug);
+  return [...projects.map((p) => p.slug), 'verifiable-credentials'];
 }
 
 export function getAdjacentProjects(currentSlug: string): {
   prev: Project | null;
   next: Project | null;
 } {
-  const index = projects.findIndex((p) => p.slug === currentSlug);
+  const normalizedSlug = currentSlug === 'verifiable-credentials' ? 'xypher' : currentSlug;
+  const index = projects.findIndex((p) => p.slug === normalizedSlug);
   if (index === -1) return { prev: null, next: null };
 
   const prev = index > 0 ? projects[index - 1] : projects[projects.length - 1];

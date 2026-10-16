@@ -73,18 +73,20 @@ export function buildSearchIndex(): SearchItem[] {
     id: 'about-main',
     title: 'About Manoj Chary',
     category: 'About & Education',
-    description: 'Computer Science and Engineering student focused on building dependable software.',
+    description: 'Software Developer focused on full-stack development, backend engineering, and systems architecture.',
     url: '#about',
-    keywords: ['about', 'bio', 'philosophy', 'background', 'software developer'],
+    keywords: ['about', 'bio', 'philosophy', 'background', 'software developer', 'full stack'],
   });
 
-  items.push({
-    id: 'education-degree',
-    title: `${siteConfig.education.degree} in ${siteConfig.education.field}`,
-    category: 'About & Education',
-    description: `${siteConfig.education.institution} (2023–2027) · CGPA: ${siteConfig.education.cgpa}`,
-    url: '#about',
-    keywords: ['education', 'degree', 'college', 'university', 'gpa', 'cgpa', 'neil gogte'],
+  siteConfig.educationList.forEach((edu, idx) => {
+    items.push({
+      id: `education-${idx}`,
+      title: edu.degree,
+      category: 'About & Education',
+      description: `${edu.institution} (${edu.dates}) · ${edu.score}`,
+      url: '#about',
+      keywords: ['education', 'degree', 'college', 'university', 'score', 'cgpa', edu.institution.toLowerCase()],
+    });
   });
 
   siteConfig.achievements.forEach((ach, idx) => {
@@ -108,6 +110,19 @@ export function buildSearchIndex(): SearchItem[] {
       keywords: ['certification', 'certificate', 'hackerrank', 'ibm', 'sql'],
     });
   });
+
+  if (siteConfig.positionsOfResponsibility) {
+    siteConfig.positionsOfResponsibility.forEach((pos, idx) => {
+      items.push({
+        id: `pos-${idx}`,
+        title: `${pos.role} — ${pos.institution}`,
+        category: 'About & Education',
+        description: `Leadership role (${pos.year})`,
+        url: '#about',
+        keywords: ['leadership', 'responsibility', 'arts club', pos.role.toLowerCase()],
+      });
+    });
+  }
 
   // 5. Contact Channels & Socials
   items.push({

@@ -52,8 +52,13 @@ export default function SiteFooter() {
             <h3 className={styles.colHeading}>Selected Work</h3>
             <ul className={styles.linkList}>
               <li>
-                <Link href="/projects/verifiable-credentials" className={styles.footerLink}>
-                  Verifiable Credentials Platform
+                <Link href="/projects/erp-creative-studios" className={styles.footerLink}>
+                  ERP System for Creative Studios
+                </Link>
+              </li>
+              <li>
+                <Link href="/projects/xypher" className={styles.footerLink}>
+                  XYPHER (Credential Verification)
                 </Link>
               </li>
               <li>
