@@ -54,7 +54,8 @@ test('Project data integrity', async (t) => {
   await t.test('ERP project includes required architectural components', () => {
     const erp = getProjectBySlug('erp-creative-studios');
     assert.ok(erp, 'ERP project should exist');
-    assert.match(erp.title, /Enterprise Resource Planning/i);
+    assert.match(erp.title, /Project Workspace.*ERP/i);
+    assert.equal(erp.links?.demo, 'https://project-studio-erp.vercel.app/');
     assert.ok(erp.tags.primary.includes('Next.js 14'));
     assert.ok(erp.tags.primary.includes('Prisma'));
     assert.ok(erp.tags.primary.includes('TanStack Query'));

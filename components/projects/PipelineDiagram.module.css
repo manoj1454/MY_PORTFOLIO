@@ -118,3 +118,192 @@
   text-align: center;
   line-height: 1.5;
 }
+
+/* ==========================================================================
+   Project Workspace ERP Architecture Diagram Styles
+   ========================================================================== */
+
+.erpArchContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  width: 100%;
+}
+
+.erpArchTier {
+  background-color: var(--surface-raised);
+  border: 1px solid var(--border-quiet);
+  border-radius: var(--radius-md);
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.875rem;
+  transition: all var(--transition-fast);
+}
+
+.erpArchTier:hover {
+  border-color: var(--border-prominent);
+}
+
+.erpArchTierHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  border-bottom: 1px solid var(--border-subtle);
+  padding-bottom: 0.625rem;
+}
+
+.erpTierLabelGroup {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.erpTierNumber {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  letter-spacing: 0.08em;
+}
+
+.erpTierTitle {
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--text-main);
+  letter-spacing: -0.01em;
+}
+
+.erpTierBadge {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  color: var(--accent-teal);
+  background-color: var(--accent-teal-dim);
+  border: 1px solid var(--accent-teal-border);
+  padding: 0.2rem 0.5rem;
+  border-radius: var(--radius-sm);
+}
+
+.erpTierGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.875rem;
+}
+
+@media (min-width: 640px) {
+  .erpTierGrid2 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .erpTierGrid3 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .erpTierGrid4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .erpTierGrid4 {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.erpArchCard {
+  background-color: rgba(240, 240, 232, 0.04);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  padding: 0.875rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  transition: all var(--transition-fast);
+}
+
+.erpArchCard:hover {
+  background-color: rgba(240, 240, 232, 0.08);
+  border-color: var(--accent-teal-border);
+}
+
+.erpCardTitleRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.erpCardTitle {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+.erpRolePill {
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  font-weight: 700;
+  padding: 0.15rem 0.4rem;
+  border-radius: var(--radius-sm);
+  letter-spacing: 0.05em;
+}
+
+.erpRoleSuper {
+  color: #D4B282;
+  background-color: rgba(212, 178, 130, 0.16);
+  border: 1px solid rgba(212, 178, 130, 0.35);
+}
+
+.erpRoleEmployee {
+  color: #A6AF99;
+  background-color: rgba(166, 175, 153, 0.16);
+  border: 1px solid rgba(166, 175, 153, 0.35);
+}
+
+.erpRoleClient {
+  color: #A2B2C2;
+  background-color: rgba(162, 178, 194, 0.16);
+  border: 1px solid rgba(162, 178, 194, 0.35);
+}
+
+.erpCardDesc {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  line-height: 1.45;
+  margin: 0;
+}
+
+.erpCardMeta {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  color: var(--accent-teal);
+  background-color: var(--accent-teal-dim);
+  padding: 0.25rem 0.5rem;
+  border-radius: var(--radius-sm);
+  margin-top: 0.25rem;
+}
+
+.erpArchConnector {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.08em;
+  padding: 0.1rem 0;
+}
+
+.erpConnectorLine {
+  height: 1px;
+  flex: 1;
+  background: linear-gradient(90deg, transparent, var(--border-quiet), transparent);
+}
+
+.erpConnectorText {
+  color: var(--accent-sage);
+  font-weight: 600;
+}

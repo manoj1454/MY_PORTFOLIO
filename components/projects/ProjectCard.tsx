@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import { ArrowRight, Layers, Cpu, Database, AlertCircle } from 'lucide-react';
+import { ArrowRight, Layers, Cpu, Database, AlertCircle, ExternalLink } from 'lucide-react';
 import { Project } from '@/lib/types';
 import Tag from '@/components/ui/Tag';
 import styles from './ProjectCard.module.css';
@@ -65,6 +65,18 @@ export default function ProjectCard({ project }: ProjectCardProps) {
           <span>Read technical case study</span>
           <ArrowRight size={16} className={styles.ctaArrow} />
         </Link>
+        {project.links?.demo && (
+          <a
+            href={project.links.demo}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.ctaLink}
+            style={{ color: '#166534', fontWeight: 650 }}
+          >
+            <span>Live Demo</span>
+            <ExternalLink size={14} className={styles.ctaArrow} />
+          </a>
+        )}
       </div>
     </article>
   );

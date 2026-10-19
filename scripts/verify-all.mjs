@@ -69,6 +69,7 @@ async function run() {
     const projectOrder = await page.evaluate(() => {
       const titles = Array.from(document.querySelectorAll('h3')).map(h => h.textContent.trim());
       return titles.filter(t => 
+        t.includes('Project Workspace') ||
         t.includes('Enterprise Resource Planning') || 
         t.includes('XYPHER') || 
         t.includes('Medical LLM') || 

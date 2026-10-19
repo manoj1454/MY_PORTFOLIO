@@ -42,15 +42,15 @@ export default function SelectedWork() {
 
         <div className={styles.editorialWorkList}>
           {/* ============================================================
-              01: Enterprise Resource Planning (ERP) System
-              Order: 1 · Full-Stack SaaS · Systems Architecture
+              01: Project Workspace — ERP for Creative Studios
+              Order: 1 · Full-Stack B2B SaaS · Systems Architecture
               Composition: Content Left, Instrument Right
               ============================================================ */}
           <article className={styles.caseStudyBlock}>
             {/* Left: Narrative Surface */}
             <div className={styles.paperCard}>
               <div className={styles.paperHeader}>
-                <span className={styles.paperIndex}>01 // FULL-STACK SAAS · ENTERPRISE WORKFLOWS</span>
+                <span className={styles.paperIndex}>01 // FULL-STACK B2B SAAS · PROJECT OPERATIONS · FINANCIAL WORKFLOWS</span>
                 <span className={styles.paperStatusBadge}>
                   <span className={styles.paperStatusDot} />
                   {erp.statusBadge}
@@ -68,7 +68,7 @@ export default function SelectedWork() {
               <div className={styles.paperProblemBox}>
                 <span className={styles.paperProblemLabel}>The Core Challenge:</span>
                 <p className={styles.paperProblemText}>
-                  Creative studios struggle with fractured tooling across CRM, project tracking, and billing. The platform unifies these workflows while eliminating perceived Kanban latency with optimistic UI updates and guaranteeing data consistency via atomic database transactions.
+                  Creative studios struggle with fragmented workflows spread across spreadsheets, messaging tools, and detached invoicing software. The platform unifies CRM, 4-level project hierarchy execution, persistent billable time tracking, and versioned assets while guaranteeing financial ledger consistency through atomic Prisma transactions.
                 </p>
               </div>
 
@@ -86,16 +86,28 @@ export default function SelectedWork() {
 
               <div className={styles.paperCtaRow}>
                 <Link href={`/projects/${erp.slug}`} className={styles.paperCaseStudyLink}>
-                  <span>Explore architectural case study</span>
+                  <span>Explore Engineering</span>
                   <ArrowRight size={15} />
                 </Link>
+                {erp.links?.demo && (
+                  <a
+                    href={erp.links.demo}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={styles.paperCaseStudyLink}
+                    style={{ textDecoration: 'none', color: '#166534', fontWeight: 650 }}
+                  >
+                    <span>Live Demo</span>
+                    <ExternalLink size={13} />
+                  </a>
+                )}
               </div>
 
               <Link
                 href={`/projects/${erp.slug}`}
                 className={styles.tactileKnob}
-                aria-label="Open ERP System case study"
-                title="Open ERP System case study"
+                aria-label="Open Project Workspace ERP case study"
+                title="Open Project Workspace ERP case study"
               >
                 <ArrowRight size={18} />
               </Link>
@@ -112,17 +124,17 @@ export default function SelectedWork() {
                   </div>
                   <div className={styles.simTitleGroup}>
                     <LayoutGrid size={12} className={styles.terminalIcon} />
-                    <span className={styles.simLabel}>erp-engine // optimistic-kanban-transactions</span>
+                    <span className={styles.simLabel}>project-workspace // neon-postgresql-engine</span>
                   </div>
                 </div>
 
                 <div className={styles.erpKanbanRow}>
                   <div className={styles.erpKanbanFlow}>
-                    <span>CRM Lead</span>
+                    <span>CRM Master</span>
                     <span>➔</span>
-                    <span>Sprint Board</span>
+                    <span>4-Level Hierarchy</span>
                     <span>➔</span>
-                    <span>Invoice Flow</span>
+                    <span>Atomic Invoicing</span>
                   </div>
                   <div className={styles.erpKanbanStatus}>
                     <span>● TanStack Optimistic Mutate</span>
@@ -136,7 +148,7 @@ export default function SelectedWork() {
                       <span className={styles.erpStatus}>● Atomic ACID Write</span>
                     </div>
                     <p className={styles.erpText}>
-                      Multi-table transaction binding line items, client balance, retainers, and taxes with automatic rollback on error.
+                      Multi-table transaction binding line items, client balance, retainers, and unbilled time entries with automatic rollback on error.
                     </p>
                     <div className={styles.erpSub}>
                       <span>Isolation: Serializable</span>
@@ -150,7 +162,7 @@ export default function SelectedWork() {
                       <span className={styles.erpStatus}>● Zero-Trust Edge RBAC</span>
                     </div>
                     <p className={styles.erpText}>
-                      Edge middleware validates role permissions and session tokens before requests reach database pools or internal routes.
+                      Next.js Middleware validates JWT role claims (SUPERADMIN, EMPLOYEE, CLIENT) at the perimeter before protected routes or server actions render.
                     </p>
                     <div className={styles.erpSub}>
                       <span>Scope: Studio Financials</span>
@@ -164,11 +176,11 @@ export default function SelectedWork() {
                       <span className={styles.erpStatus}>● Non-Destructive v1.3</span>
                     </div>
                     <p className={styles.erpText}>
-                      Tracks project deliverable revisions and contract amendments with immutable audit trails.
+                      Each upload creates an immutable AssetVersion record preserving full uploader identity, timestamp, and change rationale audit history.
                     </p>
                     <div className={styles.erpSub}>
                       <span>Deliverable Hash: Intact</span>
-                      <span>Full Change Logs</span>
+                      <span>14 Normalized Tables</span>
                     </div>
                   </div>
                 </div>
@@ -176,7 +188,7 @@ export default function SelectedWork() {
                 <div className={styles.simOutputArea}>
                   <span className={styles.outputTag}>PLATFORM ARCHITECTURE:</span>
                   <p className={styles.outputText}>
-                    Unifies CRM, project management, and financial workflows with optimistic responsiveness and transactional integrity.
+                    Unifies CRM, project execution, persistent time tracking, and financial workflows with optimistic responsiveness and transactional integrity.
                   </p>
                 </div>
               </div>

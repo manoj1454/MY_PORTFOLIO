@@ -116,8 +116,7 @@ async function run() {
   await page.setViewport({ width: 1440, height: 900 });
   await page.goto('http://localhost:3000/projects/erp-creative-studios', { waitUntil: 'networkidle2' });
   const erpTitle = await page.$eval('h1', (el) => el.textContent.trim());
-  console.log(`  ERP Title: "${erpTitle}"`);
-  if (!erpTitle.includes('Enterprise Resource Planning')) {
+  if (!erpTitle.includes('Project Workspace') && !erpTitle.includes('ERP')) {
     throw new Error('ERP page title incorrect!');
   }
   console.log('  ✅ ERP case study page loaded successfully');

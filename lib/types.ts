@@ -101,6 +101,32 @@ export interface Project {
     demo?: string;
     paper?: string;
   };
+  techStack?: {
+    layer: string;
+    technologies: string;
+    details?: string;
+  }[];
+  modules?: {
+    id: string;
+    title: string;
+    subtitle?: string;
+    badge?: string;
+    description: string;
+    points: string[];
+  }[];
+  challenges?: {
+    id: string;
+    title: string;
+    problem: string;
+    diagnosis: string;
+    solution: string;
+    lesson: string;
+  }[];
+  technicalFacts?: {
+    label: string;
+    value: string;
+    detail?: string;
+  }[];
   sections: {
     problem: ProjectSectionContent;
     approach: ProjectSectionContent;

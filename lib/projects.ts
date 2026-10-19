@@ -3,102 +3,365 @@ import { Project } from './types';
 export const projects: Project[] = [
   {
     slug: 'erp-creative-studios',
-    title: 'Enterprise Resource Planning (ERP) System for Creative Studios',
-    tagline: 'A full-stack SaaS platform unifying CRM, project management, and transactional financial workflows for creative studios.',
+    title: 'Project Workspace — ERP for Creative Studios',
+    tagline: 'Full-stack B2B SaaS · Project Operations · Financial Workflows',
     shortDescription:
-      'Full-stack ERP SaaS unifying CRM, Kanban project management, and atomic financial workflows with optimistic UI updates and edge role-based authorization.',
+      'An integrated B2B platform for CRM, project execution, time tracking, versioned assets and financial workflows—built around relational integrity, role-based access and transactional consistency.',
     overview:
-      'An ERP platform for creative studios that brings CRM, project management and financial workflows into one application. The system combines optimistic UI updates, middleware-based role authorization, transactional invoice generation and versioned asset management.',
-    category: 'Full-stack SaaS · Systems Architecture · Enterprise Workflows',
-    statusBadge: 'Completed (2026)',
+      'Project Workspace is a B2B SaaS platform designed for creative studios, including architecture, interior-design and game-development teams. It brings CRM, project execution, time tracking, asset versioning and financial workflows into a unified system, replacing fragmented workflows spread across spreadsheets, messaging tools and file-sharing platforms.',
+    category: 'Full-stack B2B SaaS · Project Operations · Financial Workflows',
+    statusBadge: 'Deployed & Live (2026)',
     featuredOrder: 1,
     tags: {
-      primary: ['Next.js 14', 'TypeScript', 'PostgreSQL', 'Prisma', 'TanStack Query', 'Zustand'],
-      secondary: ['Zero-Trust Edge RBAC', 'Optimistic UI', 'ACID Transactions', 'Immutable Vault'],
+      primary: ['Next.js 14', 'TypeScript', 'PostgreSQL', 'Prisma', 'TanStack Query'],
+      secondary: ['Neon', 'Zustand', 'Tailwind CSS', 'NextAuth.js', '@dnd-kit', 'Framer Motion'],
     },
     diagramType: 'erp',
     diagramCaption:
-      'Figure 1: Full-stack ERP architecture showing Next.js 14 client with optimistic TanStack Query cache, Edge Middleware RBAC, atomic Prisma transactions, and versioned asset vault.',
+      'Figure 1: Full-stack Project Workspace architecture showing multi-role browser clients, Next.js Edge Middleware RBAC, TanStack Query optimistic mutations, Prisma ACID transactions, and Neon PostgreSQL persistence.',
+    links: {
+      demo: 'https://project-studio-erp.vercel.app/',
+    },
+    metrics: [
+      {
+        label: 'Database Schema',
+        value: '14 Tables',
+        context: '14 normalized PostgreSQL tables with cascading foreign keys',
+      },
+      {
+        label: 'Perceived Latency',
+        value: 'Immediate UI',
+        context: 'Optimistic mutations with automated state rollback via TanStack Query v5',
+      },
+      {
+        label: 'Financial Pipeline',
+        value: 'Atomic ACID',
+        context: 'Prisma interactive transactions preventing partial writes & double-billing',
+      },
+      {
+        label: 'Perimeter Defense',
+        value: 'Edge RBAC',
+        context: 'Next.js Middleware validates JWT role claims before page rendering',
+      },
+    ],
+    techStack: [
+      {
+        layer: 'Application Framework',
+        technologies: 'Next.js 14 App Router',
+        details: 'Server Actions, Route Handlers, Edge Middleware, and React Server Components for minimal client-bundle overhead.',
+      },
+      {
+        layer: 'Language & Type System',
+        technologies: 'TypeScript',
+        details: 'End-to-end type safety spanning database models, server actions, API contracts, and client component props.',
+      },
+      {
+        layer: 'User Interface & Styling',
+        technologies: 'React, Tailwind CSS, shadcn/ui',
+        details: 'Accessible, component-driven design system with consistent design tokens, dark/light themes, and responsive layouts.',
+      },
+      {
+        layer: 'Animation & Motion',
+        technologies: 'Framer Motion',
+        details: 'Fluid micro-interactions, modal transitions, and the animated "Living Soul" entity login experience.',
+      },
+      {
+        layer: 'Database & Connection Pooling',
+        technologies: 'PostgreSQL on Neon',
+        details: 'Managed serverless PostgreSQL backend with IPv4-compatible connection pooling, supporting 14 normalized relational tables.',
+      },
+      {
+        layer: 'Object-Relational Mapping (ORM)',
+        technologies: 'Prisma ORM',
+        details: 'Type-safe query construction and interactive multi-table database transactions ($transaction) for ledger integrity.',
+      },
+      {
+        layer: 'Client & Server State',
+        technologies: 'Zustand, TanStack Query v5',
+        details: 'Zustand handles persistent client timers and active sessions; TanStack Query orchestrates server cache and optimistic updates.',
+      },
+      {
+        layer: 'Authentication & Session RBAC',
+        technologies: 'NextAuth.js with JWT Augmentation',
+        details: 'Role claims (SUPERADMIN, EMPLOYEE, CLIENT) embedded within session tokens for stateless edge and server validation.',
+      },
+      {
+        layer: 'Interaction & Drag-and-Drop',
+        technologies: '@dnd-kit',
+        details: 'Lightweight, accessible drag-and-drop toolkit powering responsive Kanban board status transitions.',
+      },
+      {
+        layer: 'Deployment & Edge Infrastructure',
+        technologies: 'Vercel',
+        details: 'Automated CI/CD pipelines deploying edge middleware and serverless compute with global CDN distribution.',
+      },
+    ],
+    modules: [
+      {
+        id: 'security-rbac',
+        title: 'Security and Role-Based Access Control (RBAC)',
+        badge: 'Edge Perimeter Defense',
+        description:
+          'Enforces granular access boundaries across administrative, operational, and external client roles through multi-layered defense.',
+        points: [
+          'Edge Perimeter Defense: Next.js Middleware inspects encrypted session cookies and evaluates role permissions before protected routes or server actions render.',
+          'SUPERADMIN Role: Unrestricted administrative access across studio operations—financial ledgers, billing rate configuration, CRM customer master, project allocations, and system audit logs.',
+          'EMPLOYEE Role: Scoped strictly to operational execution tools—task Kanban boards, sub-task status updates, and persistent time tracking. Direct access to financial ledgers and invoicing is restricted.',
+          'CLIENT Role: Restricted to an isolated external client portal, limited to the client\'s assigned projects, authorized deliverables, outstanding invoices, and simulated payment workflows.',
+          'Session Management & Defense in Depth: NextAuth.js utilizes JWT augmentation to propagate role data across requests without database lookups. Middleware serves as a first-line perimeter check, complemented by server action authorization checks.',
+        ],
+      },
+      {
+        id: 'crm-interaction-log',
+        title: 'CRM and Client Interaction Log',
+        badge: 'Customer Master Directory',
+        description:
+          'Centralizes customer intelligence and communications history directly within the operational data pipeline.',
+        points: [
+          'Customer Master Directory: Structured registry organizing client organizations, primary stakeholders, active contracts, and relationship statuses (Leads, Active Clients, Retainers, Inactive).',
+          'Touchpoint Interaction Log: Records documented historical interactions—Calls, Emails, and Meetings—linked directly to client account entities.',
+          'Contextual Relational Linkage: Touchpoints maintain timestamped notes, participant records, and follow-up items, ensuring sales and account context remains tied to downstream projects and invoices.',
+          'Unified Workflow: Eliminates data fragmentation across standalone spreadsheet logs and external sales tools by housing client intelligence in the primary PostgreSQL database.',
+        ],
+      },
+      {
+        id: 'project-hierarchy-engine',
+        title: 'Project Hierarchy Engine',
+        badge: '4-Level Relational Structure',
+        description:
+          'Structures complex multi-disciplinary studio deliverables into a four-level hierarchical execution tree.',
+        points: [
+          'Four-Level Relational Hierarchy: Project (contract/engagement) → Phase (milestone or sprint) → Task (actionable work unit) → Sub-task (atomic checklist item).',
+          'Automated Phase Promotion: When all tasks within a given phase are marked COMPLETED, the hierarchy engine automatically updates the parent phase status to COMPLETED.',
+          'Relational Consistency: Enforced via PostgreSQL foreign key constraints and cascading rules, preventing orphaned tasks and ensuring accurate phase rollup calculations.',
+          'Visual Milestone Tracking: Provides studio leads and project managers with real-time insight into completion percentages across nested task dependencies.',
+        ],
+      },
+      {
+        id: 'optimistic-kanban',
+        title: 'Optimistic Kanban Interface',
+        badge: 'Zero Perceived Latency',
+        description:
+          'Delivers instantaneous drag-and-drop task movements decoupled from network round trips.',
+        points: [
+          'Interaction Architecture: Combines @dnd-kit for accessible pointer and keyboard interaction with TanStack Query v5 for client cache mutations.',
+          'Immediate Perceived Response: When a user drags a task card across columns, the client UI updates instantly without waiting for the server round trip.',
+          'Asynchronous Persistence: The mutation triggers a background server action that updates task status and phase completion states in Neon PostgreSQL.',
+          'Automated Failure Rollback: If the server request fails or the network drops, TanStack Query catches the error, rolls back the client cache to the previous snapshot, and displays an informative notification.',
+        ],
+      },
+      {
+        id: 'persistent-time-tracking',
+        title: 'Persistent Time Tracking',
+        badge: 'Global Zustand Engine',
+        description:
+          'Provides uninterrupted, application-wide time tracking persisting through navigation and browser refreshes.',
+        points: [
+          'Global State Persistence: Implemented via a centralized Zustand store that maintains active timer state in local client storage, surviving page navigation and full browser reloads.',
+          'Billable vs. Non-Billable Classification: Enforces strict classification between billable client hours (linked to active project phases and hourly rates) and internal studio overhead.',
+          'Granular TimeEntry Records: Stopping a timer commits structured TimeEntry records directly into PostgreSQL, preserving duration, project phase linkage, and developer notes.',
+          'Direct Invoicing Ingestion: Unbilled time entries are automatically indexed for downstream invoice aggregation and client billing.',
+        ],
+      },
+      {
+        id: 'immutable-asset-vault',
+        title: 'Immutable Asset Vault',
+        badge: 'Non-Destructive Versioning',
+        description:
+          'Maintains non-destructive version history and complete audit trails for all creative assets and contract deliverables.',
+        points: [
+          'Non-Destructive Version Model: Uploading a revised deliverable generates a new immutable AssetVersion record rather than overwriting existing media files.',
+          'Complete Audit History: Every version record captures the uploading user ID, timestamp, sequential version identifier (v1.0, v1.1), and documented change rationale.',
+          'Deliverable Attribution: Enables studio leads and clients to inspect prior asset iterations, compare deliverable revisions, and maintain verifiable project records.',
+          'Contract Integrity: Protects design proposals, contract amendments, and final milestone assets from accidental modification or erasure.',
+        ],
+      },
+      {
+        id: 'financial-pipeline',
+        title: 'Financial Pipeline & Atomic Invoicing',
+        badge: 'Prisma ACID Transactions',
+        description:
+          'Guarantees ledger consistency and prevents double-billing through strict database transaction boundaries.',
+        points: [
+          'End-to-End Workflow: Operates in a strict sequence: Timer → TimeEntry → Invoice → Payment.',
+          'Automated Invoicing Server Action: Aggregates unbilled time entries for a project, calculates totals based on phase hourly multipliers, creates invoice records, and links all line items.',
+          'Prisma Interactive Transactions ($transaction): Executes invoice creation and time-entry status updates atomically within an explicit database transaction boundary.',
+          'Integrity Protection: Guarantees zero partial writes—if any invoice line fails to write, the entire transaction rolls back, preventing orphaned charges and double-billing.',
+          'Status Synchronization: Updates associated project accounts and balance ledgers to reflect newly committed invoice liabilities.',
+        ],
+      },
+      {
+        id: 'external-client-portal',
+        title: 'External Client Portal',
+        badge: 'Restricted External View',
+        description:
+          'Offers external studio clients a secure, isolated workspace to inspect deliverables and review billing.',
+        points: [
+          'Isolated Client Scope: External clients authenticate into a restricted portal view isolated from internal studio operational tools and employee metrics.',
+          'Milestone Transparency: Clients can review high-level project milestones, approved deliverables, and phase completion timelines.',
+          'Deliverable Download: Grants authenticated access to finalized, client-ready assets from the immutable vault.',
+          'Invoice Review & Payment Simulation: Clients inspect outstanding invoices and can trigger an interactive payment simulation to test settling accounts without live payment gateway processing.',
+        ],
+      },
+    ],
+    challenges: [
+      {
+        id: 'challenge-ipv4-ipv6',
+        title: 'IPv4 / IPv6 Database Connectivity in Serverless Deployment',
+        problem:
+          'During deployment to Vercel, the application frequently threw "Can\'t reach database server at..." timeout errors, despite executing perfectly in local development environments.',
+        diagnosis:
+          'Investigation revealed a cloud networking incompatibility between Vercel\'s serverless runtime environment (which relies on IPv4 outbound routing) and the upstream database provider\'s direct connection string (which resolved over IPv6).',
+        solution:
+          'Migrated the database persistence layer to Neon.tech. Neon provides a managed, serverless PostgreSQL architecture with native IPv4 connection pooling, eliminating the routing mismatch while offering instant branch provisioning.',
+        lesson:
+          'Cloud infrastructure networking—specifically protocol compatibility (IPv4 vs. IPv6) between serverless compute environments and database connection pools—must be verified early in deployment planning rather than assumed to mirror local development behavior.',
+      },
+      {
+        id: 'challenge-prisma-fallback',
+        title: 'Prisma Localhost Fallback Override in Production Builds',
+        problem:
+          'The production application built successfully but immediately crashed during initial database queries, reporting an unexpected connection attempt to "localhost:5432" in production logs.',
+        diagnosis:
+          'The Prisma client singleton initialization file contained an implicit fallback to a local connection string if an environment check evaluated to false during serverless container cold starts, inadvertently overriding the injected production DATABASE_URL.',
+        solution:
+          'Refactored Prisma client initialization to enforce explicit datasource configuration bound strictly to validated environment variables. Removed all implicit localhost defaults, introducing a strict initialization check that fails fast if the production database URL is undefined.',
+        lesson:
+          'Production database initialization must never incorporate silent local fallbacks. Explicit configuration validation ensures that deployment environments fail fast and visibly, preventing hard-to-trace connection failures in production runtimes.',
+      },
+      {
+        id: 'challenge-kanban-synchronization',
+        title: 'Kanban State Synchronization & Perceived Latency',
+        problem:
+          'Standard API-driven drag-and-drop interactions created perceptible UI stutter and delayed feedback while moving task cards across columns, frustrating studio users during high-velocity sprint planning.',
+        diagnosis:
+          'Waiting for the full HTTP round-trip and database write completion before reflecting card position changes introduced a 200–400ms delay between the physical drop action and visual feedback.',
+        solution:
+          'Implemented an optimistic cache mutation strategy using TanStack Query v5. The client cache immediately repositions the card upon drop, while a background server action updates PostgreSQL. If the server update fails, an automated rollback handler restores the previous snapshot and displays a contextual error notification.',
+        lesson:
+          'Decoupling perceived interaction speed from network round-trip latency creates desktop-grade application responsiveness, provided robust rollback mechanisms and transactional integrity protect the underlying data.',
+      },
+    ],
+    technicalFacts: [
+      {
+        label: 'Database Schema',
+        value: '14 Normalized Tables',
+        detail: 'Relational PostgreSQL schema with foreign keys, cascading deletes, and indexed query patterns.',
+      },
+      {
+        label: 'Codebase Verification',
+        value: 'Zero TypeScript / Lint Errors',
+        detail: 'Strict TypeScript compilation and clean ESLint verification reported at the time of the technical dossier.',
+      },
+      {
+        label: 'Production Deployment',
+        value: 'Vercel + Neon.tech',
+        detail: 'Global edge network and serverless functions paired with serverless PostgreSQL connection pooling.',
+      },
+      {
+        label: 'User Experience',
+        value: 'Living Soul Entity',
+        detail: 'Interactive, fluid login experience featuring an animated canvas entity responding to pointer interactions.',
+      },
+    ],
     sections: {
       problem: {
-        title: 'The Challenge: Fragmented Operations & Financial Integrity in Creative Studios',
+        title: 'The Challenge: Operational Fragmentation & Financial Integrity in Creative Studios',
         content: [
-          'Creative studios routinely struggle with fractured software stacks, juggling standalone CRM tools, disparate Kanban boards, and detached invoicing software.',
-          'This fragmentation leads to data desynchronization, double-billing, and race conditions during high-volume invoice creation, as well as unauthorized access across studio tiers when permissions are only checked after deep database queries.',
-          'The objective was to architect a unified, production-grade SaaS ERP platform that integrates CRM, project management, and billing workflows into a single system with uncompromising transactional integrity and instant user responsiveness.',
+          'Creative studios—including architecture practices, interior-design consultancies, and game-development teams—routinely grapple with fragmented software ecosystems. Project managers coordinate deliverables in standalone Kanban tools, creatives track billable hours in personal spreadsheets, and finance teams generate invoices in isolated accounting software.',
+          'This fragmentation breeds systemic operational risks: unbilled billable hours slip through tracking cracks, task status changes in Kanban boards fail to sync with phase completion milestones, and manual invoice generation risks double-billing or partial ledger writes.',
+          'Furthermore, naive authorization architectures that only check user roles after loading application dashboards expose confidential financial ledgers and sensitive client deliverables to junior team members and external stakeholders.',
+          'The objective was to architect Project Workspace as a unified, production-grade B2B SaaS platform that consolidates CRM, hierarchical project execution, persistent time tracking, non-destructive asset versioning, and transactional billing into an integrated system characterized by uncompromising transactional consistency and instantaneous user responsiveness.',
         ],
       },
       approach: {
         title: 'System Architecture & Core Engineering Modules',
         content: [
-          'The application is engineered as an end-to-end full-stack SaaS platform using Next.js 14 with TypeScript, backed by PostgreSQL and Prisma ORM, utilizing client-side optimistic caching and edge security.',
+          'Project Workspace is architected as an end-to-end full-stack SaaS platform built on Next.js 14 with TypeScript, backed by PostgreSQL on Neon and Prisma ORM, utilizing client-side optimistic caching and edge-level perimeter security.',
         ],
         subsections: [
           {
-            subtitle: '1. Full-Stack SaaS Platform (CRM, Projects & Finance)',
+            subtitle: '1. Multi-Tier Security & Edge RBAC',
             points: [
-              'Developed a unified multi-tenant architecture designed to manage the full studio lifecycle from initial lead capture through project delivery and client invoicing.',
-              'Consolidated client pipelines, milestone tracking, and ledger records into a normalized relational PostgreSQL schema.',
+              'Architected a perimeter access control model using Next.js Middleware that intercepts incoming requests and evaluates JWT claims at the network edge before protected routes or server actions render.',
+              'Enforces strict role boundaries: SUPERADMIN has unrestricted access across studio ledgers and system settings; EMPLOYEE is scoped strictly to operational tools (Kanban, sub-tasks, time tracking); and CLIENT is quarantined to an isolated portal for authorized project milestones, deliverables, and simulated payments.',
+              'Augments NextAuth.js session tokens with role data, pairing edge middleware verification with secondary server action authorization checks for defense in depth.',
             ],
           },
           {
-            subtitle: '2. Optimistic UI Updates with TanStack Query',
+            subtitle: '2. Project Hierarchy & Automated Phase Progression',
             points: [
-              'Implemented optimistic UI updates using TanStack Query and Zustand for drag-and-drop Kanban board interactions.',
-              'The UI updates optimistically upon user action rather than waiting for the entire network round trip, with automated rollback handlers restoring previous state if server validation fails.',
+              'Structured deliverables into a four-level relational tree: Project → Phase → Task → Sub-task, providing clear granularity from client contracts down to atomic work units.',
+              'Engineered an automated lifecycle trigger: when all tasks in a phase reach COMPLETED status, the hierarchy engine automatically updates the parent Phase status to COMPLETED.',
+              'Enforced referential integrity and cascading rules via PostgreSQL constraints, preventing orphan records and ensuring accurate completion rollups.',
             ],
           },
           {
-            subtitle: '3. Zero-Trust Edge RBAC (Role-Based Access Control)',
+            subtitle: '3. Optimistic Kanban with TanStack Query v5',
             points: [
-              'Architected a role-based access-control system using Next.js Middleware to enforce access restrictions at the network edge.',
-              'Evaluates session tokens and permission claims before requests reach application routes or database pools, safeguarding administrative financial ledgers and studio assets.',
+              'Paired @dnd-kit with TanStack Query v5 to deliver instant drag-and-drop feedback that updates the UI immediately upon drop, eliminating perceived network latency.',
+              'Implemented automated rollback handlers that restore the prior cache snapshot and alert the user if the downstream server action or database mutation encounters an error.',
             ],
           },
           {
-            subtitle: '4. Transactional Financial Workflows with Prisma',
+            subtitle: '4. Persistent Time Tracking with Zustand',
             points: [
-              'Implemented an atomic financial pipeline using Prisma transactions to protect data integrity during invoice generation.',
-              'Enforces ACID guarantees across multi-table writes, preventing partial writes and double-billing when calculating project retainers, milestone billables, and taxes.',
+              'Built a global timer module in Zustand that persists active time tracking state in local client storage across page navigation and browser reloads.',
+              'Enforced a clear distinction between billable client hours (linked to projects and hourly rate multipliers) and internal non-billable studio overhead.',
+              'Persists structured TimeEntry records directly into PostgreSQL, primed for automated invoice generation.',
             ],
           },
           {
             subtitle: '5. Non-Destructive Asset Vault & Immutable Versioning',
             points: [
-              'Implemented a non-destructive asset vault with immutable versioning, enabling audit trails for project deliverables and contract revisions.',
-              'Allows team members to inspect historical asset iterations without destructive overwrites, maintaining clear change attribution.',
+              'Designed an immutable AssetVersion model where every upload creates a new sequential version record rather than destructively overwriting previous deliverables.',
+              'Preserves complete audit trails capturing uploader identity, upload timestamp, sequential version numbers (v1.0, v1.1), and documented change rationale.',
+              'Guarantees full historical accountability for design iterations, client sign-offs, and contract revisions.',
+            ],
+          },
+          {
+            subtitle: '6. Atomic Financial Pipeline with Prisma Transactions',
+            points: [
+              'Engineered an automated invoicing server action that executes in an atomic sequence: Timer → TimeEntry → Invoice → Payment.',
+              'Aggregates all unbilled time entries for a project, calculates line totals using phase hourly rates, generates invoice records, and marks time entries as billed within a single Prisma interactive transaction ($transaction).',
+              'Guarantees ACID consistency across all relational writes, preventing partial writes, orphaned invoice lines, and double-billing.',
             ],
           },
         ],
       },
       architecture: {
-        title: 'Engineering Focus: Transactional Consistency & Edge Authorization',
+        title: 'Engineering Focus: Relational Integrity, State Decoupling & Edge Defense',
         content: [
-          'A key architectural challenge was preventing partial financial writes during concurrent invoice generation. Studio billing requires calculating complex milestone fees, hourly rate multipliers, and tax entries across multiple relational tables simultaneously.',
-          'By leveraging Prisma interactive transactions ($transaction), all invoice line items, client balances, and payment records commit atomically or roll back completely upon error, eliminating orphan records and double-billing.',
-          'Simultaneously, executing role-based authorization at the Next.js Middleware layer enforces strict security boundaries at the edge before request execution consumes downstream server or database capacity.',
+          'A central architectural challenge in B2B enterprise software is maintaining transactional integrity while providing fluid, responsive client interactions. In studio operations, financial and project records cannot tolerate desynchronization: an invoice generated from billable time must atomically link every time entry to prevent duplicate billing, and status updates on nested tasks must accurately cascade through parent phases.',
+          'By leveraging Prisma interactive transactions ($transaction), all multi-table operations—spanning client balances, invoice headers, line items, and time entry state transitions—either commit completely or roll back atomically upon error, guaranteeing ACID consistency without orphaned records.',
+          'Simultaneously, the user experience decouples user interactions from network latency. Drag-and-drop Kanban updates mutate the TanStack Query cache optimistically, providing instant perceived feedback while asynchronous server actions reconcile state in the background.',
+          'At the perimeter, Next.js Edge Middleware evaluates JWT role claims before requests hit serverless functions or database connection pools, stopping unauthorized traffic at the edge and protecting sensitive studio financials.',
         ],
       },
       decisions: {
         title: 'Key Engineering Decisions & Trade-Offs',
         content: [
-          'Optimistic UI vs. Pessimistic Waiting: Chose optimistic mutations via TanStack Query to give the Kanban board instant tactile responsiveness, accepting the requirement to implement strict error rollback logic.',
-          'Prisma Interactive Transactions: Wrapped all invoice creation and billing workflows in explicit database transactions to guarantee ledger consistency over raw write speed.',
-          'Edge Middleware Security: Enforced RBAC at the edge middleware level rather than inside per-route handlers, centralizing security policy and stopping unauthorized requests before backend execution.',
+          'Optimistic UI vs. Pessimistic Waiting: Chose optimistic cache updates via TanStack Query v5 to deliver instant, fluid drag-and-drop responsiveness, accepting the engineering overhead of implementing robust cache snapshotting and rollback handlers for error scenarios.',
+          'Prisma Interactive Transactions: Wrapped all invoicing workflows in explicit database transactions ($transaction) to enforce ledger consistency and eliminate double-billing, prioritizing transactional correctness over uncoordinated asynchronous writes.',
+          'Perimeter Edge RBAC: Enforced role-based access control at the Next.js Middleware layer rather than solely inside individual page handlers, preventing unauthorized requests from consuming downstream serverless compute and database connection resources.',
+          'Zustand for Global Timer: Implemented time tracking in a dedicated Zustand store with client-side persistence, ensuring the timer continues uninterrupted across page transitions without triggering unnecessary React tree re-renders.',
+          'Neon Serverless PostgreSQL: Migrated to Neon.tech to resolve IPv4/IPv6 compatibility friction on Vercel, benefiting from managed serverless connection pooling suited for bursty web application traffic.',
         ],
       },
       limitations: {
         title: 'Known Constraints & Boundary Conditions',
         content: [
-          'Concurrent Multi-User Conflict Resolution: While optimistic UI handles single-client actions smoothly, simultaneous edits on the same task rely on server timestamp last-write-wins resolution.',
-          'Asset Versioning Storage: The immutable vault preserves complete version histories, requiring scheduled archival policies for high-resolution media deliverables.',
+          'Concurrent Multi-User Conflict Resolution: In high-concurrency environments where multiple project managers move the same task simultaneously, the system relies on timestamp-based last-write-wins resolution rather than operational transformation or CRDTs.',
+          'Simulated Client Payment: The external client portal implements an interactive payment simulation for testing invoice settlement workflows; it does not connect to live commercial payment processors (e.g., Stripe or Razorpay).',
+          'Asset Storage Scaling: The immutable vault preserves all historical revisions in relational records; high-volume production deployments with large 3D assets or 4K video renders require lifecycle archival policies on cold storage buckets.',
         ],
       },
       lessons: {
         title: 'Key Takeaways & Engineering Lessons',
         content: [
-          'Transactional boundaries are foundational: Designing financial pipelines with atomic rollbacks is critical for preventing corrupt states that no client-side validation can fix.',
-          'Perceived speed elevates user experience: Optimistic UI updates dramatically reduce cognitive friction on data-intensive dashboards by decoupling user action from network latency.',
+          'Transactional boundaries are foundational: In financial and time-tracking workflows, client-side validation is insufficient. Atomic database transactions are essential for preventing corrupt states and double-billing that cannot be unwound retroactively.',
+          'Perceived speed defines user experience: Data-dense enterprise dashboards feel dramatically faster and more professional when user actions trigger optimistic mutations, decoupling visual feedback from network round trips.',
+          'Infrastructure networking demands early validation: Cloud deployment compatibility—such as IPv4 versus IPv6 routing between serverless runtimes and database hosts—must be tested early in the development lifecycle to avoid deployment-time blockers.',
         ],
       },
     },
