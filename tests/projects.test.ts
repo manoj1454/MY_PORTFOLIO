@@ -67,7 +67,7 @@ test('Project data integrity', async (t) => {
     assert.ok(xypher.tags.primary.includes('Polygon Amoy'));
     assert.ok(xypher.tags.primary.includes('Solidity'));
     assert.ok(xypher.tags.primary.includes('IPFS'));
-    assert.equal(xypher.links?.demo, 'https://digi-cirtificate-verification.vercel.app/company');
+    assert.equal(xypher.links?.demo, 'https://digi-cirtificate-verification.vercel.app/');
     assert.equal(xypher.links?.github, 'https://github.com/manoj1454/Digi-cirtificate-verification');
   });
 

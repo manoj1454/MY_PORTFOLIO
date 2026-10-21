@@ -385,7 +385,7 @@ export const projects: Project[] = [
     diagramCaption:
       'Figure 2: XYPHER architecture illustrating multi-role access portals, local SHA-256 document hashing, Pinata IPFS decentralized storage, EVM smart contracts (Registry & CertificateRegistry), and employer verification.',
     links: {
-      demo: 'https://digi-cirtificate-verification.vercel.app/company',
+      demo: 'https://digi-cirtificate-verification.vercel.app/',
       github: 'https://github.com/manoj1454/Digi-cirtificate-verification',
     },
     metrics: [
