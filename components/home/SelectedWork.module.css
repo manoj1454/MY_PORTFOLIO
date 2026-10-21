@@ -1,29 +1,28 @@
 .editorialWorkList {
   display: flex;
   flex-direction: column;
-  gap: 5.5rem;
+  gap: clamp(3.5rem, 6vw, 5.5rem);
 }
 
 .caseStudyBlock {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 2.5rem;
+  gap: 1.75rem;
   align-items: start;
   position: relative;
+  width: 100%;
 }
 
-@media (max-width: 959px) {
-  .editorialWorkList {
-    gap: 3.5rem;
-  }
-
+@media (max-width: 767px) {
   .caseStudyBlock .paperCard {
     order: 1;
-    padding: clamp(1.4rem, 5vw, 2.25rem) clamp(1.15rem, 4.5vw, 1.85rem);
+    width: 100%;
+    padding: clamp(1.5rem, 5vw, 2.25rem) clamp(1.25rem, 4.5vw, 1.85rem);
   }
 
   .caseStudyBlock .instrumentViewport {
     order: 2;
+    width: 100%;
   }
 
   .paperCtaRow {
@@ -31,27 +30,61 @@
   }
 }
 
-@media (min-width: 960px) {
+@media (min-width: 768px) and (max-width: 1023px) {
   .caseStudyBlock {
-    grid-template-columns: 1.15fr 0.85fr;
-    gap: 3.5rem;
+    grid-template-columns: 1.25fr 1fr;
+    gap: 1.75rem;
   }
 
   .caseStudyBlock .paperCard,
   .caseStudyBlock .instrumentViewport {
     order: initial;
+    width: 100%;
   }
 
   .blockReversed {
-    grid-template-columns: 0.85fr 1.15fr;
+    grid-template-columns: 1fr 1.25fr;
   }
 
   .blockWelding {
-    grid-template-columns: 0.85fr 1.15fr;
+    grid-template-columns: 1.25fr 1fr;
   }
 
   .blockMovie {
-    grid-template-columns: 1.25fr 0.75fr;
+    grid-template-columns: 1.25fr 1fr;
+  }
+
+  .paperCard {
+    padding: 1.85rem 1.65rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .caseStudyBlock {
+    grid-template-columns: 1.35fr 1fr;
+    gap: clamp(2rem, 2.5vw, 2.5rem);
+  }
+
+  .caseStudyBlock .paperCard,
+  .caseStudyBlock .instrumentViewport {
+    order: initial;
+    width: 100%;
+  }
+
+  .blockReversed {
+    grid-template-columns: 1fr 1.35fr;
+  }
+
+  .blockWelding {
+    grid-template-columns: 1.35fr 1fr;
+  }
+
+  .blockMovie {
+    grid-template-columns: 1.35fr 1fr;
+  }
+
+  .paperCard {
+    padding: clamp(2.25rem, 3.2vw, 3rem) clamp(2rem, 3vw, 2.75rem);
   }
 }
 

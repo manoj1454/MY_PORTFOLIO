@@ -23,8 +23,8 @@
 
 @media (min-width: 860px) {
   .categoryRow {
-    grid-template-columns: 1fr 1.6fr;
-    gap: 3.5rem;
+    grid-template-columns: 320px 1fr;
+    gap: 3rem;
   }
 }
 
@@ -66,6 +66,12 @@
 @media (min-width: 560px) {
   .itemsGrid {
     grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1080px) {
+  .itemsGrid {
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 
