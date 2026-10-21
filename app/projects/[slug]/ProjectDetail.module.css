@@ -378,6 +378,29 @@
   color: #ffffff;
 }
 
+.githubBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.625rem 1.25rem;
+  border-radius: var(--radius-md);
+  background-color: var(--surface-raised);
+  border: 1px solid var(--border-quiet);
+  color: var(--text-main);
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all var(--transition-fast);
+}
+
+.githubBtn:hover {
+  background-color: var(--surface-higher);
+  border-color: var(--border-subtle);
+  transform: translateY(-1px);
+  color: var(--accent-primary);
+}
+
 .metricsGrid {
   display: grid;
   grid-template-columns: 1fr;

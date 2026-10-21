@@ -61,12 +61,14 @@ test('Project data integrity', async (t) => {
     assert.ok(erp.tags.primary.includes('TanStack Query'));
   });
 
-  await t.test('XYPHER project includes required blockchain technologies', () => {
+  await t.test('XYPHER project includes required blockchain technologies and verified links', () => {
     const xypher = getProjectBySlug('xypher');
     assert.ok(xypher, 'XYPHER project should exist');
     assert.ok(xypher.tags.primary.includes('Polygon Amoy'));
     assert.ok(xypher.tags.primary.includes('Solidity'));
     assert.ok(xypher.tags.primary.includes('IPFS'));
+    assert.equal(xypher.links?.demo, 'https://digi-cirtificate-verification.vercel.app/company');
+    assert.equal(xypher.links?.github, 'https://github.com/manoj1454/Digi-cirtificate-verification');
   });
 
   await t.test('Medical response verification project includes clinical disclaimer', () => {

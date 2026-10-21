@@ -368,98 +368,299 @@ export const projects: Project[] = [
   },
   {
     slug: 'xypher',
-    title: 'XYPHER — Blockchain-Based Credential Verification Platform',
-    tagline: 'A decentralized credential platform verifying document integrity, issuer legitimacy, and revocation status on Polygon Amoy.',
+    title: 'XYPHER — Blockchain Credential Verification Platform',
+    tagline: 'A decentralized credential verification platform combining SHA-256 fingerprinting, IPFS storage, and EVM smart contracts with institutional accreditation tracking.',
     shortDescription:
-      'Layered verification ecosystem combining SHA-256 cryptographic hashing with Polygon Amoy smart contracts and IPFS to verify document integrity and issuer legitimacy.',
+      'Decentralized credential verification platform featuring role-segregated portals, Pinata IPFS document storage, Polygon Amoy smart contracts, and sub-second employer verification.',
     overview:
-      'XYPHER is a blockchain-based credential verification platform that combines cryptographic document fingerprints, decentralized storage, controlled certificate issuance and revocation tracking to help employers verify credential integrity and issuer legitimacy.',
+      'XYPHER is a decentralized credential verification platform designed to combat academic and professional qualification fraud. It provides role-segregated interfaces for educational regulators, issuing institutions, credential recipients, and corporate employers. By strictly partitioning concerns between off-chain content-addressed storage (IPFS via Pinata) and on-chain state verification (Solidity smart contracts on Polygon Amoy), the platform enables third-party employers to cryptographically verify document integrity, issuing authority legitimacy, and revocation status without exposing private student records on public ledgers.',
     category: 'Decentralized Platform · Blockchain · Cryptographic Verification',
-    statusBadge: 'Completed (2026)',
+    statusBadge: 'Deployed & Live (2026)',
     featuredOrder: 2,
     tags: {
-      primary: ['React', 'Node.js', 'Solidity', 'Polygon Amoy', 'IPFS', 'Supabase'],
-      secondary: ['Smart Contracts', 'Pinata', 'SHA-256', 'Dual-Approval Issuance'],
+      primary: ['React 19', 'Node.js', 'Solidity', 'Polygon Amoy', 'IPFS', 'Supabase'],
+      secondary: ['Express', 'Ethers.js', 'Pinata', 'Neon PostgreSQL', 'Hardhat', 'Dual-Approval Issuance'],
     },
     diagramType: 'credentials',
     diagramCaption:
-      'Figure 2: XYPHER architecture illustrating dual-approval credential issuance, local SHA-256 fingerprinting, IPFS storage, Polygon Amoy on-chain registry, and employer verification with revocation tracking.',
-    sections: {
-      problem: {
-        title: 'The Challenge: Credential Fraud, Document Tampering & Unverified Issuers',
-        content: [
-          'Academic and professional credential fraud undermines hiring trust and institutional integrity worldwide. Conventional PDF credentials can be forged or modified using standard digital tools.',
-          'Furthermore, naive blockchain verification systems often only test whether a document hash exists on-chain, failing to verify whether the issuing institution possessed legitimate accreditation and authority at the time of issuance.',
-          'The objective was to construct a layered verification ecosystem that independently verifies two critical factors: whether a credential document has preserved its integrity since issuance, and whether the issuing body was legitimate, while enabling ongoing revocation management.',
+      'Figure 2: XYPHER architecture illustrating multi-role access portals, local SHA-256 document hashing, Pinata IPFS decentralized storage, EVM smart contracts (Registry & CertificateRegistry), and employer verification.',
+    links: {
+      demo: 'https://digi-cirtificate-verification.vercel.app/company',
+      github: 'https://github.com/manoj1454/Digi-cirtificate-verification',
+    },
+    metrics: [
+      {
+        label: 'Verification Query',
+        value: '< 1s Latency',
+        context: 'Sub-second public verification query via indexed hash lookup',
+      },
+      {
+        label: 'Ledger Privacy',
+        value: 'Zero PDF On-Chain',
+        context: 'Off-chain IPFS content addressing; only 32-byte SHA-256 hashes committed to EVM',
+      },
+      {
+        label: 'Accreditation Gating',
+        value: 'Dual-Layer Check',
+        context: 'Simultaneously validates document digest and regulatory issuer standing',
+      },
+      {
+        label: 'Issuance Governance',
+        value: 'Dual-Approval',
+        context: 'Registrar drafting paired with administrative signing prevents rogue minting',
+      },
+    ],
+    techStack: [
+      {
+        layer: 'Application Framework & Client',
+        technologies: 'React 19, Vite 8, React Router DOM v7',
+        details: 'Role-segregated web applications (/company, /regulator, /institution, /student) with Three.js 3D Ledger Matrix visualization and Lenis smooth scrolling.',
+      },
+      {
+        layer: 'Backend API & Gateway',
+        technologies: 'Node.js & Express 4',
+        details: 'REST gateway handling credential pipelines, in-memory %PDF magic byte validation via Multer, and express-rate-limit perimeter protection (30 req/min per IP).',
+      },
+      {
+        layer: 'Decentralized File Storage',
+        technologies: 'IPFS via Pinata SDK (@pinata/sdk)',
+        details: 'High-durability content-addressed storage for diploma and transcript PDFs, ensuring confidential student records remain off public blockchains.',
+      },
+      {
+        layer: 'Smart Contracts & State Consensus',
+        technologies: 'Solidity (^0.8.20), OpenZeppelin v5, Hardhat',
+        details: 'Registry.sol tracks institutional accreditation authority (isAccredited); CertificateRegistry.sol anchors SHA-256 hashes, authorized issuer IDs, and revocation timestamps.',
+      },
+      {
+        layer: 'Ledger Deployment',
+        technologies: 'Polygon Amoy Testnet & Local Hardhat Node',
+        details: 'EVM-compatible cryptographic hash commits with low gas overhead and predictable transaction finality.',
+      },
+      {
+        layer: 'Authentication & Relational Database',
+        technologies: 'Supabase Auth, Neon PostgreSQL',
+        details: 'JWT bearer token sessions with role claims; relational metadata storage and verification_logs audit trail with Row Level Security (RLS).',
+      },
+      {
+        layer: 'Client Cryptography & Reporting',
+        technologies: 'Web Crypto API (SHA-256), html5-qrcode, jsPDF',
+        details: 'Client-side SHA-256 document hashing, device camera QR scanning for rapid verification, and automated HR audit report PDF generation.',
+      },
+    ],
+    modules: [
+      {
+        id: 'company-portal',
+        title: 'Company & Employer Verification Portal (/company)',
+        badge: 'Zero-Trust Audit',
+        description:
+          'Provides corporate human resources and background-check teams with rapid, verifiable credential validation without requiring institutional accounts.',
+        points: [
+          'Single-Query & QR Code Verification: Verifiers can manually enter candidate Credential IDs or scan dynamic QR codes using device cameras via html5-qrcode.',
+          'Four Deterministic Verification Outcomes: Classifies results into VALID (authentic and accredited), REVOKED (institution cancelled credential), UNACCREDITED (issuer accreditation suspended by regulator), or NOT_FOUND (unregistered on ledger).',
+          'Direct IPFS Transcript Inspection: For legitimate credentials, verifiers can inspect original immutable transcript PDFs resolved directly from Pinata IPFS gateways.',
+          'Automated HR Audit Reporting: In-browser PDF generation via jsPDF compiling verification timestamps, issuer accreditation history, and SHA-256 cryptographic digests for HR compliance files.',
+          'Compliance Verification Trail: Every verification lookup records non-blocking audit entries in the Neon PostgreSQL verification_logs table for institutional auditability.',
         ],
       },
-      approach: {
-        title: 'Decentralized Architecture & Layered Verification Ecosystem',
-        content: [
-          'XYPHER resolves these challenges through a hybrid architecture combining off-chain decentralized storage, on-chain smart contracts on the Polygon Amoy testnet, and a dual-approval administrative issuance workflow.',
-        ],
-        subsections: [
-          {
-            subtitle: '1. Layered Credential Verification',
-            points: [
-              'Built a layered verification ecosystem designed to combat credential fraud by combining SHA-256 cryptographic hashing with blockchain-backed records.',
-              'Addresses both core goals clearly: verifying that a credential document has remained unaltered since issuance, and verifying the regulatory legitimacy of the issuing institution.',
-            ],
-          },
-          {
-            subtitle: '2. Decentralized Document Storage (IPFS / Pinata)',
-            points: [
-              'Designed a decentralized storage strategy using IPFS and Pinata for content-addressed credential transcript storage.',
-              'Only cryptographic fingerprints and verifiable hashes are recorded on-chain to optimize gas costs on Polygon Amoy and support document privacy, ensuring sensitive transcript contents remain off public ledgers.',
-            ],
-          },
-          {
-            subtitle: '3. Multi-Role Authorization & Dual-Approval Workflow',
-            points: [
-              'Implemented a multi-role authorization workflow with a dual-approval issuance process designed to prevent unauthorized certificate creation.',
-              'Requires institutional registrar signing alongside departmental verification before a certificate hash can be committed to the blockchain registry.',
-            ],
-          },
-          {
-            subtitle: '4. Blockchain-Based Credential Revocation Registry',
-            points: [
-              'Integrated a blockchain-based revocation registry that allows institutions to cancel credentials and enables third-party employers to verify their status.',
-              'Guarantees that credential standing can be queried and audited after issuance, ensuring revoked credentials cannot be presented as valid.',
-            ],
-          },
+      {
+        id: 'regulator-governance',
+        title: 'Regulatory Accreditation & Governance Engine (/regulator)',
+        badge: 'Accreditation Authority',
+        description:
+          'Enforces governmental and educational oversight by maintaining active accreditation registries across academic institutions.',
+        points: [
+          'Accreditation State Management: Regulators review university compliance applications and execute on-chain accreditation approvals via Registry.sol.',
+          'Immediate Fraud Invalidation: If an institution loses operational accreditation, regulators toggle accreditation status to false, instantly reflecting across all downstream verification checks.',
+          'Decoupled Revocation Semantics: Differentiates between a student credential being revoked (e.g., honor code violation) and an entire institution losing regulatory standing.',
+          'Audit Oversight Dashboard: Tracks aggregate system metrics including registered universities, pending institutional approvals, and issuance volume.',
         ],
       },
-      architecture: {
-        title: 'Engineering Focus: Gas Optimization & Privacy Preservation',
-        content: [
-          'Storing entire certificate documents on a public blockchain is both cost-prohibitive and violates user privacy. XYPHER strictly partitions concerns: document files are stored in decentralized content-addressed storage (IPFS via Pinata), while only a 32-byte cryptographic SHA-256 hash is committed to the Solidity contract on Polygon Amoy.',
-          'During employer verification, the candidate document is hashed in-browser using SHA-256. The hash is queried against the Polygon Amoy registry to confirm that the fingerprint matches, that the issuing wallet was an authorized institutional signer, and that the credential has not been flagged in the revocation registry.',
+      {
+        id: 'institution-issuance',
+        title: 'Dual-Approval Credential Issuance Subsystem (/institution)',
+        badge: 'Multi-Role Authorization',
+        description:
+          'Prevents rogue or unauthorized certificate creation by requiring multi-tier administrative workflows before committing hashes to the blockchain.',
+        points: [
+          'Document Sanitization & Magic Byte Validation: Validates incoming PDF transcripts against %PDF magic bytes to prevent malformed or malicious file uploads.',
+          'Two-Tier Authorization: Academic registrars draft candidate records, which must receive secondary administrative authorization before cryptographic signing.',
+          'Pinata IPFS Pinning Pipeline: Uploads validated PDF transcripts to Pinata IPFS cluster, obtaining immutable content-addressed CIDs.',
+          'On-Chain Hash Anchoring: Computes SHA-256 digests and invokes issueCertificateOnChain() to anchor the 32-byte digest, student ID, and issuer wallet to CertificateRegistry.sol.',
         ],
       },
-      decisions: {
-        title: 'Key Engineering Decisions & Trade-Offs',
-        content: [
-          'Cryptographic Fingerprints On-Chain vs. Document Storage: Committing only 32-byte hashes to Polygon Amoy keeps transaction costs minimal and predictable while preserving document confidentiality.',
-          'Dual-Approval Administrative Controls: Required two-tier authorized signing to prevent single-point-of-failure credential issuance.',
-          'Polygon Amoy Testnet Deployment: Selected Polygon Amoy for fast block finality, Ethereum Virtual Machine (EVM) compatibility, and low transaction overhead.',
-        ],
-      },
-      limitations: {
-        title: 'Known Constraints & Boundary Conditions',
-        content: [
-          'Network Block Finality: Write operations (credential issuance and revocation status changes) are subject to Polygon Amoy block confirmation latency.',
-          'IPFS Pinning Availability: Decentralized document retrieval relies on active IPFS pinning via Pinata; persistence requires maintained pinning infrastructure.',
-        ],
-      },
-      lessons: {
-        title: 'Key Takeaways & Engineering Lessons',
-        content: [
-          'Document integrity alone is not proof of legitimacy: Checking that a file was unaltered is meaningless if the issuer lacked legal authority to confer the credential. Validating issuer legitimacy is as vital as the cryptographic digest.',
-          'Public blockchains require privacy-first architecture: Public ledgers should record verifiable proofs and cryptographic fingerprints, never unencrypted personal records.',
-        ],
-      },
+      {
+        id: 'student-vault',
+        title: 'Student Credential Vault & Self-Sovereign Access (/student)',
+        badge: 'Recipient Sovereignty',
+        description:
+          'Empowers graduates to manage and prove their academic credentials without recurring institutional requests or paper handling fees.',
+      points: [
+        'Decentralized Portfolio: Graduates log in to access issued degrees, diplomas, and official transcript records tied to their identity.',
+        'Cryptographic Integrity Check: Students can verify their document SHA-256 hash against the on-chain ledger in real time.',
+        'Dynamic QR Code Sharing: Generates cryptographically verifiable QR codes that graduates can place on resumes or LinkedIn profiles for instant employer auditing.',
+        'Immutable Document Download: Direct access to cryptographically stamped, watermarked PDF certificates retrieved from IPFS gateways.',
+      ],
+    },
+  ],
+  challenges: [
+    {
+      id: 'privacy-gas-separation',
+      title: 'Balancing Public Ledger Transparency with Student PII Privacy',
+      problem:
+        'Storing full diploma PDF files or plaintext student transcripts directly on a public blockchain ledger incurs massive gas fees and publicly exposes protected student educational records.',
+      diagnosis:
+        'Public EVM testnets and mainnets make all transaction input data permanently readable by any third party. Committing large binary files also degrades block propagation speed.',
+      solution:
+        'Architected strict separation of concerns: full transcript documents are pinned to decentralized content-addressed storage (IPFS via Pinata), while only a 32-byte SHA-256 cryptographic digest is committed to CertificateRegistry.sol.',
+      lesson:
+        'Public blockchains should function strictly as decentralized integrity and authorization anchors, keeping relational assets and sensitive PII off-chain.',
+    },
+    {
+      id: 'issuer-authority-gating',
+      title: 'Distinguishing Document Integrity from Institutional Legitimacy',
+      problem:
+        'Naive blockchain verification systems only test whether a document hash matches on-chain records, which fails to detect credentials minted by rogue or unaccredited entities.',
+      diagnosis:
+        'A cryptographic hash only proves a file has not changed since recording; it does not prove the issuing organization had legitimate regulatory authority to grant degrees.',
+      solution:
+        'Designed a dual-contract architecture: CertificateRegistry.sol invokes Registry.sol to verify that the issuer holds active isAccredited standing. If the regulator suspends the university, employer lookups immediately return UNACCREDITED even if the document hash is authentic.',
+      lesson:
+        'Cryptographic proof of immutability is worthless without verified proof of institutional authority at the governance layer.',
+    },
+    {
+      id: 'public-api-defense',
+      title: 'Defending Public Verification Endpoints from Automated Scrapes',
+      problem:
+        'Public verifier endpoints without rate limiting are vulnerable to denial-of-service floods, RPC rate exhaustion, and database connection depletion.',
+      diagnosis:
+        'Because corporate verifiers need friction-free lookups without tedious CAPTCHA barriers, open GET endpoints can easily be targeted by scrapers.',
+      solution:
+        'Implemented express-rate-limit configured for 30 requests per minute per client IP on the public verification router, paired with asynchronous non-blocking logging to the Neon PostgreSQL verification_logs table.',
+      lesson:
+        'Public enterprise APIs must enforce defense-in-depth perimeter rate limiting while maintaining sub-second query performance for legitimate users.',
+    },
+  ],
+  technicalFacts: [
+    {
+      label: 'Client Architecture',
+      value: 'React 19 + Vite',
+      detail: 'Modular role-segregated portals with Three.js 3D Ledger Matrix visualization',
+    },
+    {
+      label: 'Verifier Portal',
+      value: '/company Route',
+      detail: 'Manual ID lookup & html5-qrcode camera scanning with 4 outcome states',
+    },
+    {
+      label: 'Smart Contracts',
+      value: 'Solidity 0.8.20',
+      detail: 'Registry.sol (Accreditation) & CertificateRegistry.sol (Hash Anchors)',
+    },
+    {
+      label: 'Ledger Network',
+      value: 'Polygon Amoy',
+      detail: 'EVM-compatible gas-optimized network & local Hardhat dev node',
+    },
+    {
+      label: 'Document Storage',
+      value: 'Pinata IPFS',
+      detail: 'Content-addressed off-chain transcript PDFs preserving candidate privacy',
+    },
+    {
+      label: 'Database & Auth',
+      value: 'Supabase + Neon',
+      detail: 'JWT bearer token sessions, Row Level Security, and verification audit trail',
+    },
+    {
+      label: 'Rate Limiting',
+      value: '30 Req / Min',
+      detail: 'Perimeter defense on public verification API via express-rate-limit',
+    },
+  ],
+  sections: {
+    problem: {
+      title: 'The Challenge: Credential Fraud, Diploma Mills & Naive Verification Systems',
+      content: [
+        'Academic credential fraud and counterfeit qualification certificates undermine institutional integrity, employer hiring confidence, and public safety worldwide. Traditional paper diplomas and conventional PDF documents can be easily falsified or altered using readily available graphic editing software.',
+        'Existing digital verification approaches often rely on centralized university portals that suffer from downtime, bureaucratic response delays, and single points of failure. Conversely, naive blockchain verification implementations frequently verify only whether a file hash exists on a distributed ledger, failing to ascertain whether the issuing institution possessed legitimate regulatory accreditation.',
+        'The objective was to engineer an end-to-end decentralized verification ecosystem that independently validates two critical dimensions: verifying that a credential document has remained completely unaltered since issuance, and confirming that the issuing institution possessed legitimate accreditation authority from educational regulators.',
+      ],
+    },
+    approach: {
+      title: 'Decentralized Architecture & Layered Verification Ecosystem',
+      content: [
+        'XYPHER resolves these challenges through a hybrid architecture combining off-chain content-addressed storage (IPFS via Pinata), on-chain Solidity smart contracts on the Polygon Amoy testnet, and role-segregated workflows covering regulators, institutions, students, and employers.',
+      ],
+      subsections: [
+        {
+          subtitle: '1. Role-Segregated Portals & Workflows',
+          points: [
+            'Corporate Verifiers (/company): Frictionless employer verification dashboard enabling sub-second credential audits via manual Credential ID entry or live camera QR code scanning.',
+            'Educational Regulators (/regulator): Comprehensive compliance dashboard for evaluating institutional credentials, approving university onboarding, and toggling regulatory accreditation standing.',
+            'Academic Institutions (/institution): Registrar portal for initiating credential drafts, uploading PDF diplomas, and enforcing two-tier administrative authorization before on-chain minting.',
+            'Credential Recipients (/student): Graduate portal providing decentralized access to issued qualifications, hash verification tools, and shareable QR codes for resumes.',
+          ],
+        },
+        {
+          subtitle: '2. Privacy-Preserving Off-Chain Storage (IPFS / Pinata)',
+          points: [
+            'Transcript documents and diplomas are processed via an in-memory buffer pipeline that validates %PDF header magic bytes before pinning to the Pinata IPFS storage cluster.',
+            'Only 32-byte cryptographic SHA-256 hashes are anchored to the blockchain, ensuring zero sensitive student personally identifiable information (PII) is exposed on public ledgers.',
+          ],
+        },
+        {
+          subtitle: '3. Dual-Contract Blockchain Ledger (Solidity)',
+          points: [
+            'Registry.sol: Master governance ledger maintaining accredited institutional wallets and legal operational status (isAccredited).',
+            'CertificateRegistry.sol: Records tamper-evident credential fingerprints, issuing institutional IDs, student identifiers, and immutable revocation timestamps.',
+          ],
+        },
+        {
+          subtitle: '4. Deterministic 4-State Verification Engine',
+          points: [
+            'VALID: The document SHA-256 hash matches the on-chain anchor, the issuing institution is active and accredited, and no revocation flag exists.',
+            'REVOKED: The credential was legitimately issued but subsequently cancelled by the academic registrar (e.g., honor code violation or administrative error).',
+            'UNACCREDITED: The issuing institution was previously recognized, but current regulatory accreditation has been revoked or suspended by the education regulator.',
+            'NOT_FOUND: The queried credential identifier does not exist on the smart contract registry or database.',
+          ],
+        },
+      ],
+    },
+    architecture: {
+      title: 'System Topology: Data Pipelines & Security Boundaries',
+      content: [
+        'The platform partitions responsibilities across presentation, API gateway, decentralized storage, relational database, and blockchain consensus layers. The React 19 frontend communicates with an Express 4 backend via JWT-authenticated REST endpoints.',
+        'During issuance, the institution uploads a student transcript. The backend verifies PDF magic bytes, computes a local SHA-256 digest, pins the file to Pinata IPFS, and initiates a contract transaction on Polygon Amoy. During employer verification, the query evaluates both the document digest in CertificateRegistry.sol and institutional legitimacy in Registry.sol, recording the audit timestamp in Neon PostgreSQL.',
+      ],
+    },
+    decisions: {
+      title: 'Key Engineering Decisions & Architectural Trade-offs',
+      content: [
+        'Off-Chain Document Storage vs. On-Chain Hashes: Storing entire PDFs on Polygon Amoy would be cost-prohibitive and violate privacy regulations. Committing only 32-byte SHA-256 digests preserves document confidentiality while guaranteeing cryptographic tamper evidence.',
+        'Dual-Contract Architecture for Accreditation: Separating institutional accreditation (Registry.sol) from individual credential records (CertificateRegistry.sol) allows regulators to instantly suspend a fraudulent institution without modifying thousands of individual certificate entries.',
+        'Dual-Approval Administrative Issuance: Enforcing two-tier authorization (registrar initiation followed by departmental administrator sign-off) prevents rogue single-admin minting of unauthorized credentials.',
+        'Perimeter Rate Limiting on Public Verifier: Applying express-rate-limit (30 requests/minute per IP) protects backend RPCs and database pools from scraping bots while preserving rapid lookups for human recruiters.',
+      ],
+    },
+    limitations: {
+      title: 'Known Constraints & Boundary Conditions',
+      content: [
+        'Live Backend Service Availability: The frontend application is deployed on Vercel at digi-cirtificate-verification.vercel.app. Dynamic on-chain verification queries (/api/certificates/verify/:id) require an active Express gateway instance (configured to localhost:5001 or cloud backend service).',
+        'Single-Page Routing Rewrites: Direct browser reloads on deep routes (such as /company) on static hosts require server rewrite configuration to index.html; client-side navigation within the application functions seamlessly.',
+        'Blockchain Confirmation Latency: Issuance and status revocation transactions are subject to Polygon Amoy block confirmation times (typically 2-4 seconds).',
+        'IPFS Gateway Availability: Document retrieval relies on active pinning through the Pinata IPFS gateway cluster; long-term availability requires maintained pinning contracts.',
+      ],
+    },
+    lessons: {
+      title: 'Key Takeaways & Engineering Lessons',
+      content: [
+        'Document integrity alone does not prove institutional legitimacy: Confirming that a document has not changed since issuance is meaningless if the issuing institution was a diploma mill without legal accreditation. Verifying the issuer is just as critical as verifying the cryptographic digest.',
+        'Public blockchains require privacy-by-design: Public distributed ledgers should store cryptographic proofs, timestamps, and identity pointers—never unencrypted personal records or sensitive student transcripts.',
+        'Decoupled governance simplifies operational state: Structuring smart contracts into hierarchical authority tiers (Regulator → Institution → Credential) enables systemic policy updates with O(1) state transitions.',
+      ],
     },
   },
+},
   {
     slug: 'medical-response-verification',
     title: 'Hallucination Detection in Medical LLMs',

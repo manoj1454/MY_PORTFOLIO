@@ -97,18 +97,31 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
           ))}
         </div>
 
-        {/* Live Demo Action if present */}
-        {project.links?.demo && (
+        {/* Live Demo & GitHub Actions if present */}
+        {(project.links?.demo || project.links?.github) && (
           <div className={styles.heroActionsRow}>
-            <a
-              href={project.links.demo}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={styles.liveDemoBtn}
-            >
-              <span>Live Demo</span>
-              <ExternalLink size={15} />
-            </a>
+            {project.links.demo && (
+              <a
+                href={project.links.demo}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.liveDemoBtn}
+              >
+                <span>Live Demo</span>
+                <ExternalLink size={15} />
+              </a>
+            )}
+            {project.links.github && (
+              <a
+                href={project.links.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.githubBtn}
+              >
+                <span>Source Code</span>
+                <ExternalLink size={15} />
+              </a>
+            )}
           </div>
         )}
 
@@ -358,17 +371,34 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
           <aside className={styles.liveDemoCtaBlock} aria-label="Explore Live Application">
             <h3 className={styles.liveDemoCtaTitle}>Experience {project.title} Live</h3>
             <p className={styles.liveDemoCtaText}>
-              Explore the deployed platform featuring zero-trust edge RBAC, optimistic Kanban state mutations, persistent billable time tracking, and transactional invoicing workflows.
+              {project.slug === 'erp-creative-studios'
+                ? 'Explore the deployed platform featuring zero-trust edge RBAC, optimistic Kanban state mutations, persistent billable time tracking, and transactional invoicing workflows.'
+                : project.slug === 'xypher'
+                ? 'Experience the deployed credential verification platform featuring role-segregated portals, in-browser QR scanning, sub-second verification lookups, and tamper-evident audit trails.'
+                : `Experience the deployed ${project.title} platform and explore its live interactive workflows.`}
             </p>
-            <a
-              href={project.links.demo}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={styles.liveDemoBtn}
-            >
-              <span>Launch Live Application</span>
-              <ExternalLink size={16} />
-            </a>
+            <div className={styles.heroActionsRow}>
+              <a
+                href={project.links.demo}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.liveDemoBtn}
+              >
+                <span>Launch Live Application</span>
+                <ExternalLink size={16} />
+              </a>
+              {project.links.github && (
+                <a
+                  href={project.links.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={styles.githubBtn}
+                >
+                  <span>View Repository</span>
+                  <ExternalLink size={16} />
+                </a>
+              )}
+            </div>
           </aside>
         )}
       </div>

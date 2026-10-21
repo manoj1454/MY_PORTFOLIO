@@ -311,6 +311,30 @@ export default function SelectedWork() {
                   <span>Explore architectural case study</span>
                   <ArrowRight size={15} />
                 </Link>
+                {xypher.links?.demo && (
+                  <a
+                    href={xypher.links.demo}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={styles.paperCaseStudyLink}
+                    style={{ textDecoration: 'none', color: '#166534', fontWeight: 650 }}
+                  >
+                    <span>Live Demo</span>
+                    <ExternalLink size={13} />
+                  </a>
+                )}
+                {xypher.links?.github && (
+                  <a
+                    href={xypher.links.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={styles.paperCaseStudyLink}
+                    style={{ textDecoration: 'none', color: 'var(--text-secondary)' }}
+                  >
+                    <span>GitHub</span>
+                    <ExternalLink size={13} />
+                  </a>
+                )}
               </div>
 
               <Link

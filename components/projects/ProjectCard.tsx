@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import { ArrowRight, Layers, Cpu, Database, AlertCircle, ExternalLink } from 'lucide-react';
+import { ArrowRight, Layers, Cpu, Database, AlertCircle, ExternalLink, ShieldCheck } from 'lucide-react';
 import { Project } from '@/lib/types';
 import Tag from '@/components/ui/Tag';
 import styles from './ProjectCard.module.css';
@@ -12,6 +12,8 @@ interface ProjectCardProps {
 export default function ProjectCard({ project }: ProjectCardProps) {
   const getIcon = () => {
     switch (project.diagramType) {
+      case 'credentials':
+        return <ShieldCheck size={20} className={styles.categoryIcon} />;
       case 'talqs':
         return <Layers size={20} className={styles.categoryIcon} />;
       case 'welding':
@@ -74,6 +76,18 @@ export default function ProjectCard({ project }: ProjectCardProps) {
             style={{ color: '#166534', fontWeight: 650 }}
           >
             <span>Live Demo</span>
+            <ExternalLink size={14} className={styles.ctaArrow} />
+          </a>
+        )}
+        {project.links?.github && (
+          <a
+            href={project.links.github}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.ctaLink}
+            style={{ color: 'var(--text-secondary)' }}
+          >
+            <span>GitHub</span>
             <ExternalLink size={14} className={styles.ctaArrow} />
           </a>
         )}
