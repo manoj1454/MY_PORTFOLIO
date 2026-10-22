@@ -139,7 +139,7 @@ export default function SiteHeader() {
             <span className={styles.markGlyph} aria-hidden="true">
               <Terminal size={15} />
             </span>
-            <span className={styles.markText}>manoj.dev</span>
+            <span className={styles.markText}>manoj</span>
           </Link>
 
           {/* Tactile Pill Navigation */}
